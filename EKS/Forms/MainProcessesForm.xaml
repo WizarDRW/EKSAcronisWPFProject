@@ -1,0 +1,28 @@
+﻿<Window x:Class="EKS.Forms.MainProcessesForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EKS.Forms"
+        mc:Ignorable="d"
+        Title="Elektronik Kontrol Sistemleri Yedekleme İş Veri Tabanı" Height="750" Width="1020" Closed="MPFClosed" Icon="/EKS;component/Resource/logo.ico" >
+    <Grid>
+        <Menu Height="20" VerticalAlignment="Top">
+            <MenuItem Header="_Dosya" >
+                <MenuItem Header="_Çıkart"/>
+                <Separator />
+                <MenuItem Header="_Çıkış"/>
+            </MenuItem>
+            <MenuItem Header="_İşlemler">
+                <MenuItem Header="_Kayıt Ekle"/>
+                <MenuItem Header="_Kayıt Sil"/>
+                <MenuItem Header="_Kayıt Güncelle"/>
+                <MenuItem Header="_Kayıt Bul"/>
+            </MenuItem>
+            <MenuItem Header="_Yardim">
+                <MenuItem Header="_Hakkinda"/>
+            </MenuItem>
+        </Menu>
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="10,20,0,0" VerticalAlignment="Top" Height="689" Width="992"/>
+    </Grid>
+</Window>

@@ -1,0 +1,15 @@
+﻿<Window x:Class="EKS.Forms.UserLogin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="UserLogin" Height="200" Width="250" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid Background="#FF348DFF" MaxHeight="250" MaxWidth="250">
+        <TextBox x:Name="UserNameTXTBX" HorizontalAlignment="Left" Height="23" Margin="83,21,0,0" VerticalAlignment="Top" Width="157" SelectionBrush="#FF006EC5" BorderBrush="#FF4B87C8" Foreground="#FFA4A4A4" />
+        <PasswordBox x:Name="PasswordPB" HorizontalAlignment="Left" Height="23" Margin="83,49,0,0" VerticalAlignment="Top" Width="157"  BorderBrush="#FF4B83C0" Foreground="#FF9E00CD" />
+        <Button Content="Kullanıcı Oluştur" HorizontalAlignment="Center" Margin="114,118,40,0" VerticalAlignment="Top" Foreground="White" HorizontalContentAlignment="Center" Background="#FF348DFF" BorderBrush="#FF348DFF" Click="UserCreateBTNClick"/>
+        <Button Content="Şifremi Unuttum" HorizontalAlignment="Center" Margin="114,149,39,0" VerticalAlignment="Top" Foreground="White" HorizontalContentAlignment="Center" Background="#FF348DFF" BorderBrush="#FF348DFF"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="10,22,0,0" TextWrapping="Wrap" Text="Kullanıcı Adı:" VerticalAlignment="Top" Width="68" Foreground="White" TextAlignment="Right"/>
+        <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Margin="10,53,0,0" TextWrapping="Wrap" Text="Parola:" VerticalAlignment="Top" Width="68" Foreground="White" TextAlignment="Right"/>
+        <Button x:Name="LogInBTN" Content="Giriş" HorizontalAlignment="Left" Margin="83,86,0,0" VerticalAlignment="Top" Width="157" Click="LogInBTN_Click" Foreground="#FF348DFF" Background="White" AllowDrop="True" BorderBrush="Black"/>
+
+    </Grid>
+</Window>

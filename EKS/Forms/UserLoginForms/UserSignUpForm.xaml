@@ -1,0 +1,25 @@
+﻿<Window x:Class="EKS.Forms.UserLoginForms.UserSignUpForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EKS.Forms.UserLoginForms"
+        mc:Ignorable="d"
+        Title="UserSignUpForm" Height="250" Width="250" WindowStartupLocation="CenterScreen" WindowStyle="None">
+    <Grid>
+        <Button x:Name="SaveBTN" Content="Kaydet" HorizontalAlignment="Left" Margin="38,207,0,0" VerticalAlignment="Top" Width="85" Height="30" BorderBrush="#FF1D46FF" Background="#FF1D46FF" Foreground="White" Click="SaveBTNClick"/>
+        <Button x:Name="CancelBTN" Content="İptal" HorizontalAlignment="Left" Margin="138,207,0,0" VerticalAlignment="Top" Width="85" Height="30" BorderBrush="#FF1D46FF" Background="#FF1D46FF" Foreground="White"/>
+        <TextBox x:Name="NameTXT" HorizontalAlignment="Left" Height="23" Margin="97,8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="129" BorderBrush="#FF1D46FF" Background="#FFD2DAFF"/>
+        <TextBox x:Name="LastNameTXT" HorizontalAlignment="Left" Height="23" Margin="97,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="129" BorderBrush="#FF1D46FF" Background="#FFD2DAFF"/>
+        <TextBox x:Name="UserNameTXT" HorizontalAlignment="Left" Height="23" Margin="97,85,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="129" BorderBrush="#FF1D46FF" Background="#FFD2DAFF"/>
+        <PasswordBox x:Name="PasswordTXT" HorizontalAlignment="Left" Height="23" Margin="97,126,0,0" VerticalAlignment="Top" Width="129" BorderBrush="#FF1D46FF" Background="#FFD2DAFF"/>
+        <PasswordBox x:Name="PasswordConfirmTXT" HorizontalAlignment="Left" Height="23" Margin="97,166,0,0" VerticalAlignment="Top" Width="129" BorderBrush="#FF1D46FF" Background="#FFD2DAFF"/>
+        <Label x:Name="NameLBL" Content="Ad:" HorizontalAlignment="Left" Margin="67,8,0,0" VerticalAlignment="Top" Foreground="Black" FontFamily="Segoe UI Semibold"/>
+        <Label x:Name="LastNameLBL" Content="Soyad:" HorizontalAlignment="Left" Margin="49,46,0,0" VerticalAlignment="Top" Foreground="Black" FontFamily="Segoe UI Semibold"/>
+        <Label x:Name="UserNameLBL" Content="Kullanıcı Adı:" HorizontalAlignment="Left" Margin="14,85,0,0" VerticalAlignment="Top" Foreground="Black" FontFamily="Segoe UI Semibold"/>
+        <Label x:Name="PasswordLBL" Content="Parola:" HorizontalAlignment="Left" Margin="47,126,0,0" VerticalAlignment="Top" Foreground="Black" FontFamily="Segoe UI Semibold"/>
+        <Label x:Name="PasswordConfirmLBL" Content="Parola Onay:" HorizontalAlignment="Left" Margin="15,166,0,0" VerticalAlignment="Top" Foreground="Black" FontFamily="Segoe UI Semibold"/>
+
+
+    </Grid>
+</Window>
