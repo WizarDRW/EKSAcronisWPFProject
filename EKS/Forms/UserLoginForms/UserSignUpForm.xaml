@@ -8,7 +8,7 @@
         Title="UserSignUpForm" Height="250" Width="250" WindowStartupLocation="CenterScreen" WindowStyle="None">
     <Grid>
         <Button x:Name="SaveBTN" Content="Kaydet" HorizontalAlignment="Left" Margin="38,207,0,0" VerticalAlignment="Top" Width="85" Height="30" BorderBrush="#FF1D46FF" Background="#FF1D46FF" Foreground="White" Click="SaveBTNClick"/>
-        <Button x:Name="CancelBTN" Content="İptal" HorizontalAlignment="Left" Margin="138,207,0,0" VerticalAlignment="Top" Width="85" Height="30" BorderBrush="#FF1D46FF" Background="#FF1D46FF" Foreground="White"/>
+        <Button x:Name="CancelBTN" Content="İptal" HorizontalAlignment="Left" Margin="138,207,0,0" VerticalAlignment="Top" Width="85" Height="30" BorderBrush="#FF1D46FF" Background="#FF1D46FF" Foreground="White" Click="CancelBTNClick"/>
         <TextBox x:Name="NameTXT" HorizontalAlignment="Left" Height="23" Margin="97,8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="129" BorderBrush="#FF1D46FF" Background="#FFD2DAFF"/>
         <TextBox x:Name="LastNameTXT" HorizontalAlignment="Left" Height="23" Margin="97,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="129" BorderBrush="#FF1D46FF" Background="#FFD2DAFF"/>
         <TextBox x:Name="UserNameTXT" HorizontalAlignment="Left" Height="23" Margin="97,85,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="129" BorderBrush="#FF1D46FF" Background="#FFD2DAFF"/>

@@ -17,13 +17,14 @@ namespace EKS
         private Classes.MemoryControl ClmC;
         private Forms.UserLogin FmuL;
         #endregion
-
+        public bool VerifyEnter = false;
         public void Processes()
         {
            FmuL = new Forms.UserLogin();
            ClmC = new Classes.MemoryControl();
            ClmC.MemoryStart();
            FmuL.ShowDialog();
+           VerifyEnter = FmuL.VerifyEnter;
         }
     }
 }

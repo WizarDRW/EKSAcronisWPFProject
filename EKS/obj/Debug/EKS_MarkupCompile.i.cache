@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\wizar\Desktop\EKSAcronisWPF\EKS\obj\Debug\
+C:\Users\wizar\Desktop\EKSAcronisWPFProject\EKS\obj\Debug\
 EKS
 none
 false
 DEBUG;TRACE
-C:\Users\wizar\Desktop\EKSAcronisWPF\EKS\App.xaml
+C:\Users\wizar\Desktop\EKSAcronisWPFProject\EKS\App.xaml
 4238277527
-
-15654176800
-13-1142990016
+12067159951
+16-307473987
+19-710405003
 Forms\MainProcessesForm.xaml;Forms\StartAnimation.xaml;Forms\UserLogin.xaml;Forms\UserLoginForms\UserSignUpForm.xaml;
 
 False

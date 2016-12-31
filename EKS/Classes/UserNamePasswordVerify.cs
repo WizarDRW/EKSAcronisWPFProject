@@ -3,7 +3,7 @@ using EKS;
 
 namespace EKS.Classes
 {
-    public class UserNamePasswordVerify : StartAnimation
+    public class UserNamePasswordVerify
     {
         #region Defauld Administration Login
         #region Property and Strings
@@ -13,6 +13,7 @@ namespace EKS.Classes
         public string NewPassword { get; set; }
         public bool VerifyUserName { get; private set; }
         public bool VerifyPassword { get; private set; }
+        public bool VerifyEnter { get; set; }
         #endregion
 
         public bool _VerifyUserNameMethod()

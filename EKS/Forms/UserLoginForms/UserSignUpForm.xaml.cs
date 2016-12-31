@@ -39,5 +39,10 @@ namespace EKS.Forms.UserLoginForms
 
         }
         #endregion
+
+        private void CancelBTNClick(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

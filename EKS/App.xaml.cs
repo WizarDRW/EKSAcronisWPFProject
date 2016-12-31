@@ -7,19 +7,12 @@ namespace EKS
     /// </summary>
     public partial class App : Application
     {
-
-        #region StartUp Objects
-        StartAnimation FmsA;
-        EKS.Forms.MainProcessesForm MPF = new Forms.MainProcessesForm();
-        #endregion
+        Classes.AppStart _AppStart;
 
         public void Application_Startup(object sender, StartupEventArgs e)
         {
-            FmsA = new StartAnimation();
-            FmsA.Show();
-            FmsA.Processes();
-            FmsA.Close();
-            MPF.Show();
+            _AppStart = new Classes.AppStart();
+            _AppStart.Start();
         }
     }
 }

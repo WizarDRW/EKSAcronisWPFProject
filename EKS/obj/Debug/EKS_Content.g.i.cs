@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resource/startpagecloud4.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dependencies/xceed.wpf.toolkit.dll")]
 
 
