@@ -13,6 +13,7 @@ namespace EKS.Forms.UserLoginForms
             InitializeComponent();
         }
         UsersDatabaseConnection UDC;
+        MessageBoxsForms.UserSaveMessageBox USM;
         private void SaveBTNClick(object sender, RoutedEventArgs e)
         {
             Transporter();
@@ -20,9 +21,10 @@ namespace EKS.Forms.UserLoginForms
 
         #region voidMethods
         public delegate void UserSingUpSQLTables();
+
         void Transporter()
         {
-            if (PasswordTXT.Password == PasswordConfirmTXT.Password && NameTXT.Text != null && LastNameTXT.Text != null && UserNameTXT.Text != null)
+            if (PasswordTXT.Password == PasswordConfirmTXT.Password && PasswordTXT.Password != "" && NameTXT.Text != "" && LastNameTXT.Text != "" && UserNameTXT.Text != "")
             {
                 UDC = new UsersDatabaseConnection();
                 UDC.Name = NameTXT.Text;
@@ -31,6 +33,11 @@ namespace EKS.Forms.UserLoginForms
                 UDC.Password = PasswordTXT.Password;
                 UserSingUpSQLTables conSingUp = UDC.UsersSignUpSQLTables;
                 conSingUp();
+                if (UDC.VerifyTableEntered == true)
+                {
+                    USM = new MessageBoxsForms.UserSaveMessageBox();
+                    USM.ShowDialog();
+                }
             }
             else
             {

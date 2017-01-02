@@ -75,6 +75,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Forms\MessageBoxsForms\UserSaveMessageBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Forms\StartAnimation.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -88,6 +92,9 @@
     <Compile Include="Classes\UsersDatabaseConnection.cs" />
     <Compile Include="Forms\MainProcessesForm.xaml.cs">
       <DependentUpon>MainProcessesForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MessageBoxsForms\UserSaveMessageBox.xaml.cs">
+      <DependentUpon>UserSaveMessageBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="Forms\StartAnimation.xaml.cs">
       <DependentUpon>StartAnimation.xaml</DependentUpon>
@@ -160,7 +167,6 @@
     <Resource Include="Resource\StartPageCloud4.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Forms\MessageBoxsForms\" />
     <Folder Include="Forms\MPFMenus\" />
   </ItemGroup>
   <ItemGroup>
@@ -168,6 +174,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Dependencies\Xceed.Wpf.Toolkit.dll" />
+    <Resource Include="Resource\Users.png" />
+    <Resource Include="Resource\DatabaseAdd.png" />
+    <Resource Include="Resource\DatabaseDelet2.png" />
+    <Resource Include="Resource\DatabaseDelete.png" />
+    <Resource Include="Resource\DatabaseFind.png" />
+    <Resource Include="Resource\DatabaseList.png" />
+    <Resource Include="Resource\DatabaseUpdate.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

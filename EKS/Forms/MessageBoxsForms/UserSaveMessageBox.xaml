@@ -1,0 +1,16 @@
+﻿<Window x:Class="EKS.Forms.MessageBoxsForms.UserSaveMessageBox"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EKS.Forms.MessageBoxsForms"
+        mc:Ignorable="d"
+        Title="UserSaveMessageBox" Height="150" Width="300" WindowStartupLocation="CenterScreen" WindowStyle="None">
+    <Grid>
+        <Label x:Name="UserSaveLBL" Content="Kullanıcı Kaydedildi" HorizontalAlignment="Left" Margin="88,23,0,0" VerticalAlignment="Top" FontFamily="Ebrima" Foreground="#FF2D37FF"/>
+        <Ellipse Fill="#FF6B6BFF" HorizontalAlignment="Center" Height="52"  Stroke="#FF6B6BFF" VerticalAlignment="Center" Width="52" Margin="120,65,120,25" />
+        <Label x:Name="OKLBL" Content="OK" HorizontalAlignment="Center" Margin="132,78,133,38" VerticalAlignment="Center" FontFamily="Ebrima" Foreground="White" Width="27"/>
+        <Button x:Name="OKBTN" HorizontalAlignment="Left" Margin="120,65,0,0" VerticalAlignment="Top" Width="52" Height="52" Background="{x:Null}" BorderBrush="{x:Null}"/>
+
+    </Grid>
+</Window>

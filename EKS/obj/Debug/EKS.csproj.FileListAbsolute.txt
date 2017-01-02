@@ -94,3 +94,5 @@ C:\Users\wizar\Desktop\EKSAcronisWPFProject\EKS\bin\Debug\EntityFramework.SqlSer
 C:\Users\wizar\Desktop\EKSAcronisWPFProject\EKS\bin\Debug\Xceed.Wpf.Toolkit.dll
 C:\Users\wizar\Desktop\EKSAcronisWPFProject\EKS\obj\Debug\EKS.csprojResolveAssemblyReference.cache
 C:\Users\wizar\Desktop\EKSAcronisWPFProject\EKS\obj\Debug\EKS_Content.g.cs
+C:\Users\wizar\Desktop\EKSAcronisWPFProject\EKS\obj\Debug\Forms\MessageBoxsForms\UserSaveMessageBox.g.cs
+C:\Users\wizar\Desktop\EKSAcronisWPFProject\EKS\obj\Debug\Forms\MessageBoxsForms\UserSaveMessageBox.baml

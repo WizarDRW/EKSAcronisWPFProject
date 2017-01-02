@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\wizar\Desktop\EKSAcronisWPFProject\EKS\App.xaml
-4238277527
+51308177754
 12067159951
-16-307473987
+1770555701
 19-710405003
-Forms\MainProcessesForm.xaml;Forms\StartAnimation.xaml;Forms\UserLogin.xaml;Forms\UserLoginForms\UserSignUpForm.xaml;
+Forms\MainProcessesForm.xaml;Forms\MessageBoxsForms\UserSaveMessageBox.xaml;Forms\StartAnimation.xaml;Forms\UserLogin.xaml;Forms\UserLoginForms\UserSignUpForm.xaml;
 
-False
+True
 

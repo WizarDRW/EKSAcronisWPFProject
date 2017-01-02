@@ -20,6 +20,7 @@ namespace EKS.Classes
         public string LastName { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
+        public bool VerifyTableEntered { get; set; }
         #endregion
 
         public void UsersSignUpSQLTables()
@@ -37,10 +38,26 @@ namespace EKS.Classes
                 cmd.Parameters.AddWithValue("@Password", this.Password);
                 cmd.ExecuteNonQuery();
                 con.Close();
+                VerifyTableEntered = true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public void ReadDatabases()
+        {
+            string conString = @"Data Source=WIZARDRW\WIZARDRW;Initial Catalog=EKSAcronisDatabases;Integrated Security=True";
+            SqlConnection con = new SqlConnection(conString);
+            try
+            {
+                con.Open();
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
     }
