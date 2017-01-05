@@ -12,17 +12,19 @@ namespace EKS.Forms.UserLoginForms
         {
             InitializeComponent();
         }
+
         UsersDatabaseConnection UDC;
         MessageBoxsForms.UserSaveMessageBox USM;
+
         private void SaveBTNClick(object sender, RoutedEventArgs e)
         {
             Transporter();
         }
 
         #region voidMethods
-        public delegate void UserSingUpSQLTables();
+        private delegate void UserSingUpSQLTables();
 
-        void Transporter()
+        private void Transporter()
         {
             if (PasswordTXT.Password == PasswordConfirmTXT.Password && PasswordTXT.Password != "" && NameTXT.Text != "" && LastNameTXT.Text != "" && UserNameTXT.Text != "")
             {
@@ -36,6 +38,7 @@ namespace EKS.Forms.UserLoginForms
                 if (UDC.VerifyTableEntered == true)
                 {
                     USM = new MessageBoxsForms.UserSaveMessageBox();
+                    USM.Owner = this;
                     USM.ShowDialog();
                 }
             }

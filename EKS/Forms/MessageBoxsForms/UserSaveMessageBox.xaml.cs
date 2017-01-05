@@ -23,5 +23,10 @@ namespace EKS.Forms.MessageBoxsForms
         {
             InitializeComponent();
         }
+
+        private void OKBTNClick(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

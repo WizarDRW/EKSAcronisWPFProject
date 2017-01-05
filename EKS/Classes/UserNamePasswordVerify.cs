@@ -5,6 +5,8 @@ namespace EKS.Classes
 {
     public class UserNamePasswordVerify
     {
+        UsersDatabaseConnection UDC = new UsersDatabaseConnection();
+
         #region Defauld Administration Login
         #region Property and Strings
         private string DefaultUserName = EKS.Properties.Settings.Default.UserName;
@@ -16,7 +18,7 @@ namespace EKS.Classes
         public bool VerifyEnter { get; set; }
         #endregion
 
-        public bool _VerifyUserNameMethod()
+        public bool _VerifyAdminUserNameMethod()
         {
             if (NewUserName == DefaultUserName)
             { return VerifyUserName = true; }
@@ -24,12 +26,24 @@ namespace EKS.Classes
             { return VerifyUserName = false; }
 
         }
-        public bool _VerifyPasswordMethod()
+        public bool _VerifyAdminPasswordMethod()
         {
             if (NewPassword == DefaultPassword)
             { return VerifyPassword = true; }
             else
             { return VerifyPassword = false; }
+        }
+        #endregion
+
+        #region User Login
+        public bool _VerifyUserNameMethod()
+        {
+            return false;
+        }
+
+        public bool _VerifyUserPasswordMethod()
+        {
+            return false;
         }
         #endregion
 

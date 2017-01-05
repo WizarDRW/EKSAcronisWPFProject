@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EKS.Forms.UserLoginForms"
         mc:Ignorable="d"
+        ShowInTaskbar="False"
         Title="UserSignUpForm" Height="250" Width="250" WindowStartupLocation="CenterScreen" WindowStyle="None">
     <Grid>
         <Button x:Name="SaveBTN" Content="Kaydet" HorizontalAlignment="Left" Margin="38,207,0,0" VerticalAlignment="Top" Width="85" Height="30" BorderBrush="#FF1D46FF" Background="#FF1D46FF" Foreground="White" Click="SaveBTNClick"/>

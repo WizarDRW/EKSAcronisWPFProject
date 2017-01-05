@@ -21,44 +21,65 @@ namespace EKS.Classes
         public string UserName { get; set; }
         public string Password { get; set; }
         public bool VerifyTableEntered { get; set; }
+        public int HasDataNameLastName { get; set; }
+        public int HasDataUserName { get; set; }
         #endregion
 
         public void UsersSignUpSQLTables()
         {
             string conString = @"Data Source=WIZARDRW\WIZARDRW;Initial Catalog=EKSAcronisDatabases;Integrated Security=True";
             SqlConnection con = new SqlConnection(conString);
-            try
+            con.Open();
+            #region User Control
+            using (SqlCommand cmd = new SqlCommand("ULNReg", con))
             {
-                string cmdString = "insert into USERS(NAME, LASTNAME, USERNAME, PASSWORD) values(@Name, @LastName,@UserName, @Password)";
-                con.Open();
-                SqlCommand cmd = new SqlCommand(cmdString, con);
-                cmd.Parameters.AddWithValue("@Name", this.Name);
-                cmd.Parameters.AddWithValue("@LastName", this.LastName);
-                cmd.Parameters.AddWithValue("@UserName", this.UserName);
-                cmd.Parameters.AddWithValue("@Password", this.Password);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@name", Name);
+                cmd.Parameters.AddWithValue("@lastname", LastName);
+                cmd.Parameters.AddWithValue("@username", UserName);
+                SqlParameter NameandLastNameParam = new SqlParameter("@LNResult", System.Data.SqlDbType.Int);
+                SqlParameter UserNameParam = new SqlParameter("@UResult", System.Data.SqlDbType.Int);
+                NameandLastNameParam.Direction = System.Data.ParameterDirection.Output;
+                UserNameParam.Direction = System.Data.ParameterDirection.Output;
+                cmd.Parameters.Add(NameandLastNameParam);
+                cmd.Parameters.Add(UserNameParam);
                 cmd.ExecuteNonQuery();
-                con.Close();
-                VerifyTableEntered = true;
+                HasDataNameLastName = Convert.ToInt32(NameandLastNameParam.Value);
+                HasDataUserName = Convert.ToInt32(UserNameParam.Value);
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-        }
 
-        public void ReadDatabases()
-        {
-            string conString = @"Data Source=WIZARDRW\WIZARDRW;Initial Catalog=EKSAcronisDatabases;Integrated Security=True";
-            SqlConnection con = new SqlConnection(conString);
-            try
+            if (HasDataNameLastName > 0)
             {
-                con.Open();
+                MessageBox.Show(Name + ' ' + LastName + "\nKullanici Zaten Mevcut", "Bilgi", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-            catch (Exception)
+            else if (HasDataUserName > 0)
             {
+                MessageBox.Show(UserName + "\nBu Kullanici Adi Zaten Var.", "Bilgi", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                #region CreateUsers
+                try
+                {
+                    string cmdString = "insert into USERS(NAME, LASTNAME, USERNAME, PASSWORD) values(@Name, @LastName,@UserName, @Password)";
+                    SqlCommand cmd = new SqlCommand(cmdString, con);
+                    cmd.Parameters.AddWithValue("@Name", this.Name);
+                    cmd.Parameters.AddWithValue("@LastName", this.LastName);
+                    cmd.Parameters.AddWithValue("@UserName", this.UserName);
+                    cmd.Parameters.AddWithValue("@Password", this.Password);
+                    cmd.ExecuteNonQuery();
+                    VerifyTableEntered = true;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+                #endregion
+            }
+            #endregion
+            con.Close();
 
-                throw;
-            }
         }
+        
     }
 }

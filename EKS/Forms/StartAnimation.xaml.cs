@@ -1,5 +1,7 @@
 ﻿using System.Windows;
 using System.Threading.Tasks;
+using System;
+using System.Linq;
 
 namespace EKS
 {
@@ -20,11 +22,12 @@ namespace EKS
         public bool VerifyEnter = false;
         public void Processes()
         {
-           FmuL = new Forms.UserLogin();
-           ClmC = new Classes.MemoryControl();
-           ClmC.MemoryStart();
-           FmuL.ShowDialog();
-           VerifyEnter = FmuL.VerifyEnter;
+            FmuL = new Forms.UserLogin();
+            ClmC = new Classes.MemoryControl();
+            ClmC.MemoryStart();
+            FmuL.Owner = Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);//Task Bar da diger formlarin gozukmemesi icin
+            FmuL.ShowDialog();
+            VerifyEnter = FmuL.VerifyAdminEnter;
         }
     }
 }
