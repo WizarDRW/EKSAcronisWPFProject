@@ -9,7 +9,8 @@ namespace EKS.Classes
         EKS.Forms.MainProcessesForm MPF;
         #endregion
 
-        public bool VerifyEnter { get; set; }
+        public bool VerifyAdminEnter { get; set; }
+        public bool VerifyUserEnter { get; set; }
 
         public void Start()
         {
@@ -19,11 +20,12 @@ namespace EKS.Classes
             FmsA.Show();
             FmsA.Processes();
 
-            VerifyEnter = FmsA.VerifyEnter;
+            VerifyAdminEnter = FmsA.VerifyAdminEnter;
+            VerifyUserEnter = FmsA.VerifyUserEnter;
 
             FmsA.Close();
 
-            if (VerifyEnter == true)
+            if (VerifyAdminEnter == true || VerifyUserEnter == true)
             {
                 MPF.Show();
             }

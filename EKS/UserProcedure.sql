@@ -25,3 +25,19 @@ as
 	begin
 		set @UResult = 0
 	end
+
+Create proc ULNVerify
+	@username varchar(50) = null,
+	@password varchar(50) = null,
+	@UResult int output
+as
+	declare @U int
+	set @U = (select COUNT(USERNAME) from USERS where USERNAME = @username and [PASSWORD] = @password)
+	if(@U >= 1)
+	begin
+		set @UResult = 1
+	end
+	else
+	begin
+		set @UResult = 0
+	end

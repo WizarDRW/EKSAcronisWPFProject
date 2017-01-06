@@ -1,13 +1,9 @@
-﻿using EKS.Forms;
-using EKS;
-
-namespace EKS.Classes
+﻿namespace EKS.Classes
 {
     public class UserNamePasswordVerify
     {
         UsersDatabaseConnection UDC = new UsersDatabaseConnection();
 
-        #region Defauld Administration Login
         #region Property and Strings
         private string DefaultUserName = EKS.Properties.Settings.Default.UserName;
         private string DefaultPassword = EKS.Properties.Settings.Default.Password;
@@ -16,7 +12,10 @@ namespace EKS.Classes
         public bool VerifyUserName { get; private set; }
         public bool VerifyPassword { get; private set; }
         public bool VerifyEnter { get; set; }
+        public int VerifyUsersEnter { get; set; }
         #endregion
+
+        #region Defauld Administration Login
 
         public bool _VerifyAdminUserNameMethod()
         {
@@ -36,20 +35,20 @@ namespace EKS.Classes
         #endregion
 
         #region User Login
-        public bool _VerifyUserNameMethod()
+
+        public bool _VerifyUserNamePasswordMethod()
         {
-            return false;
+            UDC.UserNameVerify = NewUserName;
+            UDC.PasswordVerify = NewPassword;
+            UDC.UsersSignInSQLTables();
+            VerifyUsersEnter = UDC.HasDataUserNameandPassword;
+            if (VerifyUsersEnter >= 1)
+                return true;
+            else
+                return false;
         }
 
-        public bool _VerifyUserPasswordMethod()
-        {
-            return false;
-        }
         #endregion
 
     }
 }
-//Temel sorun bool Haberleşmesi
-//Property ler ile interface kuralları oluşturup Metot ile return yapılmalı
-//Property ler tek başına döndürmüyor
-//işlem bittikten sonra Memory den atmak Tekrar kullanıcı girişini engelleyebilir Çözüm bulunmalı.

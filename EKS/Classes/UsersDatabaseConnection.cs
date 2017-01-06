@@ -12,7 +12,9 @@ namespace EKS.Classes
         string UserName { get; set; }
         string Password { get; set; }
         void UsersSignUpSQLTables();
+        void UsersSignInSQLTables();
     }
+
     public class UsersDatabaseConnection : UserSignUpForm, ILawWrite
     {
         #region Property
@@ -20,17 +22,20 @@ namespace EKS.Classes
         public string LastName { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
+        public string UserNameVerify { get; set; }
+        public string PasswordVerify { get; set; }
         public bool VerifyTableEntered { get; set; }
         public int HasDataNameLastName { get; set; }
         public int HasDataUserName { get; set; }
+        public int HasDataUserNameandPassword { get; set; }
         #endregion
 
+        #region User Create Control
         public void UsersSignUpSQLTables()
         {
             string conString = @"Data Source=WIZARDRW\WIZARDRW;Initial Catalog=EKSAcronisDatabases;Integrated Security=True";
             SqlConnection con = new SqlConnection(conString);
             con.Open();
-            #region User Control
             using (SqlCommand cmd = new SqlCommand("ULNReg", con))
             {
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
@@ -76,10 +81,31 @@ namespace EKS.Classes
                 }
                 #endregion
             }
-            #endregion
             con.Close();
 
         }
-        
+        #endregion
+
+        #region User Enter Verify
+        public void UsersSignInSQLTables()
+        {
+            string conString = @"Data Source=WIZARDRW\WIZARDRW;Initial Catalog=EKSAcronisDatabases;Integrated Security=True";
+            using (SqlConnection con = new SqlConnection(conString))
+            {
+                con.Open();
+                using (SqlCommand cmd = new SqlCommand("ULNVerify", con))
+                {
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@username", UserNameVerify);
+                    cmd.Parameters.AddWithValue("@password", PasswordVerify);
+                    SqlParameter param = new SqlParameter("@UResult", System.Data.SqlDbType.Int);
+                    param.Direction = System.Data.ParameterDirection.Output;
+                    cmd.Parameters.Add(param);
+                    cmd.ExecuteNonQuery();
+                    HasDataUserNameandPassword = Convert.ToInt32(param.Value);
+                }
+            }
+        }
+        #endregion
     }
 }

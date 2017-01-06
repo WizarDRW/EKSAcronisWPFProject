@@ -20,8 +20,9 @@ namespace EKS.Forms
         UserLoginForms.UserSignUpForm UsuF;
         #endregion
 
-        #region Propertys
+        #region Property
         public bool VerifyAdminEnter { get; set; }
+        public bool VerifyUserEnter { get; set; }
         public bool VerifyUserLogInEnter { get; set; }
         #endregion
 
@@ -32,30 +33,30 @@ namespace EKS.Forms
             #region Administration Verify
             UnpvC.NewUserName = UserNameTXTBX.Text;
             UnpvC.NewPassword = PasswordPB.Password.ToString();
-            bool VerifyUserName = UnpvC._VerifyAdminUserNameMethod();
+            bool VerifyAdminUserNameandPassword = UnpvC._VerifyAdminUserNameMethod();
             bool VerifyPassword = UnpvC._VerifyAdminPasswordMethod();
 
-            if (VerifyUserName == true && VerifyPassword == true)
+            UserLogInVerify _UserLogInVerifyDel = UnpvC._VerifyUserNamePasswordMethod;
+            bool VerifyUserNameandPassword = _UserLogInVerifyDel();
+
+            if (VerifyAdminUserNameandPassword == true && VerifyPassword == true)
             {
                 VerifyAdminEnter = true;
                 this.Close();
             }
-            //else if (VerifyUserName == false || VerifyPassword == false)
-            //{
-            //    MessageBox.Show("Kullanıcı Adı veya Şifreniz Yanlış.\nLütfen Tekrar Deneyin.", "Hatalı Giriş", MessageBoxButton.OK, MessageBoxImage.Information);
-            //}
+            else if (VerifyUserNameandPassword == true)
+            {
+                VerifyUserEnter = true;
+                this.Close();
+            }
+            else if (VerifyAdminUserNameandPassword == false || VerifyPassword == false || VerifyUserNameandPassword == false)
+            {
+                MessageBox.Show("Kullanıcı Adı veya Şifreniz Yanlış.\nLütfen Tekrar Deneyin.", "Hatalı Giriş", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
 
             #endregion
             ///
             #region User Verify 
-            UserLogInVerify _UserLogInVerifyDel = UnpvC._VerifyUserNameMethod;
-            VerifyUserName = _UserLogInVerifyDel();
-            _UserLogInVerifyDel = UnpvC._VerifyUserPasswordMethod;
-            VerifyPassword = _UserLogInVerifyDel();
-            if (VerifyUserName == true && VerifyPassword == true)
-            {
-                this.Close();
-            }
             #endregion
         }
 

@@ -19,7 +19,8 @@ namespace EKS
         private Classes.MemoryControl ClmC;
         private Forms.UserLogin FmuL;
         #endregion
-        public bool VerifyEnter = false;
+        public bool VerifyAdminEnter = false;
+        public bool VerifyUserEnter = false;
         public void Processes()
         {
             FmuL = new Forms.UserLogin();
@@ -27,7 +28,8 @@ namespace EKS
             ClmC.MemoryStart();
             FmuL.Owner = Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);//Task Bar da diger formlarin gozukmemesi icin
             FmuL.ShowDialog();
-            VerifyEnter = FmuL.VerifyAdminEnter;
+            VerifyAdminEnter = FmuL.VerifyAdminEnter;
+            VerifyUserEnter = FmuL.VerifyUserEnter;
         }
     }
 }
