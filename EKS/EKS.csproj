@@ -174,13 +174,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Dependencies\Xceed.Wpf.Toolkit.dll" />
-    <Resource Include="Resource\Users.png" />
-    <Resource Include="Resource\DatabaseAdd.png" />
-    <Resource Include="Resource\DatabaseDelet2.png" />
-    <Resource Include="Resource\DatabaseDelete.png" />
-    <Resource Include="Resource\DatabaseFind.png" />
-    <Resource Include="Resource\DatabaseList.png" />
-    <Resource Include="Resource\DatabaseUpdate.png" />
+    <Resource Include="Resource\DataSecret.png" />
+    <Resource Include="Resource\DataAdd.png" />
+    <Resource Include="Resource\DataFind.png" />
+    <Resource Include="Resource\DataMinus.png" />
+    <Resource Include="Resource\DataUpdate.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

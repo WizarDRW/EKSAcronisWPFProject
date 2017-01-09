@@ -13,12 +13,11 @@ namespace EKS.Forms
         {
             InitializeComponent();
         }
+
         private string conString = @"Data Source=WIZARDRW\WIZARDRW;Initial Catalog=EKSAcronisDatabases;Integrated Security=True";
-        private string ListString = "select * from dbo.USERS";
-
-        private void DatabaseListMenuClick(object sender, System.EventArgs e)
+        private string ListString = "select * from USERS";
+        private void WindowLoaded(object sender, RoutedEventArgs e)
         {
-
             using (SqlConnection con = new SqlConnection(conString))
             using (SqlCommand cmd = new SqlCommand(ListString, con))
             {
@@ -49,11 +48,6 @@ namespace EKS.Forms
         }
 
         private void DatabaseFindMenuClick(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void UsersControlMenuClick(object sender, RoutedEventArgs e)
         {
 
         }

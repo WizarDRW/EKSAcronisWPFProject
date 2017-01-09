@@ -40,6 +40,10 @@ namespace EKS.Forms.UserLoginForms
                     USM = new MessageBoxsForms.UserSaveMessageBox();
                     USM.Owner = this;
                     USM.ShowDialog();
+                    if (USM.HasSave == true)
+                    {
+                        this.Close();
+                    }
                 }
             }
             else
