@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EKSAcronisDatabasesModelStoreContainer" CdmEntityContainer="EKSADatabasesEntities">
+    <EntitySetMapping Name="BACKUPINFO">
+      <EntityTypeMapping TypeName="EKSAcronisDatabasesModel.BACKUPINFO">
+        <MappingFragment StoreEntitySet="BACKUPINFO">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="BOLGE" ColumnName="BOLGE" />
+          <ScalarProperty Name="MAKINA" ColumnName="MAKINA" />
+          <ScalarProperty Name="ALINAN_YEDEK_ADI" ColumnName="ALINAN YEDEK ADI" />
+          <ScalarProperty Name="YEDEKLEME_TIPI" ColumnName="YEDEKLEME TIPI" />
+          <ScalarProperty Name="YEDEKLEME_PROGRAM_VERSIYONU" ColumnName="YEDEKLEME PROGRAM VERSIYONU" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="COMPUTERINFO">
+      <EntityTypeMapping TypeName="EKSAcronisDatabasesModel.COMPUTERINFO">
+        <MappingFragment StoreEntitySet="COMPUTERINFO">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="BILGISAYAR_BILGISI" ColumnName="BILGISAYAR BILGISI" />
+          <ScalarProperty Name="HARDDISK_BILGISI" ColumnName="HARDDISK BILGISI" />
+          <ScalarProperty Name="ISLETIM_SISTEMI" ColumnName="ISLETIM SISTEMI" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DATEINFO">
+      <EntityTypeMapping TypeName="EKSAcronisDatabasesModel.DATEINFO">
+        <MappingFragment StoreEntitySet="DATEINFO">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="YEDEKLEME_TARIHI" ColumnName="YEDEKLEME TARIHI" />
+          <ScalarProperty Name="BILGI_GIRISI_GUNCEL_TARIH" ColumnName="BILGI GIRISI GUNCEL TARIH" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EXTRAINFO">
+      <EntityTypeMapping TypeName="EKSAcronisDatabasesModel.EXTRAINFO">
+        <MappingFragment StoreEntitySet="EXTRAINFO">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ACIKLAMALAR" ColumnName="ACIKLAMALAR" />
+          <ScalarProperty Name="TALIMAT_BILGISI" ColumnName="TALIMAT BILGISI" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PERSONALINFO">
+      <EntityTypeMapping TypeName="EKSAcronisDatabasesModel.PERSONALINFO">
+        <MappingFragment StoreEntitySet="PERSONALINFO">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="AD" ColumnName="AD" />
+          <ScalarProperty Name="SOYAD" ColumnName="SOYAD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TCPINFO">
+      <EntityTypeMapping TypeName="EKSAcronisDatabasesModel.TCPINFO">
+        <MappingFragment StoreEntitySet="TCPINFO">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="BILGISAYAR_IP" ColumnName="BILGISAYAR IP" />
+          <ScalarProperty Name="OTOMASYON_IP" ColumnName="OTOMASYON IP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USERS">
+      <EntityTypeMapping TypeName="EKSAcronisDatabasesModel.USERS">
+        <MappingFragment StoreEntitySet="USERS">
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="LASTNAME" ColumnName="LASTNAME" />
+          <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="EKSAcronisDatabasesModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="EKSAcronisDatabasesModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="EKSAcronisDatabasesModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="EKSAcronisDatabasesModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EKSAcronisDatabasesModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="EKSAcronisDatabasesModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EKSAcronisDatabasesModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="EKSAcronisDatabasesModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="EKSAcronisDatabasesModel.Store.sp_upgraddiagrams" />
+    <FunctionImportMapping FunctionImportName="ULNReg" FunctionName="EKSAcronisDatabasesModel.Store.ULNReg" />
+    <FunctionImportMapping FunctionImportName="ULNVerify" FunctionName="EKSAcronisDatabasesModel.Store.ULNVerify" />
+  </EntityContainerMapping>
+</Mapping>

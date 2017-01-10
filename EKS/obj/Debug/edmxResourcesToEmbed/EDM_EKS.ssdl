@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EKSAcronisDatabasesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BACKUPINFO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BOLGE" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="MAKINA" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="ALINAN YEDEK ADI" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="YEDEKLEME TIPI" Type="nchar" MaxLength="10" />
+    <Property Name="YEDEKLEME PROGRAM VERSIYONU" Type="char" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="COMPUTERINFO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BILGISAYAR BILGISI" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="HARDDISK BILGISI" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="ISLETIM SISTEMI" Type="nchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DATEINFO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="YEDEKLEME TARIHI" Type="date" Nullable="false" />
+    <Property Name="BILGI GIRISI GUNCEL TARIH" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EXTRAINFO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ACIKLAMALAR" Type="nvarchar(max)" />
+    <Property Name="TALIMAT BILGISI" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="PERSONALINFO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AD" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="SOYAD" Type="nchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TCPINFO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BILGISAYAR IP" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="OTOMASYON IP" Type="nvarchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'EKSAcronisDatabases.dbo.USERS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="USERS">
+    <Key>
+      <PropertyRef Name="USERID" />
+      <PropertyRef Name="NAME" />
+      <PropertyRef Name="LASTNAME" />
+      <PropertyRef Name="USERNAME" />
+      <PropertyRef Name="PASSWORD" />
+    </Key>
+    <Property Name="USERID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="LASTNAME" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="USERNAME" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="PASSWORD" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ULNReg" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="name" Type="varchar" Mode="In" />
+    <Parameter Name="lastname" Type="varchar" Mode="In" />
+    <Parameter Name="username" Type="varchar" Mode="In" />
+    <Parameter Name="LNResult" Type="int" Mode="InOut" />
+    <Parameter Name="UResult" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="ULNVerify" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="username" Type="varchar" Mode="In" />
+    <Parameter Name="password" Type="varchar" Mode="In" />
+    <Parameter Name="UResult" Type="int" Mode="InOut" />
+  </Function>
+  <EntityContainer Name="EKSAcronisDatabasesModelStoreContainer">
+    <EntitySet Name="BACKUPINFO" EntityType="Self.BACKUPINFO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="COMPUTERINFO" EntityType="Self.COMPUTERINFO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DATEINFO" EntityType="Self.DATEINFO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EXTRAINFO" EntityType="Self.EXTRAINFO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PERSONALINFO" EntityType="Self.PERSONALINFO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TCPINFO" EntityType="Self.TCPINFO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USERS" EntityType="Self.USERS" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [USERS].[USERID] AS [USERID], 
+    [USERS].[NAME] AS [NAME], 
+    [USERS].[LASTNAME] AS [LASTNAME], 
+    [USERS].[USERNAME] AS [USERNAME], 
+    [USERS].[PASSWORD] AS [PASSWORD]
+    FROM [dbo].[USERS] AS [USERS]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

@@ -34,7 +34,7 @@ namespace EKS.Classes
         #region User Create Control
         public void UsersSignUpSQLTables()
         {
-            string conString = @"Data Source=WIZARDRW\WIZARDRW;Initial Catalog=EKSAcronisDatabases;Integrated Security=True";
+            string conString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|EKSDatabase.mdf;Integrated Security=True";
             SqlConnection con = new SqlConnection(conString);
             con.Open();
             using (SqlCommand cmd = new SqlCommand("ULNReg", con))
@@ -90,7 +90,7 @@ namespace EKS.Classes
         #region User Enter Verify
         public void UsersSignInSQLTables()
         {
-            string conString = @"Data Source=WIZARDRW\WIZARDRW;Initial Catalog=EKSAcronisDatabases;Integrated Security=True";
+            string conString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|EKSDatabase.mdf;Integrated Security=True";
             using (SqlConnection con = new SqlConnection(conString))
             {
                 con.Open();

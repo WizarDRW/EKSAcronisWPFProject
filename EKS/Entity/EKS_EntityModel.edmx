@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="EKSDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BACKUPANDRECOVERTABLE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BOLGE" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="MAKINA" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="BILGISAYAR BILGISI" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="OTOMASYON IP" Type="nchar" MaxLength="15" Nullable="false" />
+          <Property Name="BILGISAYAR IP" Type="nchar" MaxLength="15" Nullable="false" />
+          <Property Name="YEDEK ADI" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="YEDEGI ALAN PERSONEL" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="YEDEKLEME TARIHI" Type="date" Nullable="false" />
+          <Property Name="KAYIT TARIHI" Type="date" Nullable="false" />
+          <Property Name="YEDEKLEME TIPI" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="YEDEKLEME PROGRAM VERSIYONU" Type="nchar" MaxLength="8" Nullable="false" />
+          <Property Name="ISLETIM SISTEMI BILGISI" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="HARDDISK BILGISI" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="ACIKLAMALAR" Type="nvarchar(max)" />
+          <Property Name="TALIMAT BILGISI" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\WIZAR\DESKTOP\EKSACRONISWPFPROJECT\EKS\EKSDATABASE.MDF.dbo.USERS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="USERS">
+          <Key>
+            <PropertyRef Name="USERID" />
+            <PropertyRef Name="NAME" />
+            <PropertyRef Name="LASTNAME" />
+            <PropertyRef Name="USERNAME" />
+            <PropertyRef Name="PASSWORD" />
+          </Key>
+          <Property Name="USERID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="LASTNAME" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="USERNAME" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="PASSWORD" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Function Name="ULNReg" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="varchar" Mode="In" />
+          <Parameter Name="lastname" Type="varchar" Mode="In" />
+          <Parameter Name="username" Type="varchar" Mode="In" />
+          <Parameter Name="LNResult" Type="int" Mode="InOut" />
+          <Parameter Name="UResult" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="ULNVerify" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="username" Type="varchar" Mode="In" />
+          <Parameter Name="password" Type="varchar" Mode="In" />
+          <Parameter Name="UResult" Type="int" Mode="InOut" />
+        </Function>
+        <EntityContainer Name="EKSDatabaseModelStoreContainer">
+          <EntitySet Name="BACKUPANDRECOVERTABLE" EntityType="Self.BACKUPANDRECOVERTABLE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USERS" EntityType="Self.USERS" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [USERS].[USERID] AS [USERID], 
+    [USERS].[NAME] AS [NAME], 
+    [USERS].[LASTNAME] AS [LASTNAME], 
+    [USERS].[USERNAME] AS [USERNAME], 
+    [USERS].[PASSWORD] AS [PASSWORD]
+    FROM [dbo].[USERS] AS [USERS]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EKSDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BACKUPANDRECOVERTABLE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BOLGE" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MAKINA" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BILGISAYAR_BILGISI" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OTOMASYON_IP" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="BILGISAYAR_IP" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="YEDEK_ADI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="YEDEGI_ALAN_PERSONEL" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="YEDEKLEME_TARIHI" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="KAYIT_TARIHI" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="YEDEKLEME_TIPI" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="YEDEKLEME_PROGRAM_VERSIYONU" Type="String" MaxLength="8" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="ISLETIM_SISTEMI_BILGISI" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="HARDDISK_BILGISI" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="ACIKLAMALAR" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TALIMAT_BILGISI" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="USERS">
+          <Key>
+            <PropertyRef Name="USERID" />
+            <PropertyRef Name="NAME" />
+            <PropertyRef Name="LASTNAME" />
+            <PropertyRef Name="USERNAME" />
+            <PropertyRef Name="PASSWORD" />
+          </Key>
+          <Property Name="USERID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="LASTNAME" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="USERNAME" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="EKSDatabaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BACKUPANDRECOVERTABLE" EntityType="Self.BACKUPANDRECOVERTABLE" />
+          <EntitySet Name="USERS" EntityType="Self.USERS" />
+          <FunctionImport Name="ULNReg">
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="lastname" Mode="In" Type="String" />
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="LNResult" Mode="InOut" Type="Int32" />
+            <Parameter Name="UResult" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ULNVerify">
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+            <Parameter Name="UResult" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EKSDatabaseModelStoreContainer" CdmEntityContainer="EKSDatabaseEntities">
+          <EntitySetMapping Name="BACKUPANDRECOVERTABLE">
+            <EntityTypeMapping TypeName="EKSDatabaseModel.BACKUPANDRECOVERTABLE">
+              <MappingFragment StoreEntitySet="BACKUPANDRECOVERTABLE">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BOLGE" ColumnName="BOLGE" />
+                <ScalarProperty Name="MAKINA" ColumnName="MAKINA" />
+                <ScalarProperty Name="BILGISAYAR_BILGISI" ColumnName="BILGISAYAR BILGISI" />
+                <ScalarProperty Name="OTOMASYON_IP" ColumnName="OTOMASYON IP" />
+                <ScalarProperty Name="BILGISAYAR_IP" ColumnName="BILGISAYAR IP" />
+                <ScalarProperty Name="YEDEK_ADI" ColumnName="YEDEK ADI" />
+                <ScalarProperty Name="YEDEGI_ALAN_PERSONEL" ColumnName="YEDEGI ALAN PERSONEL" />
+                <ScalarProperty Name="YEDEKLEME_TARIHI" ColumnName="YEDEKLEME TARIHI" />
+                <ScalarProperty Name="KAYIT_TARIHI" ColumnName="KAYIT TARIHI" />
+                <ScalarProperty Name="YEDEKLEME_TIPI" ColumnName="YEDEKLEME TIPI" />
+                <ScalarProperty Name="YEDEKLEME_PROGRAM_VERSIYONU" ColumnName="YEDEKLEME PROGRAM VERSIYONU" />
+                <ScalarProperty Name="ISLETIM_SISTEMI_BILGISI" ColumnName="ISLETIM SISTEMI BILGISI" />
+                <ScalarProperty Name="HARDDISK_BILGISI" ColumnName="HARDDISK BILGISI" />
+                <ScalarProperty Name="ACIKLAMALAR" ColumnName="ACIKLAMALAR" />
+                <ScalarProperty Name="TALIMAT_BILGISI" ColumnName="TALIMAT BILGISI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERS">
+            <EntityTypeMapping TypeName="EKSDatabaseModel.USERS">
+              <MappingFragment StoreEntitySet="USERS">
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="LASTNAME" ColumnName="LASTNAME" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ULNReg" FunctionName="EKSDatabaseModel.Store.ULNReg" />
+          <FunctionImportMapping FunctionImportName="ULNVerify" FunctionName="EKSDatabaseModel.Store.ULNVerify" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

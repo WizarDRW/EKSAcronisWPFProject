@@ -9,5 +9,7 @@
 //------------------------------------------------------------------------------
 
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dependencies/xceed.wpf.toolkit.dll")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("eksdatabase.mdf")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("eksdatabase_log.ldf")]
 
 

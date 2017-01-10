@@ -14,7 +14,7 @@ namespace EKS.Forms
             InitializeComponent();
         }
 
-        private string conString = @"Data Source=WIZARDRW\WIZARDRW;Initial Catalog=EKSAcronisDatabases;Integrated Security=True";
+        private string conString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|EKSDatabase.mdf;Integrated Security=True";
         private string ListString = "select * from USERS";
         private void WindowLoaded(object sender, RoutedEventArgs e)
         {
