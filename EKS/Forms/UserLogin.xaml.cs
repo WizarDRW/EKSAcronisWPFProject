@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using EKS.Classes;
-using EKS;
 using System.Linq;
 
 namespace EKS.Forms
@@ -30,7 +29,7 @@ namespace EKS.Forms
 
         private void LogInBTN_Click(object sender, RoutedEventArgs e)
         {
-            #region Administration Verify
+            #region Administration and Users Verify
             UnpvC.NewUserName = UserNameTXTBX.Text;
             UnpvC.NewPassword = PasswordPB.Password.ToString();
             bool VerifyAdminUserNameandPassword = UnpvC._VerifyAdminUserNameMethod();
@@ -54,9 +53,6 @@ namespace EKS.Forms
                 MessageBox.Show("Kullanıcı Adı veya Şifreniz Yanlış.\nLütfen Tekrar Deneyin.", "Hatalı Giriş", MessageBoxButton.OK, MessageBoxImage.Information);
             }
 
-            #endregion
-            ///
-            #region User Verify 
             #endregion
         }
 

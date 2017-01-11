@@ -16,28 +16,28 @@
                     <StackPanel />
                 </ItemsPanelTemplate>
             </Menu.ItemsPanel>
-            <MenuItem x:Name="DatabaseListMenu" Click="DatabaseAddMenuClick" HorizontalAlignment="Center">
+            <MenuItem x:Name="DatabaseAddMenu" Click="DatabaseAddMenuClick" HorizontalAlignment="Center">
                 <MenuItem.Header>
                     <StackPanel>
                         <Image Height="70" Source="/EKS;component/Resource/DataAdd.png" HorizontalAlignment="Center"/>
                     </StackPanel>
                 </MenuItem.Header>
             </MenuItem>
-            <MenuItem x:Name="DatabaseAddMenu" Click="DatabaseDeleteMenuClick" HorizontalAlignment="Center">
+            <MenuItem x:Name="DatabaseDeleteMenu" Click="DatabaseDeleteMenuClick" HorizontalAlignment="Center">
                 <MenuItem.Header>
                     <StackPanel>
                         <Image Width="74" Height="70" Source="/EKS;component/Resource/DataMinus.png" HorizontalAlignment="Center"></Image>
                     </StackPanel>
                 </MenuItem.Header>
             </MenuItem>
-            <MenuItem x:Name="DatabaseDeleteMenu" Click="DatabaseUpdateMenuClick" HorizontalAlignment="Center">
+            <MenuItem x:Name="DatabaseUpdateMenu" Click="DatabaseUpdateMenuClick" HorizontalAlignment="Center">
                 <MenuItem.Header>
                     <StackPanel>
                         <Image Width="74" Height="70" Source="/EKS;component/Resource/DataUpdate.png" HorizontalAlignment="Center"></Image>
                     </StackPanel>
                 </MenuItem.Header>
             </MenuItem>
-            <MenuItem x:Name="DatabaseUpdateMenu" Click="DatabaseFindMenuClick" HorizontalAlignment="Center">
+            <MenuItem x:Name="DatabaseDataFindMenu" Click="DatabaseFindMenuClick" HorizontalAlignment="Center">
                 <MenuItem.Header>
                     <StackPanel>
                         <Image Width="75" Height="70" Source="/EKS;component/Resource/DataFind.png" HorizontalAlignment="Center"/>

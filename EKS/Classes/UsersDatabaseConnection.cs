@@ -3,6 +3,7 @@ using System.Data.SqlClient;
 using EKS.Forms.UserLoginForms;
 using System.Windows;
 using System.Data;
+using System.IO;
 
 namespace EKS.Classes
 {
@@ -15,6 +16,19 @@ namespace EKS.Classes
         void UsersSignUpSQLTables();
         void UsersSignInSQLTables();
     }
+
+    struct InFile
+    {
+        public string _filepath { get; set; }
+        public string FileDataTXT { get; set; }
+        public string FilePath()
+        {
+            _filepath = @"ConnString.txt";
+            FileStream FS = new FileStream(_filepath, FileMode.Open, FileAccess.Read);
+            StreamReader sw = new StreamReader(FS);
+            return FileDataTXT = sw.ReadLine();
+        }
+    }   //txt dosyasi cekimi struct
 
     public class UsersDatabaseConnection : UserSignUpForm, ILawWrite
     {
@@ -31,11 +45,12 @@ namespace EKS.Classes
         public int HasDataUserNameandPassword { get; set; }
         #endregion
 
+        InFile IF = new Classes.InFile();
+
         #region User Create Control
         public void UsersSignUpSQLTables()
         {
-            string conString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|EKSDatabase.mdf;Integrated Security=True";
-            SqlConnection con = new SqlConnection(conString);
+            SqlConnection con = new SqlConnection(IF.FilePath());
             con.Open();
             using (SqlCommand cmd = new SqlCommand("ULNReg", con))
             {
@@ -90,8 +105,7 @@ namespace EKS.Classes
         #region User Enter Verify
         public void UsersSignInSQLTables()
         {
-            string conString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|EKSDatabase.mdf;Integrated Security=True";
-            using (SqlConnection con = new SqlConnection(conString))
+            using (SqlConnection con = new SqlConnection(IF.FilePath()))
             {
                 con.Open();
                 using (SqlCommand cmd = new SqlCommand("ULNVerify", con))
@@ -108,7 +122,86 @@ namespace EKS.Classes
             }
         }
         #endregion
+    }   //Database Dogrulamalar
 
-        
-    }
+    internal class DatabaseProcess : Forms.MainProcessesForm
+    {
+        public DatabaseProcess()
+        {
+            Classes.MemoryControl MC = new MemoryControl();
+            MC.MemoryStart();
+        }
+        InFile conString = new InFile();
+
+        #region Processes
+        public void Add()
+        {
+            using (SqlConnection conn = new SqlConnection(conString.FilePath()))
+            {
+                conn.Open();
+                string cmdString = "";
+                using (SqlCommand cmd = new SqlCommand(cmdString, conn))
+                {
+
+                }
+            }
+        }
+
+        public void Delete()
+        {
+            using (SqlConnection conn = new SqlConnection(conString.FilePath()))
+            {
+                conn.Open();
+                string cmdString = "";
+                using (SqlCommand cmd = new SqlCommand(cmdString, conn))
+                {
+
+                }
+            }
+        }
+
+        public void Update()
+        {
+            using (SqlConnection conn = new SqlConnection(conString.FilePath()))
+            {
+                conn.Open();
+                string cmdString = "";
+                using (SqlCommand cmd = new SqlCommand(cmdString, conn))
+                {
+
+                }
+            }
+        }
+
+        public void Find()
+        {
+            using (SqlConnection conn = new SqlConnection(conString.FilePath()))
+            {
+                conn.Open();
+                string cmdString = "";
+                using (SqlCommand cmd = new SqlCommand(cmdString, conn))
+                {
+
+                }
+            }
+        }
+        #endregion
+    }   //Islemler
+
+    abstract class Authority
+    {
+        public string Aut { get; set; }
+        InFile IF = new InFile();
+        public void AutMethod()
+        {
+            using (SqlConnection con = new SqlConnection(IF.FilePath()))
+            {
+                con.Open();
+                using (SqlCommand cmd = new SqlCommand())
+                {
+
+                }
+            }
+        }
+    } //Yetki Kontrolu
 }

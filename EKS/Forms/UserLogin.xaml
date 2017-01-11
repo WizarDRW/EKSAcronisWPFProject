@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         ShowInTaskbar="False"
         Title="UserLogin" Height="167.698" Width="250" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
-    
+
     <Grid Background="#FF348DFF" MaxHeight="250" MaxWidth="250" Margin="0,0,0,-10">
         <TextBox x:Name="UserNameTXTBX" HorizontalAlignment="Left" Height="23" Margin="83,21,0,0" VerticalAlignment="Top" Width="157" SelectionBrush="#FF006EC5" BorderBrush="#FF4B87C8" Foreground="#FFA4A4A4" />
         <PasswordBox x:Name="PasswordPB" HorizontalAlignment="Left" Height="23" Margin="83,49,0,0" VerticalAlignment="Top" Width="157"  BorderBrush="#FF4B83C0" Foreground="#FF9E00CD" />
@@ -13,5 +13,17 @@
         <Button x:Name="LogInBTN" Content="Giriş" HorizontalAlignment="Left" Margin="83,86,0,0" VerticalAlignment="Top" Width="157" Click="LogInBTN_Click" Foreground="#FF348DFF" Background="White" AllowDrop="True" BorderBrush="Black"/>
         <Button x:Name="ExitBTN" Content="Çıkış" HorizontalAlignment="Left" Margin="83,111,0,0" VerticalAlignment="Top" Width="157" Foreground="#FF348DFF" Background="White" AllowDrop="True" BorderBrush="Black" Click="ExitBTN_Click"/>
 
+        <Canvas x:Name="canvas2" Height="100" Width="100" Visibility="Collapsed">
+            <Canvas Height="100" Width="100" x:Name="canvas1" RenderTransformOrigin=".5,.5">
+                <Canvas.RenderTransform>
+                    <RotateTransform x:Name="spin" Angle="0"/>
+                </Canvas.RenderTransform>
+            </Canvas>
+            <Label Height="23" Canvas.Left="26" Canvas.Top="36" Width="48">Loading</Label>
+        </Canvas>
+        
     </Grid>
+
 </Window>
+    
+    

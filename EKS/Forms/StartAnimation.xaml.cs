@@ -21,6 +21,7 @@ namespace EKS
         #endregion
         public bool VerifyAdminEnter = false;
         public bool VerifyUserEnter = false;
+        public string UserName { get; set; }
         public void Processes()
         {
             FmuL = new Forms.UserLogin();
@@ -30,6 +31,7 @@ namespace EKS
             FmuL.ShowDialog();
             VerifyAdminEnter = FmuL.VerifyAdminEnter;
             VerifyUserEnter = FmuL.VerifyUserEnter;
+            UserName = FmuL.UserNameTXTBX.Text;
         }
     }
 }

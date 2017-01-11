@@ -11,5 +11,7 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dependencies/xceed.wpf.toolkit.dll")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("eksdatabase.mdf")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("eksdatabase_log.ldf")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("entity/eks_entitymodel.context.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("entity/eks_entitymodel.tt")]
 
 

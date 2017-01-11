@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EKSDatabaseModelStoreContainer" CdmEntityContainer="EKSDatabaseEntities">
+    <EntitySetMapping Name="BACKUPANDRECOVERTABLE">
+      <EntityTypeMapping TypeName="EKSDatabaseModel.BACKUPANDRECOVERTABLE">
+        <MappingFragment StoreEntitySet="BACKUPANDRECOVERTABLE">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="BOLGE" ColumnName="BOLGE" />
+          <ScalarProperty Name="MAKINA" ColumnName="MAKINA" />
+          <ScalarProperty Name="BILGISAYAR_BILGISI" ColumnName="BILGISAYAR BILGISI" />
+          <ScalarProperty Name="OTOMASYON_IP" ColumnName="OTOMASYON IP" />
+          <ScalarProperty Name="BILGISAYAR_IP" ColumnName="BILGISAYAR IP" />
+          <ScalarProperty Name="YEDEK_ADI" ColumnName="YEDEK ADI" />
+          <ScalarProperty Name="YEDEGI_ALAN_PERSONEL" ColumnName="YEDEGI ALAN PERSONEL" />
+          <ScalarProperty Name="YEDEKLEME_TARIHI" ColumnName="YEDEKLEME TARIHI" />
+          <ScalarProperty Name="KAYIT_TARIHI" ColumnName="KAYIT TARIHI" />
+          <ScalarProperty Name="YEDEKLEME_TIPI" ColumnName="YEDEKLEME TIPI" />
+          <ScalarProperty Name="YEDEKLEME_PROGRAM_VERSIYONU" ColumnName="YEDEKLEME PROGRAM VERSIYONU" />
+          <ScalarProperty Name="ISLETIM_SISTEMI_BILGISI" ColumnName="ISLETIM SISTEMI BILGISI" />
+          <ScalarProperty Name="HARDDISK_BILGISI" ColumnName="HARDDISK BILGISI" />
+          <ScalarProperty Name="ACIKLAMALAR" ColumnName="ACIKLAMALAR" />
+          <ScalarProperty Name="TALIMAT_BILGISI" ColumnName="TALIMAT BILGISI" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USERS">
+      <EntityTypeMapping TypeName="EKSDatabaseModel.USERS">
+        <MappingFragment StoreEntitySet="USERS">
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="LASTNAME" ColumnName="LASTNAME" />
+          <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="ULNReg" FunctionName="EKSDatabaseModel.Store.ULNReg" />
+    <FunctionImportMapping FunctionImportName="ULNVerify" FunctionName="EKSDatabaseModel.Store.ULNVerify" />
+  </EntityContainerMapping>
+</Mapping>

@@ -94,6 +94,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Forms\MPFMenus\AddDataForm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Forms\StartAnimation.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -103,6 +107,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Classes\AppStart.cs" />
+    <Compile Include="Classes\AuthorityReview.cs" />
     <Compile Include="Classes\MemoryControl.cs" />
     <Compile Include="Classes\UsersDatabaseConnection.cs" />
     <Compile Include="Entity\BACKUPANDRECOVERTABLE.cs">
@@ -132,6 +137,7 @@
     <Compile Include="Forms\MessageBoxsForms\UserSaveMessageBox.xaml.cs">
       <DependentUpon>UserSaveMessageBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Forms\MPFMenus\AddDataForm.xaml.cs" />
     <Compile Include="Forms\StartAnimation.xaml.cs">
       <DependentUpon>StartAnimation.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -209,13 +215,12 @@
   <ItemGroup>
     <Resource Include="Resource\StartPageCloud4.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Forms\MPFMenus\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Classes\ConnString.txt" />
     <Content Include="Dependencies\Xceed.Wpf.Toolkit.dll" />
     <Content Include="EKSDatabase.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

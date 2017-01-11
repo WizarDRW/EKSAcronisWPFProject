@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Data.SqlClient;
 using System.Data;
+using System.Linq;
 
 namespace EKS.Forms
 {
@@ -31,7 +32,7 @@ namespace EKS.Forms
                 con.Close();
             }
         }
-
+        
         private void DatabaseDeleteMenuClick(object sender, RoutedEventArgs e)
         {
 
@@ -39,7 +40,9 @@ namespace EKS.Forms
 
         private void DatabaseAddMenuClick(object sender, RoutedEventArgs e)
         {
-
+            MPFMenus.AddDataForm ad = new MPFMenus.AddDataForm();
+            ad.Owner = Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
+            ad.ShowDialog();
         }
 
         private void DatabaseUpdateMenuClick(object sender, RoutedEventArgs e)
