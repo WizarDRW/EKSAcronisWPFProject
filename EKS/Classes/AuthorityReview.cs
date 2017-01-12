@@ -8,8 +8,21 @@ namespace EKS.Classes
 {
     class AuthorityReview
     {
-        public string Aut { get; set; }
+        public string AutUserName { get; set; }
+        public string ReturnAutDatabase { get; set; }
+        public string AutisNull { get; set; }
+        public string Admin { get; set; }
+        Authority A = new Authority();
+
+        public string ReturnAut()
+        {
+            ReturnAutDatabase = A.AutMethod(AutUserName);
+            if (ReturnAutDatabase == null || ReturnAutDatabase == "")
+                return AutisNull = "0";
+            else
+                return ReturnAutDatabase;
 
 
+        }
     }
 }

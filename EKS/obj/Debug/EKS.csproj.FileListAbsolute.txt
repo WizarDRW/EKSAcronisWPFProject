@@ -96,7 +96,5 @@ C:\Users\wizar\Desktop\EKSAcronisWPFProject\EKS\obj\Debug\EKS.csprojResolveAssem
 C:\Users\wizar\Desktop\EKSAcronisWPFProject\EKS\obj\Debug\EKS_Content.g.cs
 C:\Users\wizar\Desktop\EKSAcronisWPFProject\EKS\obj\Debug\Forms\MessageBoxsForms\UserSaveMessageBox.g.cs
 C:\Users\wizar\Desktop\EKSAcronisWPFProject\EKS\obj\Debug\Forms\MessageBoxsForms\UserSaveMessageBox.baml
-C:\Users\wizar\Desktop\EKSAcronisWPFProject\EKS\bin\Debug\EKSDatabase.mdf
-C:\Users\wizar\Desktop\EKSAcronisWPFProject\EKS\bin\Debug\EKSDatabase_log.ldf
 C:\Users\wizar\Desktop\EKSAcronisWPFProject\EKS\obj\Debug\Forms\MPFMenus\AddDataForm.baml
 C:\Users\wizar\Desktop\EKSAcronisWPFProject\EKS\obj\Debug\Forms\MPFMenus\AddDataForm.g.cs

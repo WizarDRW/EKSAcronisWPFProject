@@ -222,13 +222,6 @@
   <ItemGroup>
     <Resource Include="Classes\ConnString.txt" />
     <Content Include="Dependencies\Xceed.Wpf.Toolkit.dll" />
-    <Content Include="EKSDatabase.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="EKSDatabase_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>EKSDatabase.mdf</DependentUpon>
-    </Content>
     <Content Include="Entity\EKS_EntityModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>EKS_EntityModel.edmx</DependentUpon>

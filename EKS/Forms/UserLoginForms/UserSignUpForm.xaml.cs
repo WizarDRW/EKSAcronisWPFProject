@@ -28,28 +28,40 @@ namespace EKS.Forms.UserLoginForms
         {
             if (PasswordTXT.Password == PasswordConfirmTXT.Password && PasswordTXT.Password != "" && NameTXT.Text != "" && LastNameTXT.Text != "" && UserNameTXT.Text != "")
             {
-                UDC = new UsersDatabaseConnection();
-                UDC.Name = NameTXT.Text;
-                UDC.LastName = LastNameTXT.Text;
-                UDC.UserName = UserNameTXT.Text;
-                UDC.Password = PasswordTXT.Password;
-                UserSingUpSQLTables conSingUp = UDC.UsersSignUpSQLTables;
-                conSingUp();
-                if (UDC.VerifyTableEntered == true)
+                if (UserNameTXT.Text == Properties.Settings.Default.UserName)
                 {
-                    USM = new MessageBoxsForms.UserSaveMessageBox();
-                    USM.Owner = this;
-                    USM.ShowDialog();
-                    if (USM.HasSave == true)
+                    MessageBox.Show(UserNameTXT.Text + "\nBu Kullanici Adi Zaten Mevcut.", "Uyari!", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    UDC = new UsersDatabaseConnection();
+                    UDC.Name = NameTXT.Text;
+                    UDC.LastName = LastNameTXT.Text;
+                    UDC.UserName = UserNameTXT.Text;
+                    UDC.Password = PasswordTXT.Password;
+                    UserSingUpSQLTables conSingUp = UDC.UsersSignUpSQLTables;
+                    conSingUp();
+                    if (UDC.VerifyTableEntered == true)
                     {
-                        this.Close();
+                        USM = new MessageBoxsForms.UserSaveMessageBox();
+                        USM.Owner = this;
+                        USM.ShowDialog();
+                        if (USM.HasSave == true)
+                        {
+                            this.Close();
+                        }
                     }
                 }
+            }
+            else if (UserNameTXT.Text == Properties.Settings.Default.UserName)
+            {
+                MessageBox.Show(UserNameTXT.Text + "\nBu Kullanici Adi Zaten Mevcut.", "Uyari!", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
                 MessageBox.Show("Hepsi Dolmalı ve Şifre ile Şifre Onayı Aynı Olmalı", "Bilgi", MessageBoxButton.OK);
             }
+
 
         }
         #endregion

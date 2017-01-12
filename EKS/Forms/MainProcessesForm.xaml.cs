@@ -14,12 +14,14 @@ namespace EKS.Forms
         {
             InitializeComponent();
         }
+        public string Authority { get; set; }
 
-        private string conString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|EKSDatabase.mdf;Integrated Security=True";
+        Classes.InFile IF = new Classes.InFile();
+        
         private string ListString = "select * from USERS";
         private void WindowLoaded(object sender, RoutedEventArgs e)
         {
-            using (SqlConnection con = new SqlConnection(conString))
+            using (SqlConnection con = new SqlConnection(IF.FilePath()))
             using (SqlCommand cmd = new SqlCommand(ListString, con))
             {
                 con.Open();

@@ -75,7 +75,7 @@ namespace EKS.Classes
             }
             else if (HasDataUserName > 0)
             {
-                MessageBox.Show(UserName + "\nBu Kullanici Adi Zaten Var.", "Bilgi", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(UserName + "\nBu Kullanici Adi Zaten Mevcut.", "Bilgi", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
@@ -188,19 +188,32 @@ namespace EKS.Classes
         #endregion
     }   //Islemler
 
-    abstract class Authority
+    internal class Authority
     {
         public string Aut { get; set; }
         InFile IF = new InFile();
-        public void AutMethod()
+        
+
+
+        public string AutMethod(String AutUserName)
         {
             using (SqlConnection con = new SqlConnection(IF.FilePath()))
             {
                 con.Open();
-                using (SqlCommand cmd = new SqlCommand())
+                using (SqlCommand cmd = new SqlCommand("Select * from USERS where USERNAME = '" + AutUserName + "'", con))
                 {
-
+                    cmd.ExecuteNonQuery();
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    if (dr.Read())
+                    {
+                        return dr["AUTHORITY"].ToString();
+                    }
+                    else
+                    {
+                        return null;
+                    }
                 }
+                con.Close();
             }
         }
     } //Yetki Kontrolu
