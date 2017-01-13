@@ -20,7 +20,6 @@ namespace EKS.Forms
         #endregion
 
         #region Property
-        public bool VerifyAdminEnter { get; set; }
         public bool VerifyUserEnter { get; set; }
         public bool VerifyUserLogInEnter { get; set; }
         #endregion
@@ -32,23 +31,16 @@ namespace EKS.Forms
             #region Administration and Users Verify
             UnpvC.NewUserName = UserNameTXTBX.Text;
             UnpvC.NewPassword = PasswordPB.Password.ToString();
-            bool VerifyAdminUserNameandPassword = UnpvC._VerifyAdminUserNameMethod();
-            bool VerifyPassword = UnpvC._VerifyAdminPasswordMethod();
 
             UserLogInVerify _UserLogInVerifyDel = UnpvC._VerifyUserNamePasswordMethod;
             bool VerifyUserNameandPassword = _UserLogInVerifyDel();
 
-            if (VerifyAdminUserNameandPassword == true && VerifyPassword == true)
-            {
-                VerifyAdminEnter = true;
-                this.Close();
-            }
-            else if (VerifyUserNameandPassword == true)
+            if (VerifyUserNameandPassword == true)
             {
                 VerifyUserEnter = true;
                 this.Close();
             }
-            else if (VerifyAdminUserNameandPassword == false || VerifyPassword == false || VerifyUserNameandPassword == false)
+            else if (VerifyUserNameandPassword == false)
             {
                 MessageBox.Show("Kullanıcı Adı veya Şifreniz Yanlış.\nLütfen Tekrar Deneyin.", "Hatalı Giriş", MessageBoxButton.OK, MessageBoxImage.Information);
             }

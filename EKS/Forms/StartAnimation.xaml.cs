@@ -29,7 +29,6 @@ namespace EKS
             ClmC.MemoryStart();
             FmuL.Owner = Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);//Task Bar da diger formlarin gozukmemesi icin
             FmuL.ShowDialog();
-            VerifyAdminEnter = FmuL.VerifyAdminEnter;
             VerifyUserEnter = FmuL.VerifyUserEnter;
             UserName = FmuL.UserNameTXTBX.Text;
         }

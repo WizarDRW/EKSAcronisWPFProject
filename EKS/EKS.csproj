@@ -220,6 +220,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resource\DataList.png" />
+    <Resource Include="Resource\DataUserControl.png" />
     <Resource Include="Classes\ConnString.txt" />
     <Content Include="Dependencies\Xceed.Wpf.Toolkit.dll" />
     <Content Include="Entity\EKS_EntityModel.Context.tt">

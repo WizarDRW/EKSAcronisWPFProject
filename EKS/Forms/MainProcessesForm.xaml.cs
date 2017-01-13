@@ -18,20 +18,11 @@ namespace EKS.Forms
 
         Classes.InFile IF = new Classes.InFile();
         
-        private string ListString = "select * from USERS";
         private void WindowLoaded(object sender, RoutedEventArgs e)
         {
-            using (SqlConnection con = new SqlConnection(IF.FilePath()))
-            using (SqlCommand cmd = new SqlCommand(ListString, con))
+            if (Authority == "ADMIN")
             {
-                con.Open();
-                using (SqlDataAdapter dA = new SqlDataAdapter(cmd))
-                {
-                    DataTable dt = new DataTable();
-                    dA.Fill(dt);
-                    MainDataGrid.ItemsSource = dt.DefaultView;
-                }
-                con.Close();
+                DatabaseUserControl.Visibility = Visibility.Visible;
             }
         }
         
@@ -60,6 +51,28 @@ namespace EKS.Forms
         private void MPFClosed(object sender, System.EventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private void DatabaseListClick(object sender, RoutedEventArgs e)
+        {
+            string ListString = "select * from BACKUPANDRECOVERTABLE";
+            using (SqlConnection con = new SqlConnection(IF.FilePath()))
+            using (SqlCommand cmd = new SqlCommand(ListString, con))
+            {
+                con.Open();
+                using (SqlDataAdapter dA = new SqlDataAdapter(cmd))
+                {
+                    DataTable dt = new DataTable();
+                    dA.Fill(dt);
+                    MainDataGrid.ItemsSource = dt.DefaultView;
+                }
+                con.Close();
+            }
+        }
+
+        private void DatabaseUserControlClick(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

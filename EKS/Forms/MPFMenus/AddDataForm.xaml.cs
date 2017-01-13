@@ -23,10 +23,20 @@ namespace EKS.Forms.MPFMenus
         {
             InitializeComponent();
         }
+        Classes.DatabaseProcess DP;
 
         private void AddBTN_Click(object sender, RoutedEventArgs e)
         {
-
+            DP = new Classes.DatabaseProcess();
+            DP.Add();
+            if (DP.HasSave == true)
+            {
+                MessageBox.Show("Kaydedildi.", "Bilgi", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                MessageBox.Show("Kayit Yapilamadi", "Hata", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void CancelBTN_Click(object sender, RoutedEventArgs e)

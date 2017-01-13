@@ -16,6 +16,8 @@ namespace EKS.Forms.UserLoginForms
         UsersDatabaseConnection UDC;
         MessageBoxsForms.UserSaveMessageBox USM;
 
+        public bool Created { get; set; }
+
         private void SaveBTNClick(object sender, RoutedEventArgs e)
         {
             Transporter();
@@ -48,6 +50,7 @@ namespace EKS.Forms.UserLoginForms
                         USM.ShowDialog();
                         if (USM.HasSave == true)
                         {
+                            Created = true;
                             this.Close();
                         }
                     }
