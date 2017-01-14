@@ -1,10 +1,10 @@
-﻿<Window x:Class="EKS.Forms.MPFMenus.AddDataForm"
+﻿<Window x:Class="EKS.Forms.MPFMenus.UpdateDataForm"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         ShowInTaskbar="False"
-        Title="AddDataForm" Height="640" Width="450" WindowStyle="None" WindowStartupLocation="CenterScreen">
+        Title="AddDataForm" Height="640" Width="450" WindowStyle="None" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Grid>
-        <Button x:Name="AddBTN" Click="AddBTN_Click" Content="Ekle" HorizontalAlignment="Left" Margin="246,586,0,0" VerticalAlignment="Top" Width="80" Height="30" Foreground="White" Background="#FF1574FF" ClipToBounds="True" BorderBrush="#FF1574FF"/>
+        <Button x:Name="UpdateBTN" Click="UpdateBTN_Click" Content="Güncelle" HorizontalAlignment="Left" Margin="246,586,0,0" VerticalAlignment="Top" Width="80" Height="30" Foreground="White" Background="#FF1574FF" ClipToBounds="True" BorderBrush="#FF1574FF"/>
         <Button x:Name="CancelBTN" Click="CancelBTN_Click" Content="İptal" HorizontalAlignment="Left" Margin="331,586,0,0" VerticalAlignment="Top" Width="80" Height="30" Foreground="White" Background="#FF1574FF" ClipToBounds="True" BorderBrush="#FF1574FF"/>
         <ComboBox x:Name="ZoneCMBBX" HorizontalAlignment="Left" Margin="190,20,0,0" VerticalAlignment="Top" Width="222" Height="26">
             <ComboBoxItem Content="01 MIXER" HorizontalAlignment="Left" Width="220"/>

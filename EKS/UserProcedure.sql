@@ -76,7 +76,6 @@ create Procedure AVerify
 	@BACKUPPROGRAMADI nvarchar(20) = null,
 	@BACKUPTIPI nchar(10) = null,
 	@BACKUPVERSIYONU nchar(5) = null,
-	@KAYITTARIHI datetime = null,
 	@BACKUPALANPERSONEL nvarchar(20),
 	@BACKUPNEDENI nvarchar(20) = null,
 	@BILGISAYARMODELI nvarchar(20) = null,

@@ -98,6 +98,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Forms\MPFMenus\UpdateDataForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Forms\StartAnimation.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -110,27 +114,6 @@
     <Compile Include="Classes\AuthorityReview.cs" />
     <Compile Include="Classes\MemoryControl.cs" />
     <Compile Include="Classes\UsersDatabaseConnection.cs" />
-    <Compile Include="Entity\BACKUPANDRECOVERTABLE.cs">
-      <DependentUpon>EKS_EntityModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\EKS_EntityModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EKS_EntityModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\EKS_EntityModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EKS_EntityModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\EKS_EntityModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EKS_EntityModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\USERS.cs">
-      <DependentUpon>EKS_EntityModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Forms\MainProcessesForm.xaml.cs">
       <DependentUpon>MainProcessesForm.xaml</DependentUpon>
     </Compile>
@@ -138,6 +121,9 @@
       <DependentUpon>UserSaveMessageBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="Forms\MPFMenus\AddDataForm.xaml.cs" />
+    <Compile Include="Forms\MPFMenus\UpdateDataForm.xaml.cs">
+      <DependentUpon>UpdateDataForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Forms\StartAnimation.xaml.cs">
       <DependentUpon>StartAnimation.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -176,13 +162,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="Entity\EKS_EntityModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>EKS_EntityModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="Entity\EKS_EntityModel.edmx.diagram">
-      <DependentUpon>EKS_EntityModel.edmx</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -224,16 +203,6 @@
     <Resource Include="Resource\DataUserControl.png" />
     <Resource Include="Classes\ConnString.txt" />
     <Content Include="Dependencies\Xceed.Wpf.Toolkit.dll" />
-    <Content Include="Entity\EKS_EntityModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EKS_EntityModel.edmx</DependentUpon>
-      <LastGenOutput>EKS_EntityModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Entity\EKS_EntityModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EKS_EntityModel.edmx</DependentUpon>
-      <LastGenOutput>EKS_EntityModel.cs</LastGenOutput>
-    </Content>
     <Resource Include="Resource\DataSecret.png" />
     <Resource Include="Resource\DataAdd.png" />
     <Resource Include="Resource\DataFind.png" />

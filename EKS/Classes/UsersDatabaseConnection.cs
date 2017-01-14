@@ -150,7 +150,7 @@ namespace EKS.Classes
         }
     }   //Database Dogrulamalar
 
-    internal class DatabaseProcess : Forms.MPFMenus.AddDataForm //Textbox ve combobx bos geliyor
+    internal class DatabaseProcess
     {
         public DatabaseProcess()
         {
@@ -159,7 +159,26 @@ namespace EKS.Classes
         }
         InFile conString = new InFile();
 
+        #region Properties
+        public string Zone { get; set; }
+        public string Machine { get; set; }
+        public string ComputerLocation { get; set; }
+        public string BackUpName { get; set; }
+        public string BackUpDate { get; set; }
+        public string BackUpProgramName { get; set; }
+        public string BackUpType { get; set; }
+        public string BackUpVersion { get; set; }
+        public string BackUpPersonalName { get; set; }
+        public string BackUpExplanation { get; set; }
+        public string ComputerModel { get; set; }
+        public string OperatorSystem { get; set; }
+        public string HardDiskInfo { get; set; }
+        public string OtomationIP { get; set; }
+        public string MachineIP { get; set; }
+        public string Explanation { get; set; }
+        public string DELETEPROP { get; set; }
         public bool HasSave { get; set; }
+        #endregion
 
         #region Processes
         public void Add()
@@ -167,72 +186,28 @@ namespace EKS.Classes
             using (SqlConnection conn = new SqlConnection(conString.FilePath()))
             {
                 conn.Open();
-                using (SqlCommand cmd = new SqlCommand("AddValues", conn))
+                using (SqlCommand cmd = new SqlCommand("INSERT INTO BACKUPANDRECOVERTABLE (BOLGE, MAKINA, [BILGISAYAR LOKASYONU],"
+                                                       + "[BACKUP ADI], [BACKUP TARIHI], [BACKUP PROGRAM ADI], [BACKUP TIPI],"
+                                                       + "[BACKUP VERSIYONU], [BACKUP ALAN PERSONEL], [BACKUP NEDENI], [BILGISAYAR MODELI],"
+                                                       + "[ISLETIM SISTEMI], [HARDDISK BILGISI], [OTOMASYON IP], [MAKINA IP], ACIKLAMALAR) "
+                                                       + "VALUES('" + Zone + "', '" + Machine + "', '" + ComputerLocation + "', '" + BackUpName + "', "
+                                                       + "'" + BackUpDate + "', '" + BackUpProgramName + "', '" + BackUpType + "', '" + BackUpVersion + "', '" + BackUpPersonalName + "', "
+                                                       + "'" + BackUpExplanation + "', '" + ComputerModel + "', '" + OperatorSystem + "', '" + HardDiskInfo + "', '" + OtomationIP + "',"
+                                                       + "'" + MachineIP + "', '" + Explanation + "')", conn))
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    #region SQLPARAMETERS
-                    SqlParameter ZoneParam = new SqlParameter("@BOLGE", ZoneCMBBX.SelectedItem);
-                    SqlParameter MachineParam = new SqlParameter("@MAKINA", MachineCMBBX.SelectedItem);
-                    SqlParameter ComputerLocationParam = new SqlParameter("@BILGISAYARLOKASYONU", ComputerLocationCMBBX.SelectedItem);
-                    SqlParameter BackUpNameParam = new SqlParameter("@BACKUPADI", BackUpNameTXTBX.Text);
-                    SqlParameter BackUpDateParam = new SqlParameter("@BACKUPTARIHI", BackUpDateCMBBX.SelectedDate);
-                    SqlParameter BackUpProgramNameParam = new SqlParameter("@BACKUPPROGRAMADI", BackUpProgramNameCMBBX.SelectedItem);
-                    SqlParameter BackUpTypeParam = new SqlParameter("@BACKUPTIPI", BackUpTypeCMBBX.SelectedItem);
-                    SqlParameter BackUpVersionParam = new SqlParameter("@BACKUPVERSIYONU", BackUpVersionCMBBX.SelectedItem);
-                    SqlParameter BackUpPersonalNameParam = new SqlParameter("@BACKUPALANPERSONEL", BackUpParsonalNameTXTBX.Text);
-                    SqlParameter BackUpExplanationParam = new SqlParameter("@BACKUPNEDENI", BackUpExplanationCMBBX.SelectedItem);
-                    SqlParameter ComputerModelParam = new SqlParameter("@BACKUPTIPI", ComputerModelCMBBX.SelectedItem);
-                    SqlParameter OperatorSystemParam = new SqlParameter("@ISLETIMSISTEMI", OperatorSystemCMBBX.SelectedItem);
-                    SqlParameter HarddiskInfoParam = new SqlParameter("@BACKUPALANPERSONEL", HardDiskInfoTXTBX.Text);
-                    SqlParameter OtomationIPParam = new SqlParameter("@BACKUPALANPERSONEL", OtomationIPTXTBX.Text);
-                    SqlParameter MachineIPParam = new SqlParameter("@MAKINAIP", MachineIPTXTBX.Text);
-                    SqlParameter ExplanationParam = new SqlParameter("@ACIKLAMALAR", ExplanationTXTBX.Text);
-                    #endregion
-
-                    ZoneParam.Direction = ParameterDirection.Input;
-                    MachineParam.Direction = ParameterDirection.Input;
-                    ComputerLocationParam.Direction = ParameterDirection.Input;
-                    BackUpNameParam.Direction = ParameterDirection.Input;
-                    BackUpDateParam.Direction = ParameterDirection.Input;
-                    BackUpProgramNameParam.Direction = ParameterDirection.Input;
-                    BackUpTypeParam.Direction = ParameterDirection.Input;
-                    BackUpVersionParam.Direction = ParameterDirection.Input;
-                    BackUpPersonalNameParam.Direction = ParameterDirection.Input;
-                    BackUpExplanationParam.Direction = ParameterDirection.Input;
-                    ComputerModelParam.Direction = ParameterDirection.Input;
-                    OperatorSystemParam.Direction = ParameterDirection.Input;
-                    HarddiskInfoParam.Direction = ParameterDirection.Input;
-                    OtomationIPParam.Direction = ParameterDirection.Input;
-                    MachineIPParam.Direction = ParameterDirection.Input;
-                    ExplanationParam.Direction = ParameterDirection.Input;
-
-                    cmd.Parameters.Add(ZoneParam);
-                    cmd.Parameters.Add(MachineParam);
-                    cmd.Parameters.Add(ComputerLocationParam);
-                    cmd.Parameters.Add(BackUpNameParam);
-                    cmd.Parameters.Add(BackUpDateParam);
-                    cmd.Parameters.Add(BackUpProgramNameParam);
-                    cmd.Parameters.Add(BackUpTypeParam);
-                    cmd.Parameters.Add(BackUpVersionParam);
-                    cmd.Parameters.Add(BackUpPersonalNameParam);
-                    cmd.Parameters.Add(BackUpExplanationParam);
-                    cmd.Parameters.Add(ComputerModelParam);
-                    cmd.Parameters.Add(OperatorSystemParam);
-                    cmd.Parameters.Add(HarddiskInfoParam);
-                    cmd.Parameters.Add(OtomationIPParam);
-                    cmd.Parameters.Add(MachineIPParam);
-                    cmd.Parameters.Add(ExplanationParam);
-
-                    if (cmd.ExecuteNonQuery() == 1)
+                    try
                     {
+                        cmd.ExecuteNonQuery();
                         HasSave = true;
                     }
-                    else
+                    catch (Exception ex)
                     {
                         HasSave = false;
+                        MessageBox.Show(ex.ToString(), "Hata", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
 
                 }
+                conn.Close();
             }
         }
 
@@ -241,11 +216,12 @@ namespace EKS.Classes
             using (SqlConnection conn = new SqlConnection(conString.FilePath()))
             {
                 conn.Open();
-                string cmdString = "";
+                string cmdString = "Delete from BACKUPANDRECOVERTABLE where ID = " + DELETEPROP;
                 using (SqlCommand cmd = new SqlCommand(cmdString, conn))
                 {
-
+                    cmd.ExecuteNonQuery();
                 }
+                conn.Close();
             }
         }
 
@@ -275,13 +251,14 @@ namespace EKS.Classes
             }
         }
         #endregion
+
     }   //Islemler
 
     internal class Authority
     {
         public string Aut { get; set; }
         InFile IF = new InFile();
-        
+
 
 
         public string AutMethod(String AutUserName)
@@ -305,5 +282,5 @@ namespace EKS.Classes
                 con.Close();
             }
         }
-    } //Yetki Kontrolu
+    }
 }

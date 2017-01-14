@@ -9,7 +9,5 @@
 //------------------------------------------------------------------------------
 
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dependencies/xceed.wpf.toolkit.dll")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("entity/eks_entitymodel.context.tt")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("entity/eks_entitymodel.tt")]
 
 

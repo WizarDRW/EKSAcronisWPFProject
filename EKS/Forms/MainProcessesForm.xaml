@@ -7,9 +7,9 @@
         mc:Ignorable="d"
         Title="Elektronik Kontrol Sistemleri Yedekleme İş Veri Tabanı" Height="750" Width="1020" Closed="MPFClosed" Loaded="WindowLoaded" Icon="/EKS;component/Resource/logo.ico" WindowState="Maximized" >
     <Grid>
-        <Rectangle Fill="#FF4DB6AC" Height="60" Stroke="#FF4DB6AC" VerticalAlignment="Top"/>
-        <Label x:Name="CompanyNameLBL" Content="Elektronik Kontrol Sistemleri" HorizontalAlignment="Left" Margin="20,4,0,0" VerticalAlignment="Top" Width="332" Foreground="White" FontFamily="Verdana"/>
-        <Label x:Name="VersionLBL" Content="v1.0.0.0" HorizontalAlignment="Left" Margin="20,29,0,0" VerticalAlignment="Top" Width="332" Foreground="White" FontFamily="Verdana"/>
+        <Rectangle Fill="#FF4DB6AC" Height="60" Stroke="#FF4DB6AC" VerticalAlignment="Top" Grid.ColumnSpan="4"/>
+        <Label x:Name="CompanyNameLBL" Content="Elektronik Kontrol Sistemleri" HorizontalAlignment="Left" Margin="20,4,0,0" VerticalAlignment="Top" Width="332" Foreground="White" FontFamily="Verdana" Grid.ColumnSpan="4"/>
+        <Label x:Name="VersionLBL" Content="v1.0.0.0" HorizontalAlignment="Left" Margin="20,29,0,0" VerticalAlignment="Top" Width="332" Foreground="White" FontFamily="Verdana" Grid.ColumnSpan="4"/>
         <Menu HorizontalAlignment="Left" Background="White" Margin="0,72,0,0" Width="86">
             <Menu.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -59,9 +59,12 @@
                 </MenuItem.Header>
             </MenuItem>
         </Menu>
-        
-        
 
-        <DataGrid x:Name="MainDataGrid" Margin="91,65,10,10" HorizontalGridLinesBrush="#FF3E3E3E" VerticalGridLinesBrush="#FF3E3E3E" Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}"/>
+
+        <DataGrid x:Name="MainDataGrid" ItemsSource="{Binding}" Margin="91,65,10,10" HorizontalGridLinesBrush="#FF3E3E3E" VerticalGridLinesBrush="#FF3E3E3E" Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}" Grid.ColumnSpan="4">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding ID}" Width="50" Header="ID" Visibility="Hidden"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>

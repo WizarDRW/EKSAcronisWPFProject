@@ -1,16 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
 
 namespace EKS.Forms.MPFMenus
 {
@@ -24,10 +12,28 @@ namespace EKS.Forms.MPFMenus
             InitializeComponent();
         }
         Classes.DatabaseProcess DP;
-
+        
         private void AddBTN_Click(object sender, RoutedEventArgs e)
         {
             DP = new Classes.DatabaseProcess();
+            #region Property Values
+            DP.Zone = ZoneCMBBX.SelectionBoxItem.ToString();
+            DP.Machine = MachineCMBBX.SelectionBoxItem.ToString();
+            DP.ComputerLocation = ComputerLocationCMBBX.SelectionBoxItem.ToString();
+            DP.BackUpName = BackUpNameTXTBX.Text;
+            DP.BackUpDate = BackUpDateDATE.SelectedDate.ToString();
+            DP.BackUpProgramName = BackUpProgramNameCMBBX.SelectionBoxItem.ToString();
+            DP.BackUpType = BackUpTypeCMBBX.SelectionBoxItem.ToString();
+            DP.BackUpVersion = BackUpVersionCMBBX.SelectionBoxItem.ToString();
+            DP.BackUpPersonalName = BackUpParsonalNameTXTBX.Text;
+            DP.BackUpExplanation = BackUpExplanationCMBBX.SelectionBoxItem.ToString();
+            DP.ComputerModel = ComputerModelCMBBX.SelectionBoxItem.ToString();
+            DP.OperatorSystem = OperatorSystemCMBBX.SelectionBoxItem.ToString();
+            DP.HardDiskInfo = HardDiskInfoTXTBX.Text;
+            DP.OtomationIP = OtomationIPTXTBX.Text;
+            DP.MachineIP = MachineIPTXTBX.Text;
+            DP.Explanation = ExplanationTXTBX.Text;
+            #endregion
             DP.Add();
             if (DP.HasSave == true)
             {

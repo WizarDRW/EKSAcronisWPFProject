@@ -17,7 +17,8 @@ namespace EKS.Forms
         public string Authority { get; set; }
 
         Classes.InFile IF = new Classes.InFile();
-        
+        Classes.DatabaseProcess DP = new Classes.DatabaseProcess();
+
         private void WindowLoaded(object sender, RoutedEventArgs e)
         {
             if (Authority == "ADMIN")
@@ -25,10 +26,18 @@ namespace EKS.Forms
                 DatabaseUserControl.Visibility = Visibility.Visible;
             }
         }
-        
+
         private void DatabaseDeleteMenuClick(object sender, RoutedEventArgs e)
         {
-
+            if (MessageBox.Show("Silmek Istediğnize Emin misiniz?", "Emin misiniz?", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                DataRowView DRV = (DataRowView)MainDataGrid.SelectedItem;
+                int index = MainDataGrid.CurrentCell.Column.DisplayIndex;
+                string cellID = DRV.Row.ItemArray[0].ToString();
+                DP.DELETEPROP = cellID;
+                DP.Delete();
+                DatabaseListClick(sender, e);
+            }
         }
 
         private void DatabaseAddMenuClick(object sender, RoutedEventArgs e)
@@ -36,11 +45,15 @@ namespace EKS.Forms
             MPFMenus.AddDataForm ad = new MPFMenus.AddDataForm();
             ad.Owner = Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
             ad.ShowDialog();
+            DatabaseListClick(sender, e);
         }
 
         private void DatabaseUpdateMenuClick(object sender, RoutedEventArgs e)
         {
-
+            MPFMenus.UpdateDataForm UDF = new MPFMenus.UpdateDataForm();
+            UDF.Owner = Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
+            UDF.ShowDialog();
+            DatabaseListClick(sender, e);
         }
 
         private void DatabaseFindMenuClick(object sender, RoutedEventArgs e)
