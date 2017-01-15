@@ -2,7 +2,6 @@
 using System.Data.SqlClient;
 using EKS.Forms.UserLoginForms;
 using System.Windows;
-using System.Data;
 using System.IO;
 
 namespace EKS.Classes

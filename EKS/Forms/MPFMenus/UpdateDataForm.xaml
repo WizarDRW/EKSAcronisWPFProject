@@ -7,13 +7,15 @@
         <Button x:Name="UpdateBTN" Click="UpdateBTN_Click" Content="Güncelle" HorizontalAlignment="Left" Margin="246,586,0,0" VerticalAlignment="Top" Width="80" Height="30" Foreground="White" Background="#FF1574FF" ClipToBounds="True" BorderBrush="#FF1574FF"/>
         <Button x:Name="CancelBTN" Click="CancelBTN_Click" Content="İptal" HorizontalAlignment="Left" Margin="331,586,0,0" VerticalAlignment="Top" Width="80" Height="30" Foreground="White" Background="#FF1574FF" ClipToBounds="True" BorderBrush="#FF1574FF"/>
         <ComboBox x:Name="ZoneCMBBX" HorizontalAlignment="Left" Margin="190,20,0,0" VerticalAlignment="Top" Width="222" Height="26">
-            <ComboBoxItem Content="01 MIXER" HorizontalAlignment="Left" Width="220"/>
+            <ComboBoxItem x:Name="ZoneCItemMixers" Content="01 MIXERLER" HorizontalAlignment="Left" Width="220" Selected="ZoneCItemMixers_Selected"/>
+            <ComboBoxItem x:Name="ZoneCItemKalender" Content="02 KALENDER" HorizontalAlignment="Left" Width="220" Selected="ZoneCItemKalender_Selected"/>
+            <ComboBoxItem x:Name="ZoneCItemExtruder" Content="03 EXTRUDER" HorizontalAlignment="Left" Width="220" Selected="ZoneCItemExtruder_Selected"/>
         </ComboBox>
         <ComboBox x:Name="MachineCMBBX" HorizontalAlignment="Left" Margin="190,50,0,0" VerticalAlignment="Top" Width="222" Height="26">
-            <ComboBoxItem Content="01 MIXER" HorizontalAlignment="Left" Width="220"/>
         </ComboBox>
         <ComboBox x:Name="ComputerLocationCMBBX" HorizontalAlignment="Left" Margin="190,80,0,0" VerticalAlignment="Top" Width="222" Height="26">
             <ComboBoxItem Content="ANA SCADA" HorizontalAlignment="Left" Width="220"/>
+            <ComboBoxItem Content="PROFIL TARAYICI" HorizontalAlignment="Left" Width="220"/>
         </ComboBox>
         <TextBox x:Name="BackUpNameTXTBX" HorizontalAlignment="Left" Margin="190,110,0,0" VerticalAlignment="Top" Width="222" Height="26" CharacterCasing="Upper"/>
         <DatePicker x:Name="BackUpDateDATE" HorizontalAlignment="Left" Margin="190,140,0,0" VerticalAlignment="Top" Width="222" Height="26"/>
@@ -22,8 +24,10 @@
         </ComboBox>
         <ComboBox x:Name="BackUpTypeCMBBX" HorizontalAlignment="Left" Margin="190,200,0,0" VerticalAlignment="Top" Width="222" Height="26">
             <ComboBoxItem Content="Windows" HorizontalAlignment="Left" Width="220"/>
+            <ComboBoxItem Content="Linux" HorizontalAlignment="Left" Width="220"/>
         </ComboBox>
         <ComboBox x:Name="BackUpVersionCMBBX" HorizontalAlignment="Left" Margin="190,230,0,0" VerticalAlignment="Top" Width="222" Height="26">
+            <ComboBoxItem Content="11.0" HorizontalAlignment="Left" Width="220"/>
             <ComboBoxItem Content="11.7" HorizontalAlignment="Left" Width="220"/>
         </ComboBox>
         <TextBox x:Name="BackUpParsonalNameTXTBX" HorizontalAlignment="Left" Margin="190,260,0,0" VerticalAlignment="Top" Width="222" Height="26"/>
@@ -31,9 +35,13 @@
             <ComboBoxItem Content="REVIZYON" HorizontalAlignment="Left" Width="220"/>
         </ComboBox>
         <ComboBox x:Name="ComputerModelCMBBX" HorizontalAlignment="Left" Margin="190,320,0,0" VerticalAlignment="Top" Width="222" Height="26">
+            <ComboBoxItem Content="DELL" HorizontalAlignment="Left" Width="220"/>
             <ComboBoxItem Content="LENOVO" HorizontalAlignment="Left" Width="220"/>
         </ComboBox>
         <ComboBox x:Name="OperatorSystemCMBBX" HorizontalAlignment="Left" Margin="190,350,0,0" VerticalAlignment="Top" Width="222" Height="26">
+            <ComboBoxItem Content="Windows XP" HorizontalAlignment="Left" Width="220"/>
+            <ComboBoxItem Content="Windows 7" HorizontalAlignment="Left" Width="220"/>
+            <ComboBoxItem Content="Windows 8 - 8.1" HorizontalAlignment="Left" Width="220"/>
             <ComboBoxItem Content="Windows 10" HorizontalAlignment="Left" Width="220"/>
         </ComboBox>
         <TextBox x:Name="HardDiskInfoTXTBX" HorizontalAlignment="Left" Margin="190,380,0,0" VerticalAlignment="Top" Width="222" Height="26"/>

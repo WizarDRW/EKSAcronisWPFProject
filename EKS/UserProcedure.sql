@@ -98,8 +98,8 @@ create Procedure AVerify
 	
 	CREATE TABLE [dbo].[BACKUPANDRECOVERTABLE](
 	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[BOLGE] [nvarchar](20) NOT NULL,
-	[MAKINA] [nvarchar](20) NOT NULL,
+	[BOLGE] [nvarchar](25) NOT NULL,
+	[MAKINA] [nvarchar](50) NOT NULL,
 	[BILGISAYAR LOKASYONU] [nvarchar](20) NOT NULL,
 	[BACKUP ADI] [nvarchar](max) NOT NULL,
 	[BACKUP TARIHI] [datetime] NOT NULL,
@@ -109,7 +109,7 @@ create Procedure AVerify
 	[KAYIT TARIHI] [datetime] default GETDATE(),
 	[BACKUP ALAN PERSONEL] [nvarchar](20) NOT NULL,
 	[BACKUP NEDENI] [nvarchar](20) NOT NULL,
-	[BILGISAYAR MODELI] [nvarchar](20) NOT NULL,
+	[BILGISAYAR MODELI] [nvarchar](25) NOT NULL,
 	[ISLETIM SISTEMI] [nvarchar](15) NOT NULL,
 	[HARDDISK BILGISI] [nvarchar](50) NOT NULL,
 	[OTOMASYON IP] [nvarchar](15) NOT NULL,
@@ -121,6 +121,7 @@ create Procedure AVerify
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
+Drop Table BACKUPANDRECOVERTABLE
 ------------------------------------------------------------------------------------------------
 
 CREATE TABLE [dbo].[USERS](

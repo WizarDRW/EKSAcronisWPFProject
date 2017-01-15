@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\wizar\Desktop\EKSAcronisWPFProject\EKS\App.xaml
-61811645724
-12067159951
-151100313049
-19-710405003
-Forms\MainProcessesForm.xaml;Forms\MessageBoxsForms\UserSaveMessageBox.xaml;Forms\MPFMenus\AddDataForm.xaml;Forms\StartAnimation.xaml;Forms\UserLogin.xaml;Forms\UserLoginForms\UserSignUpForm.xaml;
+7-1262269964
+3-1899919979
+16-289732185
+211060206900
+Forms\MainProcessesForm.xaml;Forms\MessageBoxsForms\UserSaveMessageBox.xaml;Forms\MPFMenus\AddDataForm.xaml;Forms\MPFMenus\UpdateDataForm.xaml;Forms\StartAnimation.xaml;Forms\UserLogin.xaml;Forms\UserLoginForms\UserSignUpForm.xaml;
 
 False
 

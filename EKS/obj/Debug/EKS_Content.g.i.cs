@@ -8,6 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dependencies/wpfdevelopertools.controls.dll")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dependencies/wpfdevelopertools.tools.dll")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dependencies/xceed.wpf.toolkit.dll")]
 
 
