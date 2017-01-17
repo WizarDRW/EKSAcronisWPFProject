@@ -5,7 +5,7 @@
         Title="UserLogin" Height="167.698" Width="250" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
 
     <Grid Background="#FF348DFF" MaxHeight="250" MaxWidth="250" Margin="0,0,0,-10">
-        <TextBox x:Name="UserNameTXTBX" HorizontalAlignment="Left" Height="23" Margin="83,21,0,0" VerticalAlignment="Top" Width="157" SelectionBrush="#FF006EC5" BorderBrush="#FF4B87C8" Foreground="#FFA4A4A4" />
+        <TextBox x:Name="UserNameTXTBX" HorizontalAlignment="Left" Height="23" Margin="83,21,0,0" VerticalAlignment="Top" Width="157" SelectionBrush="#FF006EC5" BorderBrush="#FF4B87C8" Foreground="#FFA4A4A4" CharacterCasing="Upper" />
         <PasswordBox x:Name="PasswordPB" HorizontalAlignment="Left" Height="23" Margin="83,49,0,0" VerticalAlignment="Top" Width="157"  BorderBrush="#FF4B83C0" Foreground="#FF9E00CD" />
         <Button Content="Kullanıcı Oluştur" HorizontalAlignment="Center" Margin="117,140,43,0" VerticalAlignment="Top" Foreground="White" HorizontalContentAlignment="Center" Background="#FF348DFF" BorderBrush="#FF348DFF" Click="UserCreateBTNClick"/>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="10,22,0,0" TextWrapping="Wrap" Text="Kullanıcı Adı:" VerticalAlignment="Top" Width="68" Foreground="White" TextAlignment="Right"/>

@@ -91,8 +91,6 @@ C:\Users\wizar\Desktop\EKSAcronisWPFProject\EKS\bin\Debug\EntityFramework.dll
 C:\Users\wizar\Desktop\EKSAcronisWPFProject\EKS\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\wizar\Desktop\EKSAcronisWPFProject\EKS\bin\Debug\EntityFramework.xml
 C:\Users\wizar\Desktop\EKSAcronisWPFProject\EKS\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\wizar\Desktop\EKSAcronisWPFProject\EKS\bin\Debug\Xceed.Wpf.Toolkit.dll
-C:\Users\wizar\Desktop\EKSAcronisWPFProject\EKS\obj\Debug\EKS_Content.g.cs
 C:\Users\wizar\Desktop\EKSAcronisWPFProject\EKS\obj\Debug\Forms\MessageBoxsForms\UserSaveMessageBox.g.cs
 C:\Users\wizar\Desktop\EKSAcronisWPFProject\EKS\obj\Debug\Forms\MessageBoxsForms\UserSaveMessageBox.baml
 C:\Users\wizar\Desktop\EKSAcronisWPFProject\EKS\obj\Debug\Forms\MPFMenus\AddDataForm.baml
@@ -100,5 +98,3 @@ C:\Users\wizar\Desktop\EKSAcronisWPFProject\EKS\obj\Debug\Forms\MPFMenus\AddData
 C:\Users\wizar\Desktop\EKSAcronisWPFProject\EKS\obj\Debug\EKS.csprojResolveAssemblyReference.cache
 C:\Users\wizar\Desktop\EKSAcronisWPFProject\EKS\obj\Debug\Forms\MPFMenus\UpdateDataForm.baml
 C:\Users\wizar\Desktop\EKSAcronisWPFProject\EKS\obj\Debug\Forms\MPFMenus\UpdateDataForm.g.cs
-C:\Users\wizar\Desktop\EKSAcronisWPFProject\EKS\bin\Debug\WPFDeveloperTools.Controls.dll
-C:\Users\wizar\Desktop\EKSAcronisWPFProject\EKS\bin\Debug\WPFDeveloperTools.Tools.dll

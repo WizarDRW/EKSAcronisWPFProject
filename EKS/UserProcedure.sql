@@ -78,7 +78,7 @@ create Procedure AVerify
 	@BACKUPVERSIYONU nchar(5) = null,
 	@BACKUPALANPERSONEL nvarchar(20),
 	@BACKUPNEDENI nvarchar(20) = null,
-	@BILGISAYARMODELI nvarchar(20) = null,
+	@BILGISAYARMODELI nvarchar(25) = null,
 	@ISLETIMSISTEMI nvarchar(15) = null,
 	@HARDDISKBILGISI nvarchar(50) = null,
 	@OTOMASYONIP nvarchar(15) = null,
@@ -94,6 +94,7 @@ create Procedure AVerify
 	@BACKUPNEDENI, @BILGISAYARMODELI, @ISLETIMSISTEMI, @HARDDISKBILGISI, @OTOMASYONIP,
 	@MAKINAIP, @ACIKLAMALAR)
 
+	select BOLGE, MAKINA, [BILGISAYAR LOKASYONU],[BACKUP TARIHI], [KAYIT TARIHI], [BACKUP ALAN PERSONEL] from BACKUPANDRECOVERTABLE
 ------------------------------------------------------------------------------------------------
 	
 	CREATE TABLE [dbo].[BACKUPANDRECOVERTABLE](
