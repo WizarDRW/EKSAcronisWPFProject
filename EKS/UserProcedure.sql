@@ -107,7 +107,7 @@ create Procedure AVerify
 	[BACKUP PROGRAM ADI] [nvarchar](20) NOT NULL,
 	[BACKUP TIPI] [nchar](10) NOT NULL,
 	[BACKUP VERSIYONU] [nchar](5) NOT NULL,
-	[KAYIT TARIHI] [datetime] default GETDATE(),
+	[KAYIT TARIHI] [datetime] default CONVERT(datetime, GETDATE(), 104),
 	[BACKUP ALAN PERSONEL] [nvarchar](20) NOT NULL,
 	[BACKUP NEDENI] [nvarchar](20) NOT NULL,
 	[BILGISAYAR MODELI] [nvarchar](25) NOT NULL,
@@ -150,4 +150,3 @@ ALTER TABLE [dbo].[USERS]  WITH CHECK ADD  CONSTRAINT [_AUT] CHECK  (([AUTHORITY
 GO
 
 ALTER TABLE [dbo].[USERS] CHECK CONSTRAINT [_AUT]
-GO

@@ -190,7 +190,7 @@ namespace EKS.Classes
                                                        + "[BACKUP VERSIYONU], [BACKUP ALAN PERSONEL], [BACKUP NEDENI], [BILGISAYAR MODELI],"
                                                        + "[ISLETIM SISTEMI], [HARDDISK BILGISI], [OTOMASYON IP], [MAKINA IP], ACIKLAMALAR) "
                                                        + "VALUES('" + Zone + "', '" + Machine + "', '" + ComputerLocation + "', '" + BackUpName + "', "
-                                                       + "'" + BackUpDate + "', '" + BackUpProgramName + "', '" + BackUpType + "', '" + BackUpVersion + "', '" + BackUpPersonalName + "', "
+                                                       + "CONVERT(Datetime, '" + BackUpDate + "', 104), '" + BackUpProgramName + "', '" + BackUpType + "', '" + BackUpVersion + "', '" + BackUpPersonalName + "', "
                                                        + "'" + BackUpExplanation + "', '" + ComputerModel + "', '" + OperatorSystem + "', '" + HardDiskInfo + "', '" + OtomationIP + "',"
                                                        + "'" + MachineIP + "', '" + Explanation + "')", conn))
                 {

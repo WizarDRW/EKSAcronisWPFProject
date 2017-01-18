@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 
 namespace EKS.Forms.MPFMenus
 {
@@ -16,17 +17,23 @@ namespace EKS.Forms.MPFMenus
         private void AddBTN_Click(object sender, RoutedEventArgs e)
         {
             if (ZoneCMBBX.SelectionBoxItem.ToString() != "" && MachineCMBBX.SelectionBoxItem.ToString() != "" && ComputerLocationCMBBX.SelectionBoxItem.ToString() != "" &&
-                BackUpNameTXTBX.Text != "" && BackUpDateDATE.SelectedDate.ToString() != "" && BackUpProgramNameCMBBX.SelectionBoxItem.ToString() != "" &&
+                BackUpDateDATE.SelectedDate.ToString() != "" && BackUpProgramNameCMBBX.SelectionBoxItem.ToString() != "" &&
                 BackUpTypeCMBBX.SelectionBoxItem.ToString() != "" && BackUpVersionCMBBX.SelectionBoxItem.ToString() != "" && BackUpParsonalNameTXTBX.Text != "" &&
                 BackUpExplanationCMBBX.SelectionBoxItem.ToString() != "" && ComputerModelCMBBX.SelectionBoxItem.ToString() != "" && OperatorSystemCMBBX.SelectionBoxItem.ToString() != "" &&
-                HardDiskInfoTXTBX.Text != "" && OtomationIPTXTBX.Text != "" && MachineIPTXTBX.Text != "" && ExplanationTXTBX.Text != "")
+                HardDiskInfoTXTBX.Text != "" && OtomationIPTXTBX.Text != "" && MachineIPTXTBX.Text != "")
             {
+                string D = BackUpDateDATE.SelectedDate.ToString().Replace(".", "");
+                string DateDeletePoint = D.Substring(0, D.Length - 9);
+                if (DateDeletePoint.Length == 7)
+                {
+                    DateDeletePoint = "0" + DateDeletePoint;
+                }
                 DP = new Classes.DatabaseProcess();
                 #region Property Values
                 DP.Zone = ZoneCMBBX.SelectionBoxItem.ToString();
                 DP.Machine = MachineCMBBX.SelectionBoxItem.ToString();
                 DP.ComputerLocation = ComputerLocationCMBBX.SelectionBoxItem.ToString();
-                DP.BackUpName = BackUpNameTXTBX.Text;
+                DP.BackUpName = MachineCMBBX.SelectionBoxItem.ToString().Replace(" ", "_") + '_' + ComputerLocationCMBBX.SelectionBoxItem.ToString().Replace(" ", "_") + '_' + DateDeletePoint + '_';
                 DP.BackUpDate = BackUpDateDATE.SelectedDate.ToString();
                 DP.BackUpProgramName = BackUpProgramNameCMBBX.SelectionBoxItem.ToString();
                 DP.BackUpType = BackUpTypeCMBBX.SelectionBoxItem.ToString();
@@ -102,22 +109,5 @@ namespace EKS.Forms.MPFMenus
             MachineCMBBX.Items.Add("CIN QUADROPLEX EXTRUDER");
         }
         #endregion
-
-        private void BackUpNameTXTBX_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
-        {
-            switch (e.Key)
-            {
-                case System.Windows.Input.Key.Space:
-                    var _cursorPosition = BackUpNameTXTBX.SelectionStart;
-                    var _selectionLength = BackUpNameTXTBX.SelectionLength;
-                    BackUpNameTXTBX.Text = BackUpNameTXTBX.Text.Replace(" ", "_");
-                    BackUpNameTXTBX.SelectionStart = _cursorPosition + 1;
-                    BackUpNameTXTBX.SelectionLength = _selectionLength + 1;
-                    BackUpNameTXTBX.Focus();
-                    break;
-                default:
-                    break;
-            }
-        }
     }
 }

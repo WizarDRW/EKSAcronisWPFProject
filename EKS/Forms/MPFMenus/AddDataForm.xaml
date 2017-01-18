@@ -4,8 +4,8 @@
         ShowInTaskbar="False"
         Title="AddDataForm" Height="640" Width="450" WindowStyle="None" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Button x:Name="AddBTN" Click="AddBTN_Click" Content="Ekle" HorizontalAlignment="Left" Margin="246,586,0,0" VerticalAlignment="Top" Width="80" Height="30" Foreground="White" Background="#FF1574FF" ClipToBounds="True" BorderBrush="#FF1574FF"/>
-        <Button x:Name="CancelBTN" Click="CancelBTN_Click" Content="İptal" HorizontalAlignment="Left" Margin="331,586,0,0" VerticalAlignment="Top" Width="80" Height="30" Foreground="White" Background="#FF1574FF" ClipToBounds="True" BorderBrush="#FF1574FF"/>
+        <Button x:Name="AddBTN" Click="AddBTN_Click" Content="Ekle" HorizontalAlignment="Left" Margin="246,584,0,0" VerticalAlignment="Top" Width="80" Height="30" Foreground="White" Background="#FF1574FF" ClipToBounds="True" BorderBrush="#FF1574FF"/>
+        <Button x:Name="CancelBTN" Click="CancelBTN_Click" Content="İptal" HorizontalAlignment="Left" Margin="331,584,0,0" VerticalAlignment="Top" Width="80" Height="30" Foreground="White" Background="#FF1574FF" ClipToBounds="True" BorderBrush="#FF1574FF"/>
         <ComboBox x:Name="ZoneCMBBX" HorizontalAlignment="Left" Margin="190,20,0,0" VerticalAlignment="Top" Width="222" Height="26">
             <ComboBoxItem x:Name="ZoneCItemMixers" Content="01 MIXERLER" HorizontalAlignment="Left" Width="220" Selected="ZoneCItemMixers_Selected"/>
             <ComboBoxItem x:Name="ZoneCItemKalender" Content="02 KALENDER" HorizontalAlignment="Left" Width="220" Selected="ZoneCItemKalender_Selected"/>
@@ -17,56 +17,56 @@
             <ComboBoxItem Content="ANA SCADA" HorizontalAlignment="Left" Width="220"/>
             <ComboBoxItem Content="PROFIL TARAYICI" HorizontalAlignment="Left" Width="220"/>
         </ComboBox>
-        <TextBox x:Name="BackUpNameTXTBX" HorizontalAlignment="Left" Margin="190,110,0,0" VerticalAlignment="Top" Width="222" Height="26" CharacterCasing="Upper" PreviewKeyDown="BackUpNameTXTBX_PreviewKeyDown"/>
-        <DatePicker x:Name="BackUpDateDATE" HorizontalAlignment="Left" Margin="190,140,0,0" VerticalAlignment="Top" Width="222" Height="26"/>
-        <ComboBox x:Name="BackUpProgramNameCMBBX" HorizontalAlignment="Left" Margin="190,170,0,0" VerticalAlignment="Top" Width="222" Height="26">
+        <DatePicker x:Name="BackUpDateDATE" HorizontalAlignment="Left" Margin="190,110,0,0" VerticalAlignment="Top" Width="222" Height="26"/>
+        <ComboBox x:Name="BackUpProgramNameCMBBX" HorizontalAlignment="Left" Margin="190,140,0,0" VerticalAlignment="Top" Width="222" Height="26">
             <ComboBoxItem Content="ACRONIS" HorizontalAlignment="Left" Width="220"/>
         </ComboBox>
-        <ComboBox x:Name="BackUpTypeCMBBX" HorizontalAlignment="Left" Margin="190,200,0,0" VerticalAlignment="Top" Width="222" Height="26">
+        <ComboBox x:Name="BackUpTypeCMBBX" HorizontalAlignment="Left" Margin="190,170,0,0" VerticalAlignment="Top" Width="222" Height="26">
             <ComboBoxItem Content="LINUX" HorizontalAlignment="Left" Width="220"/>
             <ComboBoxItem Content="WINDOWS" HorizontalAlignment="Left" Width="220"/>
         </ComboBox>
-        <ComboBox x:Name="BackUpVersionCMBBX" HorizontalAlignment="Left" Margin="190,230,0,0" VerticalAlignment="Top" Width="222" Height="26">
+        <ComboBox x:Name="BackUpVersionCMBBX" HorizontalAlignment="Left" Margin="190,200,0,0" VerticalAlignment="Top" Width="222" Height="26">
             <ComboBoxItem Content="11.0" HorizontalAlignment="Left" Width="220"/>
             <ComboBoxItem Content="11.7" HorizontalAlignment="Left" Width="220"/>
         </ComboBox>
-        <TextBox x:Name="BackUpParsonalNameTXTBX" HorizontalAlignment="Left" Margin="190,260,0,0" VerticalAlignment="Top" Width="222" Height="26" CharacterCasing="Upper"/>
-        <ComboBox x:Name="BackUpExplanationCMBBX" HorizontalAlignment="Left" Margin="190,290,0,0" VerticalAlignment="Top" Width="222" Height="26">
+        <TextBox x:Name="BackUpParsonalNameTXTBX" HorizontalAlignment="Left" Margin="190,230,0,0" VerticalAlignment="Top" Width="222" Height="26" CharacterCasing="Upper"/>
+        <ComboBox x:Name="BackUpExplanationCMBBX" HorizontalAlignment="Left" Margin="190,260,0,0" VerticalAlignment="Top" Width="222" Height="26">
             <ComboBoxItem Content="REVIZYON" HorizontalAlignment="Left" Width="220"/>
         </ComboBox>
-        <ComboBox x:Name="ComputerModelCMBBX" HorizontalAlignment="Left" Margin="190,320,0,0" VerticalAlignment="Top" Width="222" Height="26">
+        <ComboBox x:Name="ComputerModelCMBBX" HorizontalAlignment="Left" Margin="190,290,0,0" VerticalAlignment="Top" Width="222" Height="26">
             <ComboBoxItem Content="DELL" HorizontalAlignment="Left" Width="220"/>
             <ComboBoxItem Content="ENDUSTRIYEL BILGISAYAR" HorizontalAlignment="Left" Width="220"/>
             <ComboBoxItem Content="LENOVO" HorizontalAlignment="Left" Width="220"/>
         </ComboBox>
-        <ComboBox x:Name="OperatorSystemCMBBX" HorizontalAlignment="Left" Margin="190,350,0,0" VerticalAlignment="Top" Width="222" Height="26">
+        <ComboBox x:Name="OperatorSystemCMBBX" HorizontalAlignment="Left" Margin="190,320,0,0" VerticalAlignment="Top" Width="222" Height="26">
             <ComboBoxItem Content="WINDOWS XP" HorizontalAlignment="Left" Width="220"/>
             <ComboBoxItem Content="WINDOWS 7" HorizontalAlignment="Left" Width="220"/>
             <ComboBoxItem Content="WINDOWS 8 - 8.1" HorizontalAlignment="Left" Width="220"/>
             <ComboBoxItem Content="WINDOWS 10" HorizontalAlignment="Left" Width="220"/>
         </ComboBox>
-        <TextBox x:Name="HardDiskInfoTXTBX" HorizontalAlignment="Left" Margin="190,380,0,0" VerticalAlignment="Top" Width="222" Height="26" CharacterCasing="Upper"/>
-        <TextBox x:Name="OtomationIPTXTBX" HorizontalAlignment="Left" Margin="190,410,0,0" VerticalAlignment="Top" Width="222" Height="26" />
-        <TextBox x:Name="MachineIPTXTBX" HorizontalAlignment="Left" Margin="190,440,0,0" VerticalAlignment="Top" Width="222" Height="26" />
+        <TextBox x:Name="HardDiskInfoTXTBX" HorizontalAlignment="Left" Margin="190,350,0,0" VerticalAlignment="Top" Width="222" Height="26" CharacterCasing="Upper"/>
+        <TextBox x:Name="OtomationIPTXTBX" HorizontalAlignment="Left" Margin="190,380,0,0" VerticalAlignment="Top" Width="222" Height="26" />
+        <TextBox x:Name="MachineIPTXTBX" HorizontalAlignment="Left" Margin="190,410,0,0" VerticalAlignment="Top" Width="222" Height="26" />
+        <TextBox x:Name="PetlasIPTXTBX" TextSearch.Text="0.0.0.0" HorizontalAlignment="Left" Margin="190,440,0,0" VerticalAlignment="Top" Width="222" Height="26" />
         <TextBox x:Name="ExplanationTXTBX" HorizontalAlignment="Left" Margin="190,470,0,0" VerticalAlignment="Top" Width="222" Height="102" TextWrapping="Wrap" AcceptsReturn="True"/>
 
-        
-        
+
+
         <Label Content="BOLGE:" HorizontalAlignment="Left" Margin="137,20,0,0" VerticalAlignment="Top"/>
         <Label Content="MAKINE:" HorizontalAlignment="Left" Margin="129,50,0,0" VerticalAlignment="Top"/>
         <Label Content="BİLGİSAYAR LOKASYONU:" HorizontalAlignment="Left" Margin="41,80,0,0" VerticalAlignment="Top"/>
-        <Label Content="YEDEK ADI:" HorizontalAlignment="Left" Margin="117,110,0,0" VerticalAlignment="Top"/>
-        <Label Content="YEDEK TARİHİ:" HorizontalAlignment="Left" Margin="101,140,0,0" VerticalAlignment="Top"/>
-        <Label Content="YEDEK PROGRAM ADI:" HorizontalAlignment="Left" Margin="57,170,0,0" VerticalAlignment="Top"/>
-        <Label Content="YEDEK TİPİ:" HorizontalAlignment="Left" Margin="117,200,0,0" VerticalAlignment="Top"/>
-        <Label Content="YEDEKLEME VERSİYONU:" HorizontalAlignment="Left" Margin="45,230,0,0" VerticalAlignment="Top"/>
-        <Label Content="YEDEK ALAN PERSONEL ADI:" HorizontalAlignment="Left" Margin="24,260,0,0" VerticalAlignment="Top"/>
-        <Label Content="YEDEK NEDENİ:" HorizontalAlignment="Left" Margin="95,290,0,0" VerticalAlignment="Top"/>
-        <Label Content="BİLGİSAYAR MODELİ:" HorizontalAlignment="Left" Margin="67,320,0,0" VerticalAlignment="Top"/>
-        <Label Content="İŞLETİM SİSTEMİ:" HorizontalAlignment="Left" Margin="87,350,0,0" VerticalAlignment="Top"/>
-        <Label Content="HARDDİSK BİLGİSİ:" HorizontalAlignment="Left" Margin="78,380,0,0" VerticalAlignment="Top"/>
-        <Label Content="OTOMASYON IP:" HorizontalAlignment="Left" Margin="90,410,0,0" VerticalAlignment="Top"/>
-        <Label Content="MAKİNE IP:" HorizontalAlignment="Left" Margin="119,440,0,0" VerticalAlignment="Top"/>
+        <Label Content="YEDEK TARİHİ:" HorizontalAlignment="Left" Margin="101,110,0,0" VerticalAlignment="Top"/>
+        <Label Content="YEDEK PROGRAM ADI:" HorizontalAlignment="Left" Margin="57,140,0,0" VerticalAlignment="Top"/>
+        <Label Content="YEDEK TİPİ:" HorizontalAlignment="Left" Margin="117,170,0,0" VerticalAlignment="Top"/>
+        <Label Content="YEDEKLEME VERSİYONU:" HorizontalAlignment="Left" Margin="45,200,0,0" VerticalAlignment="Top"/>
+        <Label Content="YEDEK ALAN PERSONEL ADI:" HorizontalAlignment="Left" Margin="24,230,0,0" VerticalAlignment="Top"/>
+        <Label Content="YEDEK NEDENİ:" HorizontalAlignment="Left" Margin="95,260,0,0" VerticalAlignment="Top"/>
+        <Label Content="BİLGİSAYAR MODELİ:" HorizontalAlignment="Left" Margin="67,290,0,0" VerticalAlignment="Top"/>
+        <Label Content="İŞLETİM SİSTEMİ:" HorizontalAlignment="Left" Margin="87,320,0,0" VerticalAlignment="Top"/>
+        <Label Content="HARDDİSK BİLGİSİ:" HorizontalAlignment="Left" Margin="78,350,0,0" VerticalAlignment="Top"/>
+        <Label Content="OTOMASYON IP:" HorizontalAlignment="Left" Margin="90,380,0,0" VerticalAlignment="Top"/>
+        <Label Content="MAKİNE IP:" HorizontalAlignment="Left" Margin="119,410,0,0" VerticalAlignment="Top"/>
+        <Label Content="PETLAS IP:" HorizontalAlignment="Left" Margin="123,440,0,0" VerticalAlignment="Top"/>
         <Label Content="AÇIKLAMA:" HorizontalAlignment="Left" Margin="119,470,0,0" VerticalAlignment="Top"/>
 
     </Grid>
