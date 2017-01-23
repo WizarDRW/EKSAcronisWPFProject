@@ -97,7 +97,7 @@ create Procedure AVerify
 	select BOLGE, MAKINA, [BILGISAYAR LOKASYONU],[BACKUP TARIHI], [KAYIT TARIHI], [BACKUP ALAN PERSONEL] from BACKUPANDRECOVERTABLE
 ------------------------------------------------------------------------------------------------
 	
-	CREATE TABLE [dbo].[BACKUPANDRECOVERTABLE](
+CREATE TABLE [dbo].[BACKUPANDRECOVERTABLE](
 	[ID] [int] IDENTITY(1,1) NOT NULL,
 	[BOLGE] [nvarchar](25) NOT NULL,
 	[MAKINA] [nvarchar](50) NOT NULL,
@@ -107,7 +107,7 @@ create Procedure AVerify
 	[BACKUP PROGRAM ADI] [nvarchar](20) NOT NULL,
 	[BACKUP TIPI] [nchar](10) NOT NULL,
 	[BACKUP VERSIYONU] [nchar](5) NOT NULL,
-	[KAYIT TARIHI] [datetime] default CONVERT(datetime, GETDATE(), 104),
+	[KAYIT TARIHI] [datetime] NULL,
 	[BACKUP ALAN PERSONEL] [nvarchar](20) NOT NULL,
 	[BACKUP NEDENI] [nvarchar](20) NOT NULL,
 	[BILGISAYAR MODELI] [nvarchar](25) NOT NULL,
@@ -115,12 +115,18 @@ create Procedure AVerify
 	[HARDDISK BILGISI] [nvarchar](50) NOT NULL,
 	[OTOMASYON IP] [nvarchar](15) NOT NULL,
 	[MAKINA IP] [nvarchar](15) NOT NULL,
+	[PETLAS IP] [nvarchar](15) NULL,
 	[ACIKLAMALAR] [nvarchar](max) NULL,
  CONSTRAINT [PK_BACKUPANDRECOVERTABLE] PRIMARY KEY CLUSTERED 
 (
 	[ID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[BACKUPANDRECOVERTABLE] ADD  DEFAULT (CONVERT([datetime],getdate(),(104))) FOR [KAYIT TARIHI]
+GO
 
 Drop Table BACKUPANDRECOVERTABLE
 ------------------------------------------------------------------------------------------------

@@ -6,6 +6,7 @@
     <Grid>
         <Button x:Name="AddBTN" Click="AddBTN_Click" Content="Ekle" HorizontalAlignment="Left" Margin="246,584,0,0" VerticalAlignment="Top" Width="80" Height="30" Foreground="White" Background="#FF1574FF" ClipToBounds="True" BorderBrush="#FF1574FF"/>
         <Button x:Name="CancelBTN" Click="CancelBTN_Click" Content="İptal" HorizontalAlignment="Left" Margin="331,584,0,0" VerticalAlignment="Top" Width="80" Height="30" Foreground="White" Background="#FF1574FF" ClipToBounds="True" BorderBrush="#FF1574FF"/>
+        <Button x:Name="LicanseBTN" Content="License" HorizontalAlignment="Left" Margin="24,584,0,0" VerticalAlignment="Top" Width="123" Height="30" Background="Red" BorderBrush="Red" Foreground="White" Click="LicanseBTN_Click"/>
         <ComboBox x:Name="ZoneCMBBX" HorizontalAlignment="Left" Margin="190,20,0,0" VerticalAlignment="Top" Width="222" Height="26">
             <ComboBoxItem x:Name="ZoneCItemMixers" Content="01 MIXERLER" HorizontalAlignment="Left" Width="220" Selected="ZoneCItemMixers_Selected"/>
             <ComboBoxItem x:Name="ZoneCItemKalender" Content="02 KALENDER" HorizontalAlignment="Left" Width="220" Selected="ZoneCItemKalender_Selected"/>

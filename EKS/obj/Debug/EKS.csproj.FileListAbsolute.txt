@@ -98,3 +98,5 @@ C:\Users\wizar\Desktop\EKSAcronisWPFProject\EKS\obj\Debug\Forms\MPFMenus\AddData
 C:\Users\wizar\Desktop\EKSAcronisWPFProject\EKS\obj\Debug\EKS.csprojResolveAssemblyReference.cache
 C:\Users\wizar\Desktop\EKSAcronisWPFProject\EKS\obj\Debug\Forms\MPFMenus\UpdateDataForm.baml
 C:\Users\wizar\Desktop\EKSAcronisWPFProject\EKS\obj\Debug\Forms\MPFMenus\UpdateDataForm.g.cs
+C:\Users\wizar\Desktop\EKSAcronisWPFProject\EKS\obj\Debug\Forms\MPFMenus\License\MachineLicense.g.cs
+C:\Users\wizar\Desktop\EKSAcronisWPFProject\EKS\obj\Debug\Forms\MPFMenus\License\MachineLicense.baml

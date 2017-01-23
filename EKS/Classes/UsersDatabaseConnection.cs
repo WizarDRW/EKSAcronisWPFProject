@@ -168,12 +168,14 @@ namespace EKS.Classes
         public string BackUpType { get; set; }
         public string BackUpVersion { get; set; }
         public string BackUpPersonalName { get; set; }
+        public string UserName { get; set; }
         public string BackUpExplanation { get; set; }
         public string ComputerModel { get; set; }
         public string OperatorSystem { get; set; }
         public string HardDiskInfo { get; set; }
         public string OtomationIP { get; set; }
         public string MachineIP { get; set; }
+        public string PetlasIP { get; set; }
         public string Explanation { get; set; }
         public string DELETEPROP { get; set; }
         public bool HasSave { get; set; }
@@ -188,11 +190,11 @@ namespace EKS.Classes
                 using (SqlCommand cmd = new SqlCommand("INSERT INTO BACKUPANDRECOVERTABLE (BOLGE, MAKINA, [BILGISAYAR LOKASYONU],"
                                                        + "[BACKUP ADI], [BACKUP TARIHI], [BACKUP PROGRAM ADI], [BACKUP TIPI],"
                                                        + "[BACKUP VERSIYONU], [BACKUP ALAN PERSONEL], [BACKUP NEDENI], [BILGISAYAR MODELI],"
-                                                       + "[ISLETIM SISTEMI], [HARDDISK BILGISI], [OTOMASYON IP], [MAKINA IP], ACIKLAMALAR) "
+                                                       + "[ISLETIM SISTEMI], [HARDDISK BILGISI], [OTOMASYON IP], [MAKINA IP], [PETLAS IP], ACIKLAMALAR) "
                                                        + "VALUES('" + Zone + "', '" + Machine + "', '" + ComputerLocation + "', '" + BackUpName + "', "
-                                                       + "CONVERT(Datetime, '" + BackUpDate + "', 104), '" + BackUpProgramName + "', '" + BackUpType + "', '" + BackUpVersion + "', '" + BackUpPersonalName + "', "
+                                                       + "CONVERT(Datetime, '" + BackUpDate + "', 104), '" + BackUpProgramName + "', '" + BackUpType + "', '" + BackUpVersion + "', '" + NameAndLastName() + "', "
                                                        + "'" + BackUpExplanation + "', '" + ComputerModel + "', '" + OperatorSystem + "', '" + HardDiskInfo + "', '" + OtomationIP + "',"
-                                                       + "'" + MachineIP + "', '" + Explanation + "')", conn))
+                                                       + "'" + MachineIP + "', '" + PetlasIP + "', '" + Explanation + "')", conn))
                 {
                     try
                     {
@@ -246,6 +248,24 @@ namespace EKS.Classes
                 using (SqlCommand cmd = new SqlCommand(cmdString, conn))
                 {
 
+                }
+            }
+        }
+
+        public string NameAndLastName()
+        {
+            using (SqlConnection conn = new SqlConnection (conString.FilePath()))
+            {
+                conn.Open();
+                string cmdString = "select * from USERS where USERNAME = '" + UserName + "'";
+                using (SqlCommand cmd = new SqlCommand(cmdString, conn))
+                {
+                    cmd.ExecuteNonQuery();
+                    SqlDataReader dR = cmd.ExecuteReader();
+                    dR.Read();
+                    string name = dR["NAME"].ToString();
+                    string lastName = dR["LASTNAME"].ToString();
+                    return name.TrimEnd() + " " + lastName.TrimEnd();
                 }
             }
         }

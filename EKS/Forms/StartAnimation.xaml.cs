@@ -31,6 +31,7 @@ namespace EKS
             FmuL.ShowDialog();
             VerifyUserEnter = FmuL.VerifyUserEnter;
             UserName = FmuL.UserNameTXTBX.Text;
+
         }
     }
 }

@@ -52,6 +52,7 @@ namespace EKS.Classes
                 UserName = FmsA.UserName;
                 AR.AutUserName = UserName;
                 ReturnUserAut = AR.ReturnAut();
+                MPF.UserName = UserName;
                 MPF.Authority = ReturnUserAut;
                 MPF.Show();
             }

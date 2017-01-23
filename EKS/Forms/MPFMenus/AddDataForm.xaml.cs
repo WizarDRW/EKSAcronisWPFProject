@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows;
 
 namespace EKS.Forms.MPFMenus
@@ -13,12 +14,15 @@ namespace EKS.Forms.MPFMenus
             InitializeComponent();
         }
         Classes.DatabaseProcess DP;
-        
+        License.MachineLicense ML;
+
+        public string UserName { get; set; }
+
         private void AddBTN_Click(object sender, RoutedEventArgs e)
         {
             if (ZoneCMBBX.SelectionBoxItem.ToString() != "" && MachineCMBBX.SelectionBoxItem.ToString() != "" && ComputerLocationCMBBX.SelectionBoxItem.ToString() != "" &&
                 BackUpDateDATE.SelectedDate.ToString() != "" && BackUpProgramNameCMBBX.SelectionBoxItem.ToString() != "" &&
-                BackUpTypeCMBBX.SelectionBoxItem.ToString() != "" && BackUpVersionCMBBX.SelectionBoxItem.ToString() != "" && BackUpParsonalNameTXTBX.Text != "" &&
+                BackUpTypeCMBBX.SelectionBoxItem.ToString() != "" && BackUpVersionCMBBX.SelectionBoxItem.ToString() != "" &&
                 BackUpExplanationCMBBX.SelectionBoxItem.ToString() != "" && ComputerModelCMBBX.SelectionBoxItem.ToString() != "" && OperatorSystemCMBBX.SelectionBoxItem.ToString() != "" &&
                 HardDiskInfoTXTBX.Text != "" && OtomationIPTXTBX.Text != "" && MachineIPTXTBX.Text != "")
             {
@@ -45,8 +49,10 @@ namespace EKS.Forms.MPFMenus
                 DP.HardDiskInfo = HardDiskInfoTXTBX.Text;
                 DP.OtomationIP = OtomationIPTXTBX.Text;
                 DP.MachineIP = MachineIPTXTBX.Text;
+                DP.PetlasIP = PetlasIPTXTBX.Text;
                 DP.Explanation = ExplanationTXTBX.Text;
                 #endregion
+                DP.UserName = UserName;
                 DP.Add();
                 if (DP.HasSave == true)
                 {
@@ -109,5 +115,12 @@ namespace EKS.Forms.MPFMenus
             MachineCMBBX.Items.Add("CIN QUADROPLEX EXTRUDER");
         }
         #endregion
+
+        private void LicanseBTN_Click(object sender, RoutedEventArgs e)
+        {
+            ML = new License.MachineLicense();
+            ML.Owner = Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
+            ML.ShowDialog();
+        }
     }
 }

@@ -14,6 +14,8 @@ namespace EKS.Forms
         {
             InitializeComponent();
         }
+
+        public string UserName { get; set; }
         public string Authority { get; set; }
 
         Classes.InFile IF = new Classes.InFile();
@@ -21,10 +23,15 @@ namespace EKS.Forms
 
         private void WindowLoaded(object sender, RoutedEventArgs e)
         {
-            if (Authority == "ADMIN")
-            {
+            //if (Authority == "ADMIN")
+            //{
+                DatabaseList.Visibility = Visibility.Visible;
+                DatabaseAddMenu.Visibility = Visibility.Visible;
+                DatabaseDeleteMenu.Visibility = Visibility.Visible;
+                DatabaseUpdateMenu.Visibility = Visibility.Visible;
+                DatabaseDataFindMenu.Visibility = Visibility.Visible;
                 DatabaseUserControl.Visibility = Visibility.Visible;
-            }
+            //}
         }
 
         private void DatabaseDeleteMenuClick(object sender, RoutedEventArgs e)
@@ -43,6 +50,7 @@ namespace EKS.Forms
         private void DatabaseAddMenuClick(object sender, RoutedEventArgs e)
         {
             MPFMenus.AddDataForm ad = new MPFMenus.AddDataForm();
+            ad.UserName = UserName;
             ad.Owner = Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
             ad.ShowDialog();
             DatabaseListClick(sender, e);

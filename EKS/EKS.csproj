@@ -94,6 +94,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Forms\MPFMenus\License\MachineLicense.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Forms\MPFMenus\UpdateDataForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -117,6 +121,9 @@
       <DependentUpon>UserSaveMessageBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="Forms\MPFMenus\AddDataForm.xaml.cs" />
+    <Compile Include="Forms\MPFMenus\License\MachineLicense.xaml.cs">
+      <DependentUpon>MachineLicense.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MPFMenus\UpdateDataForm.xaml.cs">
       <DependentUpon>UpdateDataForm.xaml</DependentUpon>
     </Compile>

@@ -5,49 +5,54 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EKS.Forms"
         mc:Ignorable="d"
-        Title="Elektronik Kontrol Sistemleri Yedekleme İş Veri Tabanı" Height="750" Width="1020" Closed="MPFClosed" Loaded="WindowLoaded" Icon="/EKS;component/Resource/logo.ico" WindowState="Maximized" >
+        Title="Elektronik Kontrol Sistemleri Yedekleme İş Veri Tabanı" Height="750" Width="1020" Closed="MPFClosed" Loaded="WindowLoaded" Icon="/EKS;component/Resource/logo.ico" WindowState="Maximized">
     <Grid>
         <Rectangle Fill="#FF4DB6AC" Height="60" Stroke="#FF4DB6AC" VerticalAlignment="Top" Grid.ColumnSpan="4"/>
         <Label x:Name="CompanyNameLBL" Content="Elektronik Kontrol Sistemleri" HorizontalAlignment="Left" Margin="20,4,0,0" VerticalAlignment="Top" Width="332" Foreground="White" FontFamily="Verdana" Grid.ColumnSpan="4"/>
         <Label x:Name="VersionLBL" Content="v1.0.0.0" HorizontalAlignment="Left" Margin="20,29,0,0" VerticalAlignment="Top" Width="332" Foreground="White" FontFamily="Verdana" Grid.ColumnSpan="4"/>
-        <Menu HorizontalAlignment="Left" Background="White" Margin="0,72,0,0" Width="86">
+        <Menu HorizontalAlignment="Left" Background="White" Margin="0,65,0,0" Width="86">
             <Menu.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel />
                 </ItemsPanelTemplate>
             </Menu.ItemsPanel>
-            <MenuItem x:Name="DatabaseList" Click="DatabaseListClick" HorizontalAlignment="Center">
+            <MenuItem x:Name="DatabaseList" Click="DatabaseListClick" HorizontalAlignment="Center" Visibility="Hidden">
                 <MenuItem.Header>
                     <StackPanel>
                         <Image Height="70" Source="/EKS;component/Resource/DataList.png" HorizontalAlignment="Center"/>
+                        <TextBlock HorizontalAlignment="Center" Foreground="#FF4DB6AC" >LISTELE</TextBlock>
                     </StackPanel>
                 </MenuItem.Header>
             </MenuItem>
-            <MenuItem x:Name="DatabaseAddMenu" Click="DatabaseAddMenuClick" HorizontalAlignment="Center">
+            <MenuItem x:Name="DatabaseAddMenu" Click="DatabaseAddMenuClick" HorizontalAlignment="Center" Visibility="Hidden">
                 <MenuItem.Header>
                     <StackPanel>
                         <Image Height="70" Source="/EKS;component/Resource/DataAdd.png" HorizontalAlignment="Center"/>
+                        <TextBlock HorizontalAlignment="Center" Foreground="#FF4DB6AC" >EKLE</TextBlock>
                     </StackPanel>
                 </MenuItem.Header>
             </MenuItem>
-            <MenuItem x:Name="DatabaseDeleteMenu" Click="DatabaseDeleteMenuClick" HorizontalAlignment="Center">
+            <MenuItem x:Name="DatabaseDeleteMenu" Click="DatabaseDeleteMenuClick" HorizontalAlignment="Center" Visibility="Hidden">
                 <MenuItem.Header>
                     <StackPanel>
-                        <Image Width="74" Height="70" Source="/EKS;component/Resource/DataMinus.png" HorizontalAlignment="Center"></Image>
+                        <Image Height="70" Source="/EKS;component/Resource/DataMinus.png" HorizontalAlignment="Center"></Image>
+                        <TextBlock HorizontalAlignment="Center" Foreground="#FFF06292">SİL</TextBlock>
                     </StackPanel>
                 </MenuItem.Header>
             </MenuItem>
-            <MenuItem x:Name="DatabaseUpdateMenu" Click="DatabaseUpdateMenuClick" HorizontalAlignment="Center">
+            <MenuItem x:Name="DatabaseUpdateMenu" Click="DatabaseUpdateMenuClick" HorizontalAlignment="Center" Visibility="Hidden">
                 <MenuItem.Header>
                     <StackPanel>
-                        <Image Width="74" Height="70" Source="/EKS;component/Resource/DataUpdate.png" HorizontalAlignment="Center"></Image>
+                        <Image Height="70" Source="/EKS;component/Resource/DataUpdate.png" HorizontalAlignment="Center"></Image>
+                        <TextBlock HorizontalAlignment="Center" Foreground="#FF4DB6AC" >GÜNCELLE</TextBlock>
                     </StackPanel>
                 </MenuItem.Header>
             </MenuItem>
-            <MenuItem x:Name="DatabaseDataFindMenu" Click="DatabaseFindMenuClick" HorizontalAlignment="Center">
+            <MenuItem x:Name="DatabaseDataFindMenu" Click="DatabaseFindMenuClick" HorizontalAlignment="Center" Visibility="Hidden">
                 <MenuItem.Header>
                     <StackPanel>
-                        <Image Width="75" Height="70" Source="/EKS;component/Resource/DataFind.png" HorizontalAlignment="Center"/>
+                        <Image Height="70" Source="/EKS;component/Resource/DataFind.png" HorizontalAlignment="Center"/>
+                        <TextBlock HorizontalAlignment="Center" Foreground="#FF4DB6AC" >BUL</TextBlock>
                     </StackPanel>
                 </MenuItem.Header>
             </MenuItem>
@@ -61,7 +66,7 @@
         </Menu>
 
 
-        <DataGrid x:Name="MainDataGrid" ItemsSource="{Binding}" Margin="91,65,10,10" HorizontalGridLinesBrush="#FF3E3E3E" VerticalGridLinesBrush="#FF3E3E3E" Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}" Grid.ColumnSpan="4">
+        <DataGrid x:Name="MainDataGrid" ItemsSource="{Binding}" Margin="91,65,10,10" HorizontalGridLinesBrush="#FFD7E4F2" VerticalGridLinesBrush="#FFD7E4F2" Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}" Grid.ColumnSpan="4" Foreground="#FF084BFF">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding ID}" Width="50" Header="ID" Visibility="Hidden"/>
             </DataGrid.Columns>
