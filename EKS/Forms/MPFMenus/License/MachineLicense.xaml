@@ -5,11 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EKS.Forms.MPFMenus.License"
         mc:Ignorable="d"
-        Title="MachineLicense" Height="110" Width="300" WindowStyle="None" WindowStartupLocation="CenterScreen">
-    <Grid>
-        <TextBox x:Name="LicenseTXTBX" HorizontalAlignment="Left" Height="23" Margin="61,18,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215"/>
-        <Label x:Name="LicenseLBL" Content="Lisans:" HorizontalAlignment="Left" Margin="12,16,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="CancelBTN" Content="İptal" HorizontalAlignment="Left" Margin="201,64,0,0" VerticalAlignment="Top" Width="75" Click="CancelBTN_Click"/>
-        <Button x:Name="LicenseAddBTN" Content="Lisans Ekle" HorizontalAlignment="Left" Margin="121,64,0,0" VerticalAlignment="Top" Width="75" Click="LicenseAddBTN_Click"/>
+        Title="MachineLicense" Height="125" Width="400" WindowStyle="None" WindowStartupLocation="CenterScreen">
+    <Grid x:Name="MainGrid">
+        <TextBox x:Name="FilePathTXTBX" HorizontalAlignment="Left" Height="23" Margin="163,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215"/>
+        <Label x:Name="ExplanationLBL" Content="Dosya Adı" HorizontalAlignment="Left" Margin="51,10,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="LicenseLBL" Content="Dosya Yolu" HorizontalAlignment="Left" Margin="234,10,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="CancelBTN" Content="İptal" HorizontalAlignment="Left" Margin="303,82,0,0" VerticalAlignment="Top" Width="75" Click="CancelBTN_Click"/>
+        <Button x:Name="LicenseAddBTN" Content="Ekle" HorizontalAlignment="Left" Margin="223,82,0,0" VerticalAlignment="Top" Width="75" Click="AddBTN_Click"/>
+        <TextBox x:Name="FileNameTXTBX" Margin="22,42,0,0" TextWrapping="Wrap" Text="" Height="23" VerticalAlignment="Top" HorizontalAlignment="Left" Width="120"/>
     </Grid>
 </Window>

@@ -23,15 +23,15 @@ namespace EKS.Forms
 
         private void WindowLoaded(object sender, RoutedEventArgs e)
         {
-            //if (Authority == "ADMIN")
-            //{
+            if (Authority == "ADMIN")
+            {
                 DatabaseList.Visibility = Visibility.Visible;
                 DatabaseAddMenu.Visibility = Visibility.Visible;
                 DatabaseDeleteMenu.Visibility = Visibility.Visible;
                 DatabaseUpdateMenu.Visibility = Visibility.Visible;
                 DatabaseDataFindMenu.Visibility = Visibility.Visible;
                 DatabaseUserControl.Visibility = Visibility.Visible;
-            //}
+            }
         }
 
         private void DatabaseDeleteMenuClick(object sender, RoutedEventArgs e)

@@ -302,4 +302,33 @@ namespace EKS.Classes
             }
         }
     }
+
+    internal class MachineIsThere
+    {
+        public string Zone { get; set; }
+        public string Machine { get; set; }
+        public string CLocation { get; set; }
+        public int HT { get; set; }
+        InFile IF = new InFile();
+        public int IsThere()
+        {
+            using (SqlConnection con = new SqlConnection(IF.FilePath()))
+            {
+                con.Open();
+                using (SqlCommand cmd = new SqlCommand("MachineIsThere", con))
+                {
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@bolge", Zone);
+                    cmd.Parameters.AddWithValue("@makina", Machine);
+                    cmd.Parameters.AddWithValue("@BLokasyon", CLocation);
+                    SqlParameter IsThereParam = new SqlParameter("@LNResult", System.Data.SqlDbType.Int);
+                    IsThereParam.Direction = System.Data.ParameterDirection.Output;
+                    cmd.Parameters.Add(IsThereParam);
+                    cmd.ExecuteNonQuery();
+                    return HT = Convert.ToInt32(IsThereParam.Value);
+                }
+                con.Close();
+            }
+        }
+    }
 }

@@ -156,3 +156,27 @@ ALTER TABLE [dbo].[USERS]  WITH CHECK ADD  CONSTRAINT [_AUT] CHECK  (([AUTHORITY
 GO
 
 ALTER TABLE [dbo].[USERS] CHECK CONSTRAINT [_AUT]
+
+select * from BACKUPANDRECOVERTABLE
+------------------------------------------------------------------------------------------------
+
+Create proc MachineIsThere
+	@bolge varchar (50)=null,
+	@makina varchar (50) = null,
+	@BLokasyon varchar (50)=null,
+	@LNResult int output
+as 	
+	declare @LN int
+	set @LN = (Select Count(BOLGE) from BACKUPANDRECOVERTABLE where BOLGE = @bolge and MAKINA = @makina and [BILGISAYAR LOKASYONU] = @BLokasyon)
+	if(@LN > 0)
+	begin
+		set @LNResult = 1
+	end
+	else
+	begin
+		set @LNResult = 0
+	end
+
+	Select Count(BOLGE) from BACKUPANDRECOVERTABLE where BOLGE = '02 KALENDER' and MAKINA = 'ESKÝ ASTAR KALENDER' and [BILGISAYAR LOKASYONU] = 'PROFIL TARAYICI'
+
+	select * from BACKUPANDRECOVERTABLE
