@@ -20,6 +20,7 @@ namespace EKS.Forms
 
         Classes.InFile IF = new Classes.InFile();
         Classes.DatabaseProcess DP = new Classes.DatabaseProcess();
+        Forms.MPFMenus.UserAuthority UA = new MPFMenus.UserAuthority();
 
         private void WindowLoaded(object sender, RoutedEventArgs e)
         {
@@ -31,6 +32,18 @@ namespace EKS.Forms
                 DatabaseUpdateMenu.Visibility = Visibility.Visible;
                 DatabaseDataFindMenu.Visibility = Visibility.Visible;
                 DatabaseUserControl.Visibility = Visibility.Visible;
+            }
+            else if (Authority == "USER")
+            {
+                DatabaseList.Visibility = Visibility.Visible;
+                DatabaseAddMenu.Visibility = Visibility.Visible;
+                DatabaseDeleteMenu.Visibility = Visibility.Visible;
+                DatabaseUpdateMenu.Visibility = Visibility.Visible;
+                DatabaseDataFindMenu.Visibility = Visibility.Visible;
+            }
+            else if (Authority == "OTHER USER")
+            {
+                DatabaseList.Visibility = Visibility.Visible;
             }
         }
 
@@ -93,7 +106,8 @@ namespace EKS.Forms
 
         private void DatabaseUserControlClick(object sender, RoutedEventArgs e)
         {
-
+            UA.Owner = Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
+            UA.ShowDialog();
         }
     }
 }

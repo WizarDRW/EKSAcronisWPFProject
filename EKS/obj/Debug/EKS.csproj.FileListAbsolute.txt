@@ -132,3 +132,5 @@ C:\Users\EKS_DYurdulu\Desktop\EKSAcronisWPFProject-master\EKSAcronisWPFProject-m
 C:\Users\EKS_DYurdulu\Desktop\EKSAcronisWPFProject-master\EKSAcronisWPFProject-master\EKS\obj\Debug\EKS.Properties.Resources.resources
 C:\Users\EKS_DYurdulu\Desktop\EKSAcronisWPFProject-master\EKSAcronisWPFProject-master\EKS\obj\Debug\EKS.csproj.GenerateResource.Cache
 C:\Users\wizar\Desktop\EKSAcronisWPFProject\EKS\obj\Debug\EKS.csprojResolveAssemblyReference.cache
+C:\Users\wizar\Desktop\EKSAcronisWPFProject\EKS\obj\Debug\Forms\MPFMenus\UserAuthority.g.cs
+C:\Users\wizar\Desktop\EKSAcronisWPFProject\EKS\obj\Debug\Forms\MPFMenus\UserAuthority.baml

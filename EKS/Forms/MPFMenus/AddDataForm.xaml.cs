@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Windows;
 
@@ -16,8 +17,10 @@ namespace EKS.Forms.MPFMenus
         Classes.DatabaseProcess DP;
         Classes.MachineIsThere MIT;
         License.MachineLicense ML;
+        Classes.InFile IF;
 
         public string UserName { get; set; }
+        public int LicenseID { get; set; }
 
         private void AddBTN_Click(object sender, RoutedEventArgs e)
         {
@@ -50,6 +53,14 @@ namespace EKS.Forms.MPFMenus
                 DP.OtomationIP = OtomationIPTXTBX.Text;
                 DP.MachineIP = MachineIPTXTBX.Text;
                 DP.PetlasIP = PetlasIPTXTBX.Text;
+                if (LicanseBTN.IsEnabled == true)
+                {
+                    DP.LicenseID = ML.LicenseID;
+                }
+                else if (LicanseBTN.IsEnabled == false)
+                {
+                    DP.LicenseID = this.LicenseID;
+                }
                 DP.Explanation = ExplanationTXTBX.Text;
                 #endregion
                 DP.UserName = UserName;
@@ -247,7 +258,28 @@ namespace EKS.Forms.MPFMenus
 
         private void ComputerLocationCMBBX_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
+            BackUpDateDATE.SelectedDate = null;
             BackUpDateDATE.IsEnabled = true;
+            if (BackUpDateDATE.SelectedDate == null)
+            {
+                BackUpProgramNameCMBBX.IsEnabled = false;
+                BackUpTypeCMBBX.IsEnabled = false;
+                BackUpVersionCMBBX.IsEnabled = false;
+                BackUpExplanationCMBBX.IsEnabled = false;
+                ComputerModelCMBBX.IsEnabled = false;
+                OperatorSystemCMBBX.IsEnabled = false;
+                HardDiskInfoTXTBX.IsEnabled = false;
+                OtomationIPTXTBX.IsEnabled = false;
+                MachineIPTXTBX.IsEnabled = false;
+                PetlasIPTXTBX.IsEnabled = false;
+                ExplanationTXTBX.IsEnabled = false;
+            }
+
+        }
+
+        private void BackUpDateDATE_SelectedDateChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            IF = new Classes.InFile();
             BackUpProgramNameCMBBX.IsEnabled = true;
             BackUpTypeCMBBX.IsEnabled = true;
             BackUpVersionCMBBX.IsEnabled = true;
@@ -259,10 +291,6 @@ namespace EKS.Forms.MPFMenus
             MachineIPTXTBX.IsEnabled = true;
             PetlasIPTXTBX.IsEnabled = true;
             ExplanationTXTBX.IsEnabled = true;
-        }
-
-        private void BackUpDateDATE_SelectedDateChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {
             MIT = new Classes.MachineIsThere();
             MIT.Zone = ZoneCMBBX.SelectionBoxItem.ToString();
             MIT.Machine = MachineCMBBX.SelectionBoxItem.ToString();
@@ -274,6 +302,17 @@ namespace EKS.Forms.MPFMenus
                     if (MIT.IsThere() > 0)
                     {
                         LicanseBTN.IsEnabled = false;
+                        using (SqlConnection con = new SqlConnection(IF.FilePath()))
+                        {
+                            con.Open();
+                            using (SqlCommand cmd = new SqlCommand("select * from BACKUPANDRECOVERTABLE where BOLGE='" + ZoneCMBBX.SelectionBoxItem.ToString() + "' " +
+                                "and MAKINA='" + MachineCMBBX.SelectionBoxItem.ToString() + "' and [BILGISAYAR LOKASYONU]='" + ComputerLocationCMBBX.SelectionBoxItem.ToString() + "'", con))
+                            {
+                                SqlDataReader dR = cmd.ExecuteReader();
+                                dR.Read();
+                                this.LicenseID = (int)dR["LISANS ID"];
+                            }
+                        }
                     }
                     else
                     {

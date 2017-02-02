@@ -1,0 +1,23 @@
+﻿<Window x:Class="EKS.Forms.MPFMenus.UserAuthority"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EKS.Forms.MPFMenus"
+        mc:Ignorable="d"
+        Title="UserAuthority" Height="120" Width="350" WindowStyle="None" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Button x:Name="SaveBTN" Content="Kaydet" HorizontalAlignment="Left" Margin="187,79,0,0" VerticalAlignment="Top" Width="60" Background="#FF2F5FFF" BorderBrush="#FF2F5FFF" Foreground="White" Click="SaveBTN_Click"/>
+        <Button x:Name="CancelBTN" Content="İptal" HorizontalAlignment="Left" Margin="260,79,0,0" VerticalAlignment="Top" Width="60" Foreground="White" Background="#FF2F5FFF" BorderBrush="#FF2F5FFF" Click="CancelBTN_Click"/>
+        <ComboBox x:Name="UserNamesCMBBX" HorizontalAlignment="Left" Margin="15,40,0,0" VerticalAlignment="Top" Width="150" SelectionChanged="UserNamesCMBBX_SelectionChanged"/>
+        <ComboBox x:Name="AAuthorityCMBBX" HorizontalAlignment="Left" Margin="177,40,0,0" VerticalAlignment="Top" Width="150">
+            <ComboBoxItem x:Name="AUnknownU" Content="BİLİNMEYEN KULLANICI" />
+            <ComboBoxItem x:Name="AOtherU" Content="DİĞER KULLANICI"/>
+            <ComboBoxItem x:Name="AUser" Content="KULLANICI"/>
+            <ComboBoxItem x:Name="AAdmin" Content="YÖNETİCİ"/>
+        </ComboBox>
+        <Label x:Name="UserNamesLBL" Content="Kullanıcılar" HorizontalAlignment="Left" Margin="54,14,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="AuthorityLBL" Content="Yetki" HorizontalAlignment="Left" Margin="236,14,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>

@@ -176,9 +176,11 @@ namespace EKS.Classes
         public string OtomationIP { get; set; }
         public string MachineIP { get; set; }
         public string PetlasIP { get; set; }
+        public int LicenseID { get; set; }
         public string Explanation { get; set; }
         public string DELETEPROP { get; set; }
         public bool HasSave { get; set; }
+        public bool LicenseEnter { get; set; }
         #endregion
 
         #region Processes
@@ -190,11 +192,11 @@ namespace EKS.Classes
                 using (SqlCommand cmd = new SqlCommand("INSERT INTO BACKUPANDRECOVERTABLE (BOLGE, MAKINA, [BILGISAYAR LOKASYONU],"
                                                        + "[BACKUP ADI], [BACKUP TARIHI], [BACKUP PROGRAM ADI], [BACKUP TIPI],"
                                                        + "[BACKUP VERSIYONU], [BACKUP ALAN PERSONEL], [BACKUP NEDENI], [BILGISAYAR MODELI],"
-                                                       + "[ISLETIM SISTEMI], [HARDDISK BILGISI], [OTOMASYON IP], [MAKINA IP], [PETLAS IP], ACIKLAMALAR) "
+                                                       + "[ISLETIM SISTEMI], [HARDDISK BILGISI], [OTOMASYON IP], [MAKINA IP], [PETLAS IP], [LISANS ID], ACIKLAMALAR) "
                                                        + "VALUES('" + Zone + "', '" + Machine + "', '" + ComputerLocation + "', '" + BackUpName + "', "
                                                        + "CONVERT(Datetime, '" + BackUpDate + "', 104), '" + BackUpProgramName + "', '" + BackUpType + "', '" + BackUpVersion + "', '" + NameAndLastName() + "', "
                                                        + "'" + BackUpExplanation + "', '" + ComputerModel + "', '" + OperatorSystem + "', '" + HardDiskInfo + "', '" + OtomationIP + "',"
-                                                       + "'" + MachineIP + "', '" + PetlasIP + "', '" + Explanation + "')", conn))
+                                                       + "'" + MachineIP + "', '" + PetlasIP + "', '" + LicenseID + "' ,'" + Explanation + "')", conn))
                 {
                     try
                     {

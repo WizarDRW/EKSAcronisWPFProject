@@ -102,6 +102,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Forms\MPFMenus\UserAuthority.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Forms\StartAnimation.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -126,6 +130,9 @@
     </Compile>
     <Compile Include="Forms\MPFMenus\UpdateDataForm.xaml.cs">
       <DependentUpon>UpdateDataForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MPFMenus\UserAuthority.xaml.cs">
+      <DependentUpon>UserAuthority.xaml</DependentUpon>
     </Compile>
     <Compile Include="Forms\StartAnimation.xaml.cs">
       <DependentUpon>StartAnimation.xaml</DependentUpon>

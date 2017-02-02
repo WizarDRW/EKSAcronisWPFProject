@@ -116,6 +116,7 @@ CREATE TABLE [dbo].[BACKUPANDRECOVERTABLE](
 	[OTOMASYON IP] [nvarchar](15) NOT NULL,
 	[MAKINA IP] [nvarchar](15) NOT NULL,
 	[PETLAS IP] [nvarchar](15) NULL,
+	[LISANS ID] [int] NOT NULL,
 	[ACIKLAMALAR] [nvarchar](max) NULL,
  CONSTRAINT [PK_BACKUPANDRECOVERTABLE] PRIMARY KEY CLUSTERED 
 (
@@ -180,3 +181,12 @@ as
 	Select Count(BOLGE) from BACKUPANDRECOVERTABLE where BOLGE = '02 KALENDER' and MAKINA = 'ESKÝ ASTAR KALENDER' and [BILGISAYAR LOKASYONU] = 'PROFIL TARAYICI'
 
 	select * from BACKUPANDRECOVERTABLE
+
+
+	--------------------------------------------------------------------------------------------------
+
+	Create Table LICENSE(
+		[LICANSE ID] [int] primary key NOT NULL,
+		[DOSYA ADI] [nvarchar](50) NOT NULL,
+		[DOSYA YOLU] [nvarchar](max) NOT NULL
+	)
