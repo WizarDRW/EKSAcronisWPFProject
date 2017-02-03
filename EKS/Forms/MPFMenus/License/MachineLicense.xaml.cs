@@ -58,6 +58,7 @@ namespace EKS.Forms.MPFMenus.License
             {
                 MessageBox.Show("Boş Bırakılamaz!", "Uyarı!", MessageBoxButton.OK, MessageBoxImage.Information);
             }
+            this.Close();
         }
     }
 }
