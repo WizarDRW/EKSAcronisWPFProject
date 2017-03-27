@@ -3,34 +3,18 @@ using System.Data.SqlClient;
 using EKS.Forms.UserLoginForms;
 using System.Windows;
 using System.IO;
+using System.Data.Entity;
+using System.Collections.Generic;
+using EKS.Database_Tools;
+using System.Linq;
+using System.Windows.Documents;
 
 namespace EKS.Classes
 {
-    interface ILawWrite
+    public class UsersDatabaseConnection : UserSignUpForm
     {
-        string Name { get; set; }
-        string LastName { get; set; }
-        string UserName { get; set; }
-        string Password { get; set; }
-        void UsersSignUpSQLTables();
-        void UsersSignInSQLTables();
-    }
-
-    struct InFile
-    {
-        public string _filepath { get; set; }
-        public string FileDataTXT { get; set; }
-        public string FilePath()
-        {
-            _filepath = @"ConnString.txt";
-            FileStream FS = new FileStream(_filepath, FileMode.Open, FileAccess.Read);
-            StreamReader sw = new StreamReader(FS);
-            return FileDataTXT = sw.ReadLine();
-        }
-    }   //txt dosyasi cekimi struct
-
-    public class UsersDatabaseConnection : UserSignUpForm, ILawWrite
-    {
+        EksDBEntities Entity = new EksDBEntities();
+        USERS User = new USERS();
         #region Property
         public string Name { get; set; }
         public string LastName { get; set; }
@@ -43,109 +27,70 @@ namespace EKS.Classes
         public int HasDataUserName { get; set; }
         public int HasDataUserNameandPassword { get; set; }
         public int HasDataAut { get; set; }
+        public EksDBEntities EntityProp { get => Entity; set => Entity = value; }
+        public USERS UserProp { get => User; set => User = value; }
         #endregion
-
-        InFile IF = new Classes.InFile();
 
         #region User Create Control
         public void UsersSignUpSQLTables()
         {
-            SqlConnection con = new SqlConnection(IF.FilePath());
-            con.Open();
-            using (SqlCommand cmd = new SqlCommand("ULNReg", con))
+            var namelast = EntityProp.USERS.FirstOrDefault(t => t.NAME == Name && t.LASTNAME == LastName);
+            var username = EntityProp.USERS.FirstOrDefault(t => (t.USERNAME == UserName));
+            if (namelast != null)
             {
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@name", Name);
-                cmd.Parameters.AddWithValue("@lastname", LastName);
-                cmd.Parameters.AddWithValue("@username", UserName);
-                SqlParameter NameandLastNameParam = new SqlParameter("@LNResult", System.Data.SqlDbType.Int);
-                SqlParameter UserNameParam = new SqlParameter("@UResult", System.Data.SqlDbType.Int);
-                NameandLastNameParam.Direction = System.Data.ParameterDirection.Output;
-                UserNameParam.Direction = System.Data.ParameterDirection.Output;
-                cmd.Parameters.Add(NameandLastNameParam);
-                cmd.Parameters.Add(UserNameParam);
-                cmd.ExecuteNonQuery();
-                HasDataNameLastName = Convert.ToInt32(NameandLastNameParam.Value);
-                HasDataUserName = Convert.ToInt32(UserNameParam.Value);
+                MessageBox.Show(Name + ' ' + LastName + "\nKisi Zaten Mevcut", "Bilgi",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
             }
-
-            if (HasDataNameLastName > 0)
+            else if (username != null)
             {
-                MessageBox.Show(Name + ' ' + LastName + "\nKullanici Zaten Mevcut", "Bilgi", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            else if (HasDataUserName > 0)
-            {
-                MessageBox.Show(UserName + "\nBu Kullanici Adi Zaten Mevcut.", "Bilgi", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(UserName + "\nBu Kullanici Adi Zaten Mevcut.", "Bilgi",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
-                #region CreateUsers
-                try
-                {
-                    AdminProcVerify();
-                    string cmdString;
-                    if (HasDataAut >= 1)
-                    {
-                        cmdString = "insert into USERS(NAME, LASTNAME, USERNAME, PASSWORD) values(@Name, @LastName,@UserName, @Password)";
-                    }
-                    else
-                    {
-                        cmdString = "insert into USERS(NAME, LASTNAME, USERNAME, PASSWORD, AUTHORITY) values(@Name, @LastName,@UserName, @Password, 'ADMIN')";
-                    }
-                    SqlCommand cmd = new SqlCommand(cmdString, con);
-                    cmd.Parameters.AddWithValue("@Name", this.Name);
-                    cmd.Parameters.AddWithValue("@LastName", this.LastName);
-                    cmd.Parameters.AddWithValue("@UserName", this.UserName);
-                    cmd.Parameters.AddWithValue("@Password", this.Password);
-                    cmd.ExecuteNonQuery();
-                    VerifyTableEntered = true;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString());
-                }
-                #endregion
-            }
-            con.Close();
+                AdminProcVerify();
 
+                if (HasDataAut >= 1)
+                {
+                    UserProp.NAME = Name;
+                    UserProp.LASTNAME = LastName;
+                    UserProp.USERNAME = UserName;
+                    UserProp.PASSWORD = Password;
+                    UserProp.AUTHORITY = "UNKNOWN USER";
+                    Entity.USERS.Add(UserProp);
+                    EntityProp.SaveChanges();
+                }
+                else
+                {
+                    UserProp.NAME = Name;
+                    UserProp.LASTNAME = LastName;
+                    UserProp.USERNAME = UserName;
+                    UserProp.PASSWORD = Password;
+                    UserProp.AUTHORITY = "ADMIN";
+                    Entity.USERS.Add(UserProp);
+                    EntityProp.SaveChanges();
+                }
+                VerifyTableEntered = true;
+            }
         }
         #endregion
 
         #region User Enter Verify
         public void UsersSignInSQLTables()
         {
-            using (SqlConnection con = new SqlConnection(IF.FilePath()))
-            {
-                con.Open();
-                using (SqlCommand cmd = new SqlCommand("ULNVerify", con))
-                {
-                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@username", UserNameVerify);
-                    cmd.Parameters.AddWithValue("@password", PasswordVerify);
-                    SqlParameter param = new SqlParameter("@UResult", System.Data.SqlDbType.Int);
-                    param.Direction = System.Data.ParameterDirection.Output;
-                    cmd.Parameters.Add(param);
-                    cmd.ExecuteNonQuery();
-                    HasDataUserNameandPassword = Convert.ToInt32(param.Value);
-                }
-            }
+            var username = EntityProp.USERS.FirstOrDefault(t => (t.USERNAME == UserNameVerify && t.PASSWORD == PasswordVerify));
+            if (username != null)
+                HasDataUserNameandPassword = 1;
+            else
+                MessageBox.Show("Kullanici Adi veya Sifre Hatali.", "Hatali Giris", MessageBoxButton.OK, MessageBoxImage.Hand);
         }
         #endregion
 
         public void AdminProcVerify()
         {
-            SqlConnection con = new SqlConnection(IF.FilePath());
-            con.Open();
-            using (SqlCommand cmd = new SqlCommand("AVerify", con))
-            {
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                SqlParameter AuthorityProcParam = new SqlParameter("@Aut", System.Data.SqlDbType.Int);
-                AuthorityProcParam.Direction = System.Data.ParameterDirection.Output;
-                cmd.Parameters.Add(AuthorityProcParam);
-                cmd.ExecuteNonQuery();
-                HasDataAut = Convert.ToInt32(AuthorityProcParam.Value);
-            }
-            con.Close();
+            var aut = EntityProp.USERS.FirstOrDefault(t => (t.AUTHORITY == "ADMIN"));
+            if (aut != null)
+                HasDataAut = 1;
         }
     }   //Database Dogrulamalar
 
@@ -156,12 +101,15 @@ namespace EKS.Classes
             Classes.MemoryControl MC = new MemoryControl();
             MC.MemoryStart();
         }
-        InFile conString = new InFile();
+
+        EksDBEntities Entity = new EksDBEntities();
+        BACKUPANDRECOVERTABLE BackupTable = new BACKUPANDRECOVERTABLE();
 
         #region Properties
         public string Zone { get; set; }
         public string Machine { get; set; }
         public string ComputerLocation { get; set; }
+        public string BackUpAddInfo { get; set; }
         public string BackUpName { get; set; }
         public string BackUpDate { get; set; }
         public string BackUpProgramName { get; set; }
@@ -178,98 +126,73 @@ namespace EKS.Classes
         public string PetlasIP { get; set; }
         public int LicenseID { get; set; }
         public string Explanation { get; set; }
-        public string DELETEPROP { get; set; }
         public bool HasSave { get; set; }
+        public string LicenseAddPath { get; set; }
         public bool LicenseEnter { get; set; }
+        public EksDBEntities EntityProp { get => Entity; set => Entity = value; }
+        public BACKUPANDRECOVERTABLE BackupTableProp { get => BackupTable; set => BackupTable = value; }
         #endregion
 
         #region Processes
         public void Add()
         {
-            using (SqlConnection conn = new SqlConnection(conString.FilePath()))
-            {
-                conn.Open();
-                using (SqlCommand cmd = new SqlCommand("INSERT INTO BACKUPANDRECOVERTABLE (BOLGE, MAKINA, [BILGISAYAR LOKASYONU],"
-                                                       + "[BACKUP ADI], [BACKUP TARIHI], [BACKUP PROGRAM ADI], [BACKUP TIPI],"
-                                                       + "[BACKUP VERSIYONU], [BACKUP ALAN PERSONEL], [BACKUP NEDENI], [BILGISAYAR MODELI],"
-                                                       + "[ISLETIM SISTEMI], [HARDDISK BILGISI], [OTOMASYON IP], [MAKINA IP], [PETLAS IP], [LISANS ID], ACIKLAMALAR) "
-                                                       + "VALUES('" + Zone + "', '" + Machine + "', '" + ComputerLocation + "', '" + BackUpName + "', "
-                                                       + "CONVERT(Datetime, '" + BackUpDate + "', 104), '" + BackUpProgramName + "', '" + BackUpType + "', '" + BackUpVersion + "', '" + NameAndLastName() + "', "
-                                                       + "'" + BackUpExplanation + "', '" + ComputerModel + "', '" + OperatorSystem + "', '" + HardDiskInfo + "', '" + OtomationIP + "',"
-                                                       + "'" + MachineIP + "', '" + PetlasIP + "', '" + LicenseID + "' ,'" + Explanation + "')", conn))
-                {
-                    try
-                    {
-                        cmd.ExecuteNonQuery();
-                        HasSave = true;
-                    }
-                    catch (Exception ex)
-                    {
-                        HasSave = false;
-                        MessageBox.Show(ex.ToString(), "Hata", MessageBoxButton.OK, MessageBoxImage.Error);
-                    }
+            BackUpPersonalName = NameAndLastName();
 
-                }
-                conn.Close();
+            BackupTableProp.BOLGE = Zone;
+            BackupTableProp.MAKINA = Machine;
+            BackupTableProp.BILGISAYAR_LOKASYONU = ComputerLocation;
+            BackupTableProp.BACKUP_ADI = BackUpName;
+            BackupTableProp.BACKUP_TARIHI = DateTime.Parse(BackUpDate);
+            BackupTableProp.KAYIT_TARIHI = DateTime.Now;
+            BackupTableProp.BACKUP_PROGRAM_ADI = BackUpProgramName;
+            BackupTableProp.BACKUP_TIPI = BackUpType;
+            BackupTableProp.BACKUP_VERSIYONU = BackUpVersion;
+            BackupTableProp.BACKUP_ALAN_PERSONEL = BackUpPersonalName;
+            BackupTableProp.BACKUP_NEDENI = BackUpExplanation;
+            BackupTableProp.BILGISAYAR_MODELI = ComputerModel;
+            BackupTableProp.ISLETIM_SISTEMI = OperatorSystem;
+            BackupTableProp.HARDDISK_BILGISI = HardDiskInfo;
+            BackupTableProp.OTOMASYON_IP = OtomationIP;
+            BackupTableProp.MAKINA_IP = MachineIP;
+            BackupTableProp.PETLAS_IP = PetlasIP;
+            BackupTableProp.LISANS_DOSYASI = LicenseAddPath;
+            BackupTableProp.ACIKLAMALAR = Explanation;
+            try
+            {
+                EntityProp.BACKUPANDRECOVERTABLE.Add(BackupTableProp);
+                EntityProp.SaveChanges();
+                HasSave = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
             }
         }
 
-        public void Delete()
+        public void Delete(int DELETEPROP)
         {
-            using (SqlConnection conn = new SqlConnection(conString.FilePath()))
+            if (DELETEPROP != null)
             {
-                conn.Open();
-                string cmdString = "Delete from BACKUPANDRECOVERTABLE where ID = " + DELETEPROP;
-                using (SqlCommand cmd = new SqlCommand(cmdString, conn))
-                {
-                    cmd.ExecuteNonQuery();
-                }
-                conn.Close();
+                var selectedID = EntityProp.BACKUPANDRECOVERTABLE.Where(t => t.ID == DELETEPROP).FirstOrDefault();
+                EntityProp.BACKUPANDRECOVERTABLE.Remove(selectedID);
+                EntityProp.SaveChanges();
             }
         }
 
         public void Update()
         {
-            using (SqlConnection conn = new SqlConnection(conString.FilePath()))
-            {
-                conn.Open();
-                string cmdString = "";
-                using (SqlCommand cmd = new SqlCommand(cmdString, conn))
-                {
 
-                }
-            }
         }
 
         public void Find()
         {
-            using (SqlConnection conn = new SqlConnection(conString.FilePath()))
-            {
-                conn.Open();
-                string cmdString = "";
-                using (SqlCommand cmd = new SqlCommand(cmdString, conn))
-                {
 
-                }
-            }
         }
 
         public string NameAndLastName()
         {
-            using (SqlConnection conn = new SqlConnection (conString.FilePath()))
-            {
-                conn.Open();
-                string cmdString = "select * from USERS where USERNAME = '" + UserName + "'";
-                using (SqlCommand cmd = new SqlCommand(cmdString, conn))
-                {
-                    cmd.ExecuteNonQuery();
-                    SqlDataReader dR = cmd.ExecuteReader();
-                    dR.Read();
-                    string name = dR["NAME"].ToString();
-                    string lastName = dR["LASTNAME"].ToString();
-                    return name.TrimEnd() + " " + lastName.TrimEnd();
-                }
-            }
+            var namelastname = EntityProp.USERS.FirstOrDefault(t => t.USERNAME == UserName);
+            return namelastname.NAME.TrimEnd() + ' ' + namelastname.LASTNAME.TrimEnd();
         }
         #endregion
 
@@ -277,60 +200,48 @@ namespace EKS.Classes
 
     internal class Authority
     {
+        EksDBEntities Entity = new EksDBEntities();
         public string Aut { get; set; }
-        InFile IF = new InFile();
-
+        public EksDBEntities EntityProp { get => Entity; set => Entity = value; }
+        public USERS user { get => user; set => user = value; }
 
 
         public string AutMethod(String AutUserName)
         {
-            using (SqlConnection con = new SqlConnection(IF.FilePath()))
+            var vautUserName = EntityProp.USERS.FirstOrDefault(t => t.USERNAME == AutUserName);
+            if (vautUserName.AUTHORITY != null)
             {
-                con.Open();
-                using (SqlCommand cmd = new SqlCommand("Select * from USERS where USERNAME = '" + AutUserName + "'", con))
-                {
-                    cmd.ExecuteNonQuery();
-                    SqlDataReader dr = cmd.ExecuteReader();
-                    if (dr.Read())
-                    {
-                        return dr["AUTHORITY"].ToString();
-                    }
-                    else
-                    {
-                        return null;
-                    }
-                }
-                con.Close();
+                return vautUserName.AUTHORITY.ToString();
+            }
+            else
+            {
+                return null;
             }
         }
-    }
+    }   //Kullanıcı Doğrulama
 
     internal class MachineIsThere
     {
+        EksDBEntities Entity = new EksDBEntities();
         public string Zone { get; set; }
         public string Machine { get; set; }
         public string CLocation { get; set; }
         public int HT { get; set; }
-        InFile IF = new InFile();
+        public EksDBEntities EntityProp { get => Entity; set => Entity = value; }
+
         public int IsThere()
         {
-            using (SqlConnection con = new SqlConnection(IF.FilePath()))
+
+            var MachineIsThere = EntityProp.BACKUPANDRECOVERTABLE.FirstOrDefault(t=>t.BOLGE == Zone &&
+            t.MAKINA == Machine && t.BILGISAYAR_LOKASYONU == CLocation);
+            if (MachineIsThere != null)
             {
-                con.Open();
-                using (SqlCommand cmd = new SqlCommand("MachineIsThere", con))
-                {
-                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@bolge", Zone);
-                    cmd.Parameters.AddWithValue("@makina", Machine);
-                    cmd.Parameters.AddWithValue("@BLokasyon", CLocation);
-                    SqlParameter IsThereParam = new SqlParameter("@LNResult", System.Data.SqlDbType.Int);
-                    IsThereParam.Direction = System.Data.ParameterDirection.Output;
-                    cmd.Parameters.Add(IsThereParam);
-                    cmd.ExecuteNonQuery();
-                    return HT = Convert.ToInt32(IsThereParam.Value);
-                }
-                con.Close();
+                return HT = 1;
+            }
+            else
+            {
+                return HT = 0;
             }
         }
-    }
+    }   //Makinenin Olup olmadığı Stored Procedure
 }

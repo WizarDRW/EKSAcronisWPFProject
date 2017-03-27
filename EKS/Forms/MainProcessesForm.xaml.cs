@@ -2,6 +2,12 @@
 using System.Data.SqlClient;
 using System.Data;
 using System.Linq;
+using EKS.Database_Tools;
+using System.Windows.Data;
+using System.Collections;
+using System.Windows.Controls;
+using System;
+using System.Collections.Generic;
 
 namespace EKS.Forms
 {
@@ -14,13 +20,15 @@ namespace EKS.Forms
         {
             InitializeComponent();
         }
-
+        EksDBEntities Entity = new EksDBEntities();
+        BACKUPANDRECOVERTABLE bc = new BACKUPANDRECOVERTABLE();
         public string UserName { get; set; }
         public string Authority { get; set; }
+        public EksDBEntities EntityProp { get => Entity; set => Entity = value; }
+        public BACKUPANDRECOVERTABLE Bc { get => bc; set => bc = value; }
 
-        Classes.InFile IF = new Classes.InFile();
         Classes.DatabaseProcess DP = new Classes.DatabaseProcess();
-        Forms.MPFMenus.UserAuthority UA = new MPFMenus.UserAuthority();
+        Forms.MPFMenus.UserAuthority _instance = MPFMenus.UserAuthority.Instance;
 
         private void WindowLoaded(object sender, RoutedEventArgs e)
         {
@@ -46,16 +54,28 @@ namespace EKS.Forms
                 DatabaseList.Visibility = Visibility.Visible;
             }
         }
-
+        DataTable dT = new DataTable();
         private void DatabaseDeleteMenuClick(object sender, RoutedEventArgs e)
         {
             if (MessageBox.Show("Silmek Istediğnize Emin misiniz?", "Emin misiniz?", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
-                DataRowView DRV = (DataRowView)MainDataGrid.SelectedItem;
-                int index = MainDataGrid.CurrentCell.Column.DisplayIndex;
-                string cellID = DRV.Row.ItemArray[0].ToString();
-                DP.DELETEPROP = cellID;
-                DP.Delete();
+                if (MainDataGrid.SelectedIndex >= 0)
+                {
+                    if (MainDataGrid.SelectedItems[0] == null)
+                    {
+                        MessageBox.Show("Dosya Bos", "Bilgi", MessageBoxButton.OK, MessageBoxImage.None);
+                    }
+                    else
+                    {
+                        BACKUPANDRECOVERTABLE deleteItem = MainDataGrid.SelectedItems[0] as BACKUPANDRECOVERTABLE;
+                        DP.Delete(deleteItem.ID);
+                        Entity.SaveChanges();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lutfen Satir Secin", "Bilgi.", MessageBoxButton.OK, MessageBoxImage.Hand);
+                }
                 DatabaseListClick(sender, e);
             }
         }
@@ -71,7 +91,8 @@ namespace EKS.Forms
 
         private void DatabaseUpdateMenuClick(object sender, RoutedEventArgs e)
         {
-            MPFMenus.UpdateDataForm UDF = new MPFMenus.UpdateDataForm();
+            BACKUPANDRECOVERTABLE UpdateSData = MainDataGrid.SelectedItems[0] as BACKUPANDRECOVERTABLE;
+            MPFMenus.UpdateDataForm UDF = new MPFMenus.UpdateDataForm() { UpdateSelectedData = UpdateSData };
             UDF.Owner = Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
             UDF.ShowDialog();
             DatabaseListClick(sender, e);
@@ -89,25 +110,13 @@ namespace EKS.Forms
 
         private void DatabaseListClick(object sender, RoutedEventArgs e)
         {
-            string ListString = "select * from BACKUPANDRECOVERTABLE";
-            using (SqlConnection con = new SqlConnection(IF.FilePath()))
-            using (SqlCommand cmd = new SqlCommand(ListString, con))
-            {
-                con.Open();
-                using (SqlDataAdapter dA = new SqlDataAdapter(cmd))
-                {
-                    DataTable dt = new DataTable();
-                    dA.Fill(dt);
-                    MainDataGrid.ItemsSource = dt.DefaultView;
-                }
-                con.Close();
-            }
+            MainDataGrid.ItemsSource = EntityProp.BACKUPANDRECOVERTABLE.ToList();
         }
 
         private void DatabaseUserControlClick(object sender, RoutedEventArgs e)
         {
-            UA.Owner = Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
-            UA.ShowDialog();
+            _instance.Owner = Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
+            _instance.ShowDialog();
         }
     }
 }

@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EksDatabaseEntitiesStoreContainer" CdmEntityContainer="EksDBEntities">
+    <EntitySetMapping Name="BACKUPANDRECOVERTABLE">
+      <EntityTypeMapping TypeName="EksDatabaseEntities.BACKUPANDRECOVERTABLE">
+        <MappingFragment StoreEntitySet="BACKUPANDRECOVERTABLE">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="BOLGE" ColumnName="BOLGE" />
+          <ScalarProperty Name="MAKINA" ColumnName="MAKINA" />
+          <ScalarProperty Name="BILGISAYAR_LOKASYONU" ColumnName="BILGISAYAR LOKASYONU" />
+          <ScalarProperty Name="BACKUP_ADI" ColumnName="BACKUP ADI" />
+          <ScalarProperty Name="BACKUP_TARIHI" ColumnName="BACKUP TARIHI" />
+          <ScalarProperty Name="BACKUP_PROGRAM_ADI" ColumnName="BACKUP PROGRAM ADI" />
+          <ScalarProperty Name="BACKUP_TIPI" ColumnName="BACKUP TIPI" />
+          <ScalarProperty Name="BACKUP_VERSIYONU" ColumnName="BACKUP VERSIYONU" />
+          <ScalarProperty Name="KAYIT_TARIHI" ColumnName="KAYIT TARIHI" />
+          <ScalarProperty Name="BACKUP_ALAN_PERSONEL" ColumnName="BACKUP ALAN PERSONEL" />
+          <ScalarProperty Name="BACKUP_NEDENI" ColumnName="BACKUP NEDENI" />
+          <ScalarProperty Name="BILGISAYAR_MODELI" ColumnName="BILGISAYAR MODELI" />
+          <ScalarProperty Name="ISLETIM_SISTEMI" ColumnName="ISLETIM SISTEMI" />
+          <ScalarProperty Name="HARDDISK_BILGISI" ColumnName="HARDDISK BILGISI" />
+          <ScalarProperty Name="OTOMASYON_IP" ColumnName="OTOMASYON IP" />
+          <ScalarProperty Name="MAKINA_IP" ColumnName="MAKINA IP" />
+          <ScalarProperty Name="PETLAS_IP" ColumnName="PETLAS IP" />
+          <ScalarProperty Name="LISANS_ID" ColumnName="LISANS ID" />
+          <ScalarProperty Name="ACIKLAMALAR" ColumnName="ACIKLAMALAR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LICENSE">
+      <EntityTypeMapping TypeName="EksDatabaseEntities.LICENSE">
+        <MappingFragment StoreEntitySet="LICENSE">
+          <ScalarProperty Name="LISANS_ID" ColumnName="LISANS ID" />
+          <ScalarProperty Name="DOSYA_YOLU" ColumnName="DOSYA YOLU" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USERS">
+      <EntityTypeMapping TypeName="EksDatabaseEntities.USERS">
+        <MappingFragment StoreEntitySet="USERS">
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="LASTNAME" ColumnName="LASTNAME" />
+          <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="AUTHORITY" ColumnName="AUTHORITY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EKSDatabaseBackUpModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BACKUPANDRECOVERTABLE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BOLGE" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MAKINA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BILGISAYAR_LOKASYONU" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BACKUP_ADI" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BACKUP_TARIHI" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="BACKUP_PROGRAM_ADI" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BACKUP_TIPI" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="BACKUP_VERSIYONU" Type="String" MaxLength="5" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="KAYIT_TARIHI" Type="DateTime" Precision="3" />
+    <Property Name="BACKUP_ALAN_PERSONEL" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BACKUP_NEDENI" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BILGISAYAR_MODELI" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ISLETIM_SISTEMI" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="HARDDISK_BILGISI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="OTOMASYON_IP" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MAKINA_IP" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PETLAS_IP" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="LISANS_ID" Type="Int32" Nullable="false" />
+    <Property Name="ACIKLAMALAR" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="LICENSE" Relationship="Self.FK_BACKUPANDRECOVERTABLE_LICENSE" FromRole="BACKUPANDRECOVERTABLE" ToRole="LICENSE" />
+  </EntityType>
+  <EntityType Name="LICENSE">
+    <Key>
+      <PropertyRef Name="LISANS_ID" />
+    </Key>
+    <Property Name="LISANS_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DOSYA_YOLU" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="BACKUPANDRECOVERTABLE" Relationship="Self.FK_BACKUPANDRECOVERTABLE_LICENSE" FromRole="LICENSE" ToRole="BACKUPANDRECOVERTABLE" />
+  </EntityType>
+  <EntityType Name="USERS">
+    <Key>
+      <PropertyRef Name="USERID" />
+    </Key>
+    <Property Name="USERID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NAME" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="LASTNAME" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="USERNAME" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AUTHORITY" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_BACKUPANDRECOVERTABLE_LICENSE">
+    <End Role="LICENSE" Type="Self.LICENSE" Multiplicity="1" />
+    <End Role="BACKUPANDRECOVERTABLE" Type="Self.BACKUPANDRECOVERTABLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LICENSE">
+        <PropertyRef Name="LISANS_ID" />
+      </Principal>
+      <Dependent Role="BACKUPANDRECOVERTABLE">
+        <PropertyRef Name="LISANS_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EKSDatabaseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BACKUPANDRECOVERTABLE" EntityType="Self.BACKUPANDRECOVERTABLE" />
+    <EntitySet Name="LICENSE" EntityType="Self.LICENSE" />
+    <EntitySet Name="USERS" EntityType="Self.USERS" />
+    <AssociationSet Name="FK_BACKUPANDRECOVERTABLE_LICENSE" Association="Self.FK_BACKUPANDRECOVERTABLE_LICENSE">
+      <End Role="LICENSE" EntitySet="LICENSE" />
+      <End Role="BACKUPANDRECOVERTABLE" EntitySet="BACKUPANDRECOVERTABLE" />
+    </AssociationSet>
+    <FunctionImport Name="AVerify">
+      <Parameter Name="Aut" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="MachineIsThere">
+      <Parameter Name="bolge" Mode="In" Type="String" />
+      <Parameter Name="makina" Mode="In" Type="String" />
+      <Parameter Name="BLokasyon" Mode="In" Type="String" />
+      <Parameter Name="LNResult" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ULNReg">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="lastname" Mode="In" Type="String" />
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="LNResult" Mode="InOut" Type="Int32" />
+      <Parameter Name="UResult" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ULNVerify">
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+      <Parameter Name="UResult" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="FunctionULNReg">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="lastname" Mode="In" Type="String" />
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="LNResult" Mode="InOut" Type="Int32" />
+      <Parameter Name="UResult" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+</Schema>

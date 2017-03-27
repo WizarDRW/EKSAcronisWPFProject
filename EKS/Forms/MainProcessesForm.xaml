@@ -66,9 +66,33 @@
         </Menu>
 
 
-        <DataGrid x:Name="MainDataGrid" ItemsSource="{Binding}" Margin="91,65,10,10" HorizontalGridLinesBrush="#FFD7E4F2" VerticalGridLinesBrush="#FFD7E4F2" Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}" Grid.ColumnSpan="4" Foreground="#FF084BFF">
+        <DataGrid x:Name="MainDataGrid" Margin="91,65,10,10" 
+                  HorizontalGridLinesBrush="#FFD7E4F2" VerticalGridLinesBrush="#FFD7E4F2" 
+                  Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}" 
+                  Grid.ColumnSpan="4" Foreground="#FF084BFF" DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                  ItemsSource="{Binding}"
+                  AutoGenerateColumns="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding ID}" Width="50" Header="ID" Visibility="Hidden"/>
+                <!--<DataGridTextColumn x:Name="IDItem" Binding="{Binding Path=ID}" Width="auto" Header="ID" Visibility="Visible"/>
+                <DataGridTextColumn x:Name="ZoneItem" Binding="{Binding Path=BOLGE}" Width="auto" Header="BOLGE" Visibility="Visible"/>
+                <DataGridTextColumn x:Name="MachineItem" Binding="{Binding Path=MAKINA}" Width="auto" Header="MAKINA" Visibility="Visible"/>
+                <DataGridTextColumn x:Name="CLItem" Binding="{Binding Path=BILGISAYAR_LOKASYONU}" Width="auto" Header="BILGISAYAR LOKASYONU" Visibility="Visible"/>
+                <DataGridTextColumn x:Name="BackupNameItem" Binding="{Binding Path=BACKUP_ADI}" Width="auto" Header="BACKUP ADI" Visibility="Visible"/>
+                <DataGridTextColumn x:Name="BackupDateItem" Binding="{Binding Path=BACKUP_TARIHI}" Width="auto" Header="BACKUP TARIHI" Visibility="Visible"/>
+                <DataGridTextColumn x:Name="BackupProgramNameItem" Binding="{Binding Path=BACKUP_PROGRAM_ADI}" Width="auto" Header="BACKUP PROGRAM ADI" Visibility="Visible"/>
+                <DataGridTextColumn x:Name="BackupTypeItem" Binding="{Binding Path=BACKUP_TIPI}" Width="auto" Header="BACKUP TIPI" Visibility="Visible"/>
+                <DataGridTextColumn x:Name="BackupVersionItem" Binding="{Binding Path=BACKUP_VERSIYONU}" Width="auto" Header="BACKUP VERSIYONU" Visibility="Visible"/>
+                <DataGridTextColumn x:Name="SaveDateItem" Binding="{Binding Path=KAYIT_TARIHI}" Width="auto" Header="KAYIT TARIHI" Visibility="Visible"/>
+                <DataGridTextColumn x:Name="BackupPersonalNameItem" Binding="{Binding Path=BACKUP_ALAN_PERSONEL}" Width="auto" Header="BACKUP ALAN PERSONEL" Visibility="Visible"/>
+                <DataGridTextColumn x:Name="BackupExItem" Binding="{Binding Path=BACKUP_NEDENI}" Width="auto" Header="BACKUP NEDENI" Visibility="Visible"/>
+                <DataGridTextColumn x:Name="ComModelItem" Binding="{Binding Path=BILGISAYAR_MODELI}" Width="auto" Header="BILGISAYAR MODELI" Visibility="Visible"/>
+                <DataGridTextColumn x:Name="OperatorSystemItem" Binding="{Binding Path=ISLETIM_SISTEMI}" Width="auto" Header="ISLETIM SISTEMI" Visibility="Visible"/>
+                <DataGridTextColumn x:Name="HarddiskItem" Binding="{Binding Path=HARDDISK_BILGISI}" Width="auto" Header="HARDDISK BILGISI" Visibility="Visible"/>
+                <DataGridTextColumn x:Name="OIPItem" Binding="{Binding Path=OTOMASYON_IP}" Width="auto" Header="OTOMASYON IP" Visibility="Visible"/>
+                <DataGridTextColumn x:Name="MIPItem" Binding="{Binding Path=MAKINA_IP}" Width="auto" Header="MAKINA IP" Visibility="Visible"/>
+                <DataGridTextColumn x:Name="PIPItem" Binding="{Binding Path=PETLAS_IP}" Width="auto" Header="PETLAS IP" Visibility="Visible"/>
+                <DataGridTextColumn x:Name="LicenseItem" Binding="{Binding Path=DOSYA_YOLU}" Width="auto" Header="LISANS" Visibility="Visible"/>
+                <DataGridTextColumn x:Name="ExItem" Binding="{Binding Path=ACIKLAMALAR}" Width="auto" Header="ACIKLAMALAR" Visibility="Visible"/>-->
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

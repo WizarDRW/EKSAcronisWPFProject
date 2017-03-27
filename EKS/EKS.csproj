@@ -15,6 +15,7 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -27,7 +28,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -94,10 +94,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Forms\MPFMenus\License\MachineLicense.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Forms\MPFMenus\UpdateDataForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -118,6 +114,30 @@
     <Compile Include="Classes\AuthorityReview.cs" />
     <Compile Include="Classes\MemoryControl.cs" />
     <Compile Include="Classes\UsersDatabaseConnection.cs" />
+    <Compile Include="Database_Tools\BACKUPANDRECOVERTABLE.cs">
+      <DependentUpon>EksDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database_Tools\EksDBModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EksDBModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database_Tools\EksDBModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EksDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database_Tools\EksDBModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EksDBModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Database_Tools\sysdiagrams.cs">
+      <DependentUpon>EksDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database_Tools\USERS.cs">
+      <DependentUpon>EksDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MainProcessesForm.xaml.cs">
       <DependentUpon>MainProcessesForm.xaml</DependentUpon>
     </Compile>
@@ -125,9 +145,6 @@
       <DependentUpon>UserSaveMessageBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="Forms\MPFMenus\AddDataForm.xaml.cs" />
-    <Compile Include="Forms\MPFMenus\License\MachineLicense.xaml.cs">
-      <DependentUpon>MachineLicense.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Forms\MPFMenus\UpdateDataForm.xaml.cs">
       <DependentUpon>UpdateDataForm.xaml</DependentUpon>
     </Compile>
@@ -172,6 +189,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="Database_Tools\EksDBModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EksDBModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Database_Tools\EksDBModel.edmx.diagram">
+      <DependentUpon>EksDBModel.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -204,7 +228,6 @@
   <ItemGroup>
     <Resource Include="Resource\StartPageCloud4.png" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
@@ -229,6 +252,18 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Database_Tools\EksDBModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EksDBModel.edmx</DependentUpon>
+      <LastGenOutput>EksDBModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Database_Tools\EksDBModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EksDBModel.edmx</DependentUpon>
+      <LastGenOutput>EksDBModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EKSDatabaseBackUpModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BACKUPANDRECOVERTABLE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BOLGE" Type="nvarchar" MaxLength="25" Nullable="false" />
+    <Property Name="MAKINA" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BILGISAYAR LOKASYONU" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="BACKUP ADI" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="BACKUP TARIHI" Type="datetime" Nullable="false" />
+    <Property Name="BACKUP PROGRAM ADI" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="BACKUP TIPI" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="BACKUP VERSIYONU" Type="nchar" MaxLength="5" Nullable="false" />
+    <Property Name="KAYIT TARIHI" Type="datetime" />
+    <Property Name="BACKUP ALAN PERSONEL" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="BACKUP NEDENI" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="BILGISAYAR MODELI" Type="nvarchar" MaxLength="25" Nullable="false" />
+    <Property Name="ISLETIM SISTEMI" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="HARDDISK BILGISI" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OTOMASYON IP" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="MAKINA IP" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="PETLAS IP" Type="nvarchar" MaxLength="15" />
+    <Property Name="LISANS ID" Type="int" Nullable="false" />
+    <Property Name="ACIKLAMALAR" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="LICENSE">
+    <Key>
+      <PropertyRef Name="LISANS ID" />
+    </Key>
+    <Property Name="LISANS ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DOSYA YOLU" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="USERS">
+    <Key>
+      <PropertyRef Name="USERID" />
+    </Key>
+    <Property Name="USERID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="LASTNAME" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="USERNAME" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="PASSWORD" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AUTHORITY" Type="varchar" MaxLength="25" />
+  </EntityType>
+  <Association Name="FK_BACKUPANDRECOVERTABLE_LICENSE">
+    <End Role="LICENSE" Type="Self.LICENSE" Multiplicity="1" />
+    <End Role="BACKUPANDRECOVERTABLE" Type="Self.BACKUPANDRECOVERTABLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LICENSE">
+        <PropertyRef Name="LISANS ID" />
+      </Principal>
+      <Dependent Role="BACKUPANDRECOVERTABLE">
+        <PropertyRef Name="LISANS ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="AVerify" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Aut" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="MachineIsThere" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bolge" Type="varchar" Mode="In" />
+    <Parameter Name="makina" Type="varchar" Mode="In" />
+    <Parameter Name="BLokasyon" Type="varchar" Mode="In" />
+    <Parameter Name="LNResult" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="ULNReg" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="name" Type="varchar" Mode="In" />
+    <Parameter Name="lastname" Type="varchar" Mode="In" />
+    <Parameter Name="username" Type="varchar" Mode="In" />
+    <Parameter Name="LNResult" Type="int" Mode="InOut" />
+    <Parameter Name="UResult" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="ULNVerify" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="username" Type="varchar" Mode="In" />
+    <Parameter Name="password" Type="varchar" Mode="In" />
+    <Parameter Name="UResult" Type="int" Mode="InOut" />
+  </Function>
+  <EntityContainer Name="EKSDatabaseBackUpModelStoreContainer">
+    <EntitySet Name="BACKUPANDRECOVERTABLE" EntityType="Self.BACKUPANDRECOVERTABLE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LICENSE" EntityType="Self.LICENSE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_BACKUPANDRECOVERTABLE_LICENSE" Association="Self.FK_BACKUPANDRECOVERTABLE_LICENSE">
+      <End Role="LICENSE" EntitySet="LICENSE" />
+      <End Role="BACKUPANDRECOVERTABLE" EntitySet="BACKUPANDRECOVERTABLE" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

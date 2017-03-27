@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Data.SqlClient;
+using EKS.Database_Tools;
 
 namespace EKS.Forms.MPFMenus
 {
@@ -12,8 +13,8 @@ namespace EKS.Forms.MPFMenus
         {
             InitializeComponent();
         }
-        Classes.InFile IF = new Classes.InFile();
         Classes.DatabaseProcess DP = new Classes.DatabaseProcess();
+        public BACKUPANDRECOVERTABLE UpdateSelectedData { get; set; }
 
         private void UpdateBTN_Click(object sender, RoutedEventArgs e)
         {
@@ -27,7 +28,7 @@ namespace EKS.Forms.MPFMenus
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            
+            ZoneCMBBX.SelectedValue = UpdateSelectedData.BOLGE;
         }
 
         #region ComboBoc Selected
@@ -70,5 +71,9 @@ namespace EKS.Forms.MPFMenus
         }
         #endregion
 
+        private void LicanseBTN_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

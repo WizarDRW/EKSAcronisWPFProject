@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="EKSDATABASEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BACKUPANDRECOVERTABLE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BOLGE" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="MAKINA" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BILGISAYAR LOKASYONU" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="BACKUP ADI" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="BACKUP TARIHI" Type="datetime" Nullable="false" />
+          <Property Name="BACKUP PROGRAM ADI" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="BACKUP TIPI" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="BACKUP VERSIYONU" Type="nchar" MaxLength="5" Nullable="false" />
+          <Property Name="KAYIT TARIHI" Type="datetime" />
+          <Property Name="BACKUP ALAN PERSONEL" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="BACKUP NEDENI" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="BILGISAYAR MODELI" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="ISLETIM SISTEMI" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="HARDDISK BILGISI" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OTOMASYON IP" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="MAKINA IP" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="PETLAS IP" Type="nvarchar" MaxLength="15" />
+          <Property Name="LISANS DOSYASI" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ACIKLAMALAR" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'EKSDATABASE.dbo.USERS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="USERS">
+          <Key>
+            <PropertyRef Name="USERID" />
+            <PropertyRef Name="NAME" />
+            <PropertyRef Name="LASTNAME" />
+            <PropertyRef Name="USERNAME" />
+            <PropertyRef Name="PASSWORD" />
+            <PropertyRef Name="AUTHORITY" />
+          </Key>
+          <Property Name="USERID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="LASTNAME" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="USERNAME" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="PASSWORD" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AUTHORITY" Type="varchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="EKSDATABASEModelStoreContainer">
+          <EntitySet Name="BACKUPANDRECOVERTABLE" EntityType="Self.BACKUPANDRECOVERTABLE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USERS" EntityType="Self.USERS" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [USERS].[USERID] AS [USERID], 
+    [USERS].[NAME] AS [NAME], 
+    [USERS].[LASTNAME] AS [LASTNAME], 
+    [USERS].[USERNAME] AS [USERNAME], 
+    [USERS].[PASSWORD] AS [PASSWORD], 
+    [USERS].[AUTHORITY] AS [AUTHORITY]
+    FROM [dbo].[USERS] AS [USERS]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EKSDATABASEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BACKUPANDRECOVERTABLE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BOLGE" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MAKINA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BILGISAYAR_LOKASYONU" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BACKUP_ADI" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BACKUP_TARIHI" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="BACKUP_PROGRAM_ADI" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BACKUP_TIPI" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="BACKUP_VERSIYONU" Type="String" MaxLength="5" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="KAYIT_TARIHI" Type="DateTime" Precision="3" />
+          <Property Name="BACKUP_ALAN_PERSONEL" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BACKUP_NEDENI" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BILGISAYAR_MODELI" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ISLETIM_SISTEMI" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HARDDISK_BILGISI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OTOMASYON_IP" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MAKINA_IP" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PETLAS_IP" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="LISANS_DOSYASI" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ACIKLAMALAR" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="USERS">
+          <Key>
+            <PropertyRef Name="USERID" />
+            <PropertyRef Name="NAME" />
+            <PropertyRef Name="LASTNAME" />
+            <PropertyRef Name="USERNAME" />
+            <PropertyRef Name="PASSWORD" />
+            <PropertyRef Name="AUTHORITY" />
+          </Key>
+          <Property Name="USERID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="LASTNAME" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="USERNAME" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AUTHORITY" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="EksDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BACKUPANDRECOVERTABLE" EntityType="Self.BACKUPANDRECOVERTABLE" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="USERS" EntityType="Self.USERS" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EKSDATABASEModelStoreContainer" CdmEntityContainer="EksDBEntities">
+          <EntitySetMapping Name="BACKUPANDRECOVERTABLE">
+            <EntityTypeMapping TypeName="EKSDATABASEModel.BACKUPANDRECOVERTABLE">
+              <MappingFragment StoreEntitySet="BACKUPANDRECOVERTABLE">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BOLGE" ColumnName="BOLGE" />
+                <ScalarProperty Name="MAKINA" ColumnName="MAKINA" />
+                <ScalarProperty Name="BILGISAYAR_LOKASYONU" ColumnName="BILGISAYAR LOKASYONU" />
+                <ScalarProperty Name="BACKUP_ADI" ColumnName="BACKUP ADI" />
+                <ScalarProperty Name="BACKUP_TARIHI" ColumnName="BACKUP TARIHI" />
+                <ScalarProperty Name="BACKUP_PROGRAM_ADI" ColumnName="BACKUP PROGRAM ADI" />
+                <ScalarProperty Name="BACKUP_TIPI" ColumnName="BACKUP TIPI" />
+                <ScalarProperty Name="BACKUP_VERSIYONU" ColumnName="BACKUP VERSIYONU" />
+                <ScalarProperty Name="KAYIT_TARIHI" ColumnName="KAYIT TARIHI" />
+                <ScalarProperty Name="BACKUP_ALAN_PERSONEL" ColumnName="BACKUP ALAN PERSONEL" />
+                <ScalarProperty Name="BACKUP_NEDENI" ColumnName="BACKUP NEDENI" />
+                <ScalarProperty Name="BILGISAYAR_MODELI" ColumnName="BILGISAYAR MODELI" />
+                <ScalarProperty Name="ISLETIM_SISTEMI" ColumnName="ISLETIM SISTEMI" />
+                <ScalarProperty Name="HARDDISK_BILGISI" ColumnName="HARDDISK BILGISI" />
+                <ScalarProperty Name="OTOMASYON_IP" ColumnName="OTOMASYON IP" />
+                <ScalarProperty Name="MAKINA_IP" ColumnName="MAKINA IP" />
+                <ScalarProperty Name="PETLAS_IP" ColumnName="PETLAS IP" />
+                <ScalarProperty Name="LISANS_DOSYASI" ColumnName="LISANS DOSYASI" />
+                <ScalarProperty Name="ACIKLAMALAR" ColumnName="ACIKLAMALAR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="EKSDATABASEModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERS">
+            <EntityTypeMapping TypeName="EKSDATABASEModel.USERS">
+              <MappingFragment StoreEntitySet="USERS">
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="LASTNAME" ColumnName="LASTNAME" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="AUTHORITY" ColumnName="AUTHORITY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

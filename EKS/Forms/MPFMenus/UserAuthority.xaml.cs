@@ -1,6 +1,8 @@
 ﻿using System.Windows;
 using System.Data.SqlClient;
-using System;
+using System.Linq;
+using EKS.Database_Tools;
+using System.ComponentModel;
 
 namespace EKS.Forms.MPFMenus
 {
@@ -9,28 +11,38 @@ namespace EKS.Forms.MPFMenus
     /// </summary>
     public partial class UserAuthority : Window
     {
-        public UserAuthority()
+        private UserAuthority()
         {
             InitializeComponent();
         }
-        Classes.InFile IF;
+        private static UserAuthority _instance = null;
+
+        public static UserAuthority Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new UserAuthority();
+                }
+                return _instance;
+            }
+        }
+
+
+        EksDBEntities Entity = new EksDBEntities();
         public string cmdString;
+        public USERS user {get => user; set => user = value; }
+        public EksDBEntities EntityProp { get => Entity; set => Entity = value; }
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            var items = EntityProp.USERS.Select(t => t.USERNAME);
             UserNamesCMBBX.Items.Clear();
-            IF = new Classes.InFile();
-            using (SqlConnection con = new SqlConnection(IF.FilePath()))
+
+            foreach (var item in items)
             {
-                con.Open();
-                using (SqlCommand cmd = new SqlCommand("Select * from USERS",con))
-                {
-                    SqlDataReader dR = cmd.ExecuteReader();
-                    while (dR.Read())
-                    {
-                        UserNamesCMBBX.Items.Add(dR["USERNAME"]);
-                    }
-                }
-                con.Close();
+                UserNamesCMBBX.Items.Add(item);
             }
         }
 
@@ -38,18 +50,8 @@ namespace EKS.Forms.MPFMenus
         {
             string UserName = UserNamesCMBBX.SelectedItem.ToString();
             string Aut;
-            IF = new Classes.InFile();
-            using (SqlConnection con = new SqlConnection(IF.FilePath()))
-            {
-                con.Open();
-                using (SqlCommand cmd = new SqlCommand("Select * from USERS where USERNAME='" + UserName.TrimEnd() +"'", con))
-                {
-                    SqlDataReader dR = cmd.ExecuteReader();
-                    dR.Read();
-                    Aut = dR["AUTHORITY"].ToString();
-                }
-                con.Close();
-            }
+            var username = EntityProp.USERS.FirstOrDefault(t => t.USERNAME == UserName.TrimEnd());
+            Aut = username.AUTHORITY.ToString();
             if (Aut == "UNKNOWN USER")
             {
                 AAuthorityCMBBX.SelectedIndex = 0;
@@ -69,45 +71,45 @@ namespace EKS.Forms.MPFMenus
         }
         private void SaveBTN_Click(object sender, RoutedEventArgs e)
         {
-            IF = new Classes.InFile();
             if (AAuthorityCMBBX.SelectedIndex == 0)
             {
-                cmdString = "update USERS set AUTHORITY='UNKNOWN USER' where USERNAME='" + UserNamesCMBBX.SelectionBoxItem.ToString() + "'";
+                var orginal = EntityProp.USERS.FirstOrDefault(t => t.USERNAME == UserNamesCMBBX.SelectionBoxItem.ToString());
+                if (orginal != null)
+                    orginal.AUTHORITY = "UNKNOWN USER";
             }
             else if (AAuthorityCMBBX.SelectedIndex == 1)
             {
-                cmdString = "update USERS set AUTHORITY='OTHER USER' where USERNAME='" + UserNamesCMBBX.SelectionBoxItem.ToString() + "'";
+                var orginal = EntityProp.USERS.FirstOrDefault(t=> t.USERNAME == UserNamesCMBBX.SelectionBoxItem.ToString());
+                if (orginal != null)
+                    orginal.AUTHORITY = "OTHER USER";
             }
             else if (AAuthorityCMBBX.SelectedIndex == 2)
             {
-                cmdString = "update USERS set AUTHORITY='USER' where USERNAME='" + UserNamesCMBBX.SelectionBoxItem.ToString() + "'";
+                var orginal = EntityProp.USERS.FirstOrDefault(t => t.USERNAME == UserNamesCMBBX.SelectionBoxItem.ToString());
+                if (orginal != null)
+                    orginal.AUTHORITY = "USER";
             }
             else if (AAuthorityCMBBX.SelectedIndex == 3)
             {
-                cmdString = "update USERS set AUTHORITY='ADMIN' where USERNAME='" + UserNamesCMBBX.SelectionBoxItem.ToString() + "'";
+                var orginal = EntityProp.USERS.FirstOrDefault(t => t.USERNAME == UserNamesCMBBX.SelectionBoxItem.ToString());
+                if (orginal != null)
+                    orginal.AUTHORITY = "ADMIN";
             }
-            using (SqlConnection con = new SqlConnection(IF.FilePath()))
-            {
-                con.Open();
-                using (SqlCommand cmd = new SqlCommand(cmdString, con))
-                {
-                    if (cmd.ExecuteNonQuery() == 1)
-                    {
-                        MessageBox.Show("Kullanıcı Değiştirildi.", "Kaydedildi", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Kullanıcı Değiştirilemedi", "Başarısız", MessageBoxButton.OK, MessageBoxImage.Asterisk);
-                    }
-                }
-                con.Close();
-            }
-            this.Close();
+            EntityProp.SaveChanges();
+            CancelBTN_Click(sender, e);
         }
 
         private void CancelBTN_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            this.Closing += Window_Closing;
+
+            base.Close();
+        }
+
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            e.Cancel = true;
+            this.Hide();
         }
     }
 }

@@ -186,7 +186,12 @@ as
 	--------------------------------------------------------------------------------------------------
 
 	Create Table LICENSE(
-		[LICANSE ID] [int] primary key NOT NULL,
-		[DOSYA ADI] [nvarchar](50) NOT NULL,
+		[LICANSE ID] [int] identity(1,1) primary key NOT NULL,
 		[DOSYA YOLU] [nvarchar](max) NOT NULL
 	)
+
+	select * from LICENSE
+
+	drop table LICENSE
+
+	----------------------------------------------------------------------------------------------------
