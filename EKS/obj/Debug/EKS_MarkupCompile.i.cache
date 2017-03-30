@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\wizar\Desktop\EKSAcronisWPFProject-master\EKSAcronisWPFProject-master\EKS\obj\Debug\
+C:\Users\wizar\Desktop\EKSAcronisWPFProject\EKS\obj\Debug\
 EKS
 none
 false
 DEBUG;TRACE
-C:\Users\wizar\Desktop\EKSAcronisWPFProject-master\EKSAcronisWPFProject-master\EKS\App.xaml
+C:\Users\wizar\Desktop\EKSAcronisWPFProject\EKS\App.xaml
 8-406153903
 21925147272
 271983348011
-18-380264482
+18-353665590
 Forms\MainProcessesForm.xaml;Forms\MessageBoxsForms\UserSaveMessageBox.xaml;Forms\MPFMenus\AddDataForm.xaml;Forms\MPFMenus\UpdateDataForm.xaml;Forms\MPFMenus\UserAuthority.xaml;Forms\StartAnimation.xaml;Forms\UserLogin.xaml;Forms\UserLoginForms\UserSignUpForm.xaml;
 
-False
+True
 

@@ -179,9 +179,28 @@ namespace EKS.Classes
             }
         }
 
-        public void Update()
+        public void Update(BACKUPANDRECOVERTABLE UpdatedItems)
         {
+            var updateInsert = EntityProp.BACKUPANDRECOVERTABLE.Where(t => t.ID == UpdatedItems.ID).FirstOrDefault();
 
+            updateInsert.BOLGE = UpdatedItems.BOLGE;
+            updateInsert.MAKINA = UpdatedItems.MAKINA;
+            updateInsert.BILGISAYAR_LOKASYONU = UpdatedItems.BILGISAYAR_LOKASYONU;
+            updateInsert.BACKUP_TARIHI = UpdatedItems.BACKUP_TARIHI;
+            updateInsert.BACKUP_PROGRAM_ADI = UpdatedItems.BACKUP_PROGRAM_ADI;
+            updateInsert.BACKUP_TIPI = UpdatedItems.BACKUP_TIPI;
+            updateInsert.BACKUP_VERSIYONU = UpdatedItems.BACKUP_VERSIYONU;
+            updateInsert.BACKUP_NEDENI = UpdatedItems.BACKUP_NEDENI;
+            updateInsert.ISLETIM_SISTEMI = UpdatedItems.ISLETIM_SISTEMI;
+            updateInsert.OTOMASYON_IP = UpdatedItems.OTOMASYON_IP;
+            updateInsert.MAKINA_IP = UpdatedItems.MAKINA_IP;
+            updateInsert.PETLAS_IP = UpdatedItems.PETLAS_IP;
+            updateInsert.HARDDISK_BILGISI = UpdatedItems.HARDDISK_BILGISI;
+            updateInsert.LISANS_DOSYASI = UpdatedItems.LISANS_DOSYASI;
+            updateInsert.BILGISAYAR_MODELI = UpdatedItems.BILGISAYAR_MODELI;
+            updateInsert.ACIKLAMALAR = UpdatedItems.ACIKLAMALAR;
+            
+            EntityProp.SaveChanges();
         }
 
         public void Find()

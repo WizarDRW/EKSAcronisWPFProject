@@ -36,8 +36,6 @@ namespace EKS.Forms
             {
                 DatabaseList.Visibility = Visibility.Visible;
                 DatabaseAddMenu.Visibility = Visibility.Visible;
-                DatabaseDeleteMenu.Visibility = Visibility.Visible;
-                DatabaseUpdateMenu.Visibility = Visibility.Visible;
                 DatabaseDataFindMenu.Visibility = Visibility.Visible;
                 DatabaseUserControl.Visibility = Visibility.Visible;
             }
@@ -45,8 +43,6 @@ namespace EKS.Forms
             {
                 DatabaseList.Visibility = Visibility.Visible;
                 DatabaseAddMenu.Visibility = Visibility.Visible;
-                DatabaseDeleteMenu.Visibility = Visibility.Visible;
-                DatabaseUpdateMenu.Visibility = Visibility.Visible;
                 DatabaseDataFindMenu.Visibility = Visibility.Visible;
             }
             else if (Authority == "OTHER USER")
@@ -57,17 +53,17 @@ namespace EKS.Forms
         DataTable dT = new DataTable();
         private void DatabaseDeleteMenuClick(object sender, RoutedEventArgs e)
         {
+            BACKUPANDRECOVERTABLE deleteItem = MainDataGrid.SelectedItems[0] as BACKUPANDRECOVERTABLE;
             if (MessageBox.Show("Silmek Istediğnize Emin misiniz?", "Emin misiniz?", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 if (MainDataGrid.SelectedIndex >= 0)
                 {
-                    if (MainDataGrid.SelectedItems[0] == null)
+                    if (deleteItem == null)
                     {
                         MessageBox.Show("Dosya Bos", "Bilgi", MessageBoxButton.OK, MessageBoxImage.None);
                     }
                     else
                     {
-                        BACKUPANDRECOVERTABLE deleteItem = MainDataGrid.SelectedItems[0] as BACKUPANDRECOVERTABLE;
                         DP.Delete(deleteItem.ID);
                         Entity.SaveChanges();
                     }

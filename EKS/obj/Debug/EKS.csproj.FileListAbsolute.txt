@@ -97,8 +97,6 @@ C:\Users\wizar\Desktop\EKSAcronisWPFProject\EKS\obj\Debug\Forms\MPFMenus\AddData
 C:\Users\wizar\Desktop\EKSAcronisWPFProject\EKS\obj\Debug\Forms\MPFMenus\AddDataForm.g.cs
 C:\Users\wizar\Desktop\EKSAcronisWPFProject\EKS\obj\Debug\Forms\MPFMenus\UpdateDataForm.baml
 C:\Users\wizar\Desktop\EKSAcronisWPFProject\EKS\obj\Debug\Forms\MPFMenus\UpdateDataForm.g.cs
-C:\Users\wizar\Desktop\EKSAcronisWPFProject\EKS\obj\Debug\Forms\MPFMenus\License\MachineLicense.g.cs
-C:\Users\wizar\Desktop\EKSAcronisWPFProject\EKS\obj\Debug\Forms\MPFMenus\License\MachineLicense.baml
 C:\Users\EKS_DYurdulu\Desktop\EKSAcronisWPFProject-master\EKSAcronisWPFProject-master\EKS\bin\Debug\EKS.exe.config
 C:\Users\EKS_DYurdulu\Desktop\EKSAcronisWPFProject-master\EKSAcronisWPFProject-master\EKS\obj\Debug\EKS.exe
 C:\Users\EKS_DYurdulu\Desktop\EKSAcronisWPFProject-master\EKSAcronisWPFProject-master\EKS\obj\Debug\EKS.pdb
@@ -167,3 +165,4 @@ C:\Users\wizar\Desktop\EKSAcronisWPFProject-master\EKSAcronisWPFProject-master\E
 C:\Users\wizar\Desktop\EKSAcronisWPFProject-master\EKSAcronisWPFProject-master\EKS\obj\Debug\EKS.g.resources
 C:\Users\wizar\Desktop\EKSAcronisWPFProject-master\EKSAcronisWPFProject-master\EKS\obj\Debug\EKS.Properties.Resources.resources
 C:\Users\wizar\Desktop\EKSAcronisWPFProject-master\EKSAcronisWPFProject-master\EKS\obj\Debug\EKS.csproj.GenerateResource.Cache
+C:\Users\wizar\Desktop\EKSAcronisWPFProject\EKS\obj\Debug\EKS_Content.g.cs

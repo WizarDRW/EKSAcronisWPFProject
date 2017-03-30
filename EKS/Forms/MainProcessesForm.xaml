@@ -10,7 +10,7 @@
         <Rectangle Fill="#FF4DB6AC" Height="60" Stroke="#FF4DB6AC" VerticalAlignment="Top" Grid.ColumnSpan="4"/>
         <Label x:Name="CompanyNameLBL" Content="Elektronik Kontrol Sistemleri" HorizontalAlignment="Left" Margin="20,4,0,0" VerticalAlignment="Top" Width="332" Foreground="White" FontFamily="Verdana" Grid.ColumnSpan="4"/>
         <Label x:Name="VersionLBL" Content="v1.0.0.0" HorizontalAlignment="Left" Margin="20,29,0,0" VerticalAlignment="Top" Width="332" Foreground="White" FontFamily="Verdana" Grid.ColumnSpan="4"/>
-        <Menu HorizontalAlignment="Left" Background="White" Margin="0,65,0,0" Width="86">
+        <Menu HorizontalAlignment="Left" Background="White" Margin="0,65,0,0" Width="65">
             <Menu.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel />
@@ -32,22 +32,6 @@
                     </StackPanel>
                 </MenuItem.Header>
             </MenuItem>
-            <MenuItem x:Name="DatabaseDeleteMenu" Click="DatabaseDeleteMenuClick" HorizontalAlignment="Center" Visibility="Hidden">
-                <MenuItem.Header>
-                    <StackPanel>
-                        <Image Height="70" Source="/EKS;component/Resource/DataMinus.png" HorizontalAlignment="Center"></Image>
-                        <TextBlock HorizontalAlignment="Center" Foreground="#FFF06292">SİL</TextBlock>
-                    </StackPanel>
-                </MenuItem.Header>
-            </MenuItem>
-            <MenuItem x:Name="DatabaseUpdateMenu" Click="DatabaseUpdateMenuClick" HorizontalAlignment="Center" Visibility="Hidden">
-                <MenuItem.Header>
-                    <StackPanel>
-                        <Image Height="70" Source="/EKS;component/Resource/DataUpdate.png" HorizontalAlignment="Center"></Image>
-                        <TextBlock HorizontalAlignment="Center" Foreground="#FF4DB6AC" >GÜNCELLE</TextBlock>
-                    </StackPanel>
-                </MenuItem.Header>
-            </MenuItem>
             <MenuItem x:Name="DatabaseDataFindMenu" Click="DatabaseFindMenuClick" HorizontalAlignment="Center" Visibility="Hidden">
                 <MenuItem.Header>
                     <StackPanel>
@@ -66,13 +50,26 @@
         </Menu>
 
 
-        <DataGrid x:Name="MainDataGrid" Margin="91,65,10,10" 
+        <DataGrid x:Name="MainDataGrid" Margin="70,65,10,10" 
                   HorizontalGridLinesBrush="#FFD7E4F2" VerticalGridLinesBrush="#FFD7E4F2" 
-                  Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}" 
-                  Grid.ColumnSpan="4" Foreground="#FF084BFF" DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                  Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}" Foreground="#FF084BFF" DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
                   ItemsSource="{Binding}"
                   AutoGenerateColumns="True">
             <DataGrid.Columns>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="Delete" Content="Sil" Click="DatabaseDeleteMenuClick"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="Update" Content="Guncelle" Click="DatabaseUpdateMenuClick"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
                 <!--<DataGridTextColumn x:Name="IDItem" Binding="{Binding Path=ID}" Width="auto" Header="ID" Visibility="Visible"/>
                 <DataGridTextColumn x:Name="ZoneItem" Binding="{Binding Path=BOLGE}" Width="auto" Header="BOLGE" Visibility="Visible"/>
                 <DataGridTextColumn x:Name="MachineItem" Binding="{Binding Path=MAKINA}" Width="auto" Header="MAKINA" Visibility="Visible"/>

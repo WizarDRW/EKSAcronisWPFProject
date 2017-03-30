@@ -98,13 +98,10 @@ namespace EKS.Forms.MPFMenus
         int i = 0;
         private void LicanseBTN_Click(object sender, RoutedEventArgs e)
         {
-            //ML = new License.MachineLicense();
-            //ML.Owner = Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
-            //ML.ShowDialog();
             Microsoft.Win32.OpenFileDialog OFDialog = new Microsoft.Win32.OpenFileDialog();
             OFDialog.FileName = "Document";
             OFDialog.DefaultExt = ".txt";
-            OFDialog.Filter = "Text Document (.txt)|*.txt|MS Office Word (.doc)|*.doc|MS Office Word (.xlsx)|*.xlsx";
+            //OFDialog.Filter = "Text Document (.txt)|*.txt|MS Office Word (.doc)|*.doc|MS Office Word (.xlsx)|*.xlsx";
 
             Nullable<bool> result = OFDialog.ShowDialog();
 
